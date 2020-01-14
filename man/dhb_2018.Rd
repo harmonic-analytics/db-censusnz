@@ -17,7 +17,7 @@ Selected variables from the New Zealand 2018 Census by District Health Board
 \details{
 \describe{
   \item{DHB_2018}{District Health Board Code}
-  \item{DHB_NAME}{District Health Board Name}
+  \item{DHB_2018_NAME}{District Health Board Name}
   \item{RESIDENT_POP_2018}{Residential Population in 2018}
   \item{CENSUS_NIGHT_POP_2018}{Population on night of the Census in 2018}
   \item{PROP_MALE_2018}{Proportion of individuals who are male}

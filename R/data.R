@@ -33,9 +33,22 @@
 #'   \item{PROP_ME_LATIN_AFRICAN_2018}{Proportion of individuals with Middle Eastern or Latin or African ethnicity}
 #'   \item{PROP_NEW_ZEALANDER_2018}{Proportion of individuals with New Zealander ethnicity}
 #'   \item{PROP_OTHER_ETHNICITY_2018}{Proportion of individuals with Other ethnicity}
+#'   \item{SA2_2018}{Statistical Area 2 Code}
+#'   \item{SA2_2018_NAME}{Statistical Area 2 Name}
+#'   \item{UR_INDIC_2018_NAME}{Urban-Rural indicator (see SSGA 2018 \url{http://archive.stats.govt.nz/methods/classifications-and-standards/classification-related-stats-standards/geographic-areas.aspx})}
+#'   \item{RC_2018}{Regional Council Code}
+#'   \item{RC_2018_NAME}{Regional Council Name}
+#'   \item{TA_2018}{Territorial Authority Code}
+#'   \item{TA_2018_NAME}{Territorial Authority Name}
+#'   \item{LANDWATER_NAME}{Indicator of Landwater status}
+#'   \item{LAND_AREA_SQ_KM}{Land area of the SA1 in square km}
+#'   \item{AREA_SQ_KM}{Area of the SA1 in square km}
+#'   \item{NZTM2000_EASTING}{Easting coordinate of SA1 centroid}
+#'   \item{NZTM2000_NORTHING}{Northing coordinate of SA1 centroid}
 #' }
-#' @format A data frame with 29889 rows and 30 variables:
+#' @format A data frame with 29889 rows and 42 variables:
 #' @source \url{https://www.stats.govt.nz/information-releases/statistical-area-1-dataset-for-2018-census}
+#' @source \url{https://datafinder.stats.govt.nz/layer/92206-statistical-area-1-higher-geographies-2018-generalised/}
 "sa1_2018"
 
 #' Census results by Statistical Area 2 2018
@@ -44,7 +57,7 @@
 #'
 #' \describe{
 #'   \item{SA2_2018}{Statistical Area 2 Code}
-#'   \item{SA2_NAME}{Statistical Area 2 Name}
+#'   \item{SA2_2018_NAME}{Statistical Area 2 Name}
 #'   \item{RESIDENT_POP_2018}{Residential Population in 2018}
 #'   \item{CENSUS_NIGHT_POP_2018}{Population on night of the Census in 2018}
 #'   \item{PROP_MALE_2018}{Proportion of individuals who are male}
@@ -85,7 +98,7 @@
 #'
 #' \describe{
 #'   \item{WARD_2018}{Ward Code}
-#'   \item{WARD_NAME}{Ward Name}
+#'   \item{WARD_2018_NAME}{Ward Name}
 #'   \item{RESIDENT_POP_2018}{Residential Population in 2018}
 #'   \item{CENSUS_NIGHT_POP_2018}{Population on night of the Census in 2018}
 #'   \item{PROP_MALE_2018}{Proportion of individuals who are male}
@@ -126,7 +139,7 @@
 #'
 #' \describe{
 #'   \item{AKL_LBA_2018}{Local Board Areas (Auckland) Code}
-#'   \item{AKL_LBA_NAME}{Local Board Areas (Auckland) Name}
+#'   \item{AKL_LBA_2018_NAME}{Local Board Areas (Auckland) Name}
 #'   \item{RESIDENT_POP_2018}{Residential Population in 2018}
 #'   \item{CENSUS_NIGHT_POP_2018}{Population on night of the Census in 2018}
 #'   \item{PROP_MALE_2018}{Proportion of individuals who are male}
@@ -167,7 +180,7 @@
 #'
 #' \describe{
 #'   \item{TA_2018}{Territorial Authority Code}
-#'   \item{TA_NAME}{Territorial Authority Name}
+#'   \item{TA_2018_NAME}{Territorial Authority Name}
 #'   \item{RESIDENT_POP_2018}{Residential Population in 2018}
 #'   \item{CENSUS_NIGHT_POP_2018}{Population on night of the Census in 2018}
 #'   \item{PROP_MALE_2018}{Proportion of individuals who are male}
@@ -208,7 +221,7 @@
 #'
 #' \describe{
 #'   \item{DHB_2018}{District Health Board Code}
-#'   \item{DHB_NAME}{District Health Board Name}
+#'   \item{DHB_2018_NAME}{District Health Board Name}
 #'   \item{RESIDENT_POP_2018}{Residential Population in 2018}
 #'   \item{CENSUS_NIGHT_POP_2018}{Population on night of the Census in 2018}
 #'   \item{PROP_MALE_2018}{Proportion of individuals who are male}
@@ -249,7 +262,7 @@
 #'
 #' \describe{
 #'   \item{RC_2018}{Regional Council Code}
-#'   \item{RC_NAME}{Regional Council Name}
+#'   \item{RC_2018_NAME}{Regional Council Name}
 #'   \item{RESIDENT_POP_2018}{Residential Population in 2018}
 #'   \item{CENSUS_NIGHT_POP_2018}{Population on night of the Census in 2018}
 #'   \item{PROP_MALE_2018}{Proportion of individuals who are male}

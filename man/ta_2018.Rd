@@ -17,7 +17,7 @@ Selected variables from the New Zealand 2018 Census by Territorial Authority
 \details{
 \describe{
   \item{TA_2018}{Territorial Authority Code}
-  \item{TA_NAME}{Territorial Authority Name}
+  \item{TA_2018_NAME}{Territorial Authority Name}
   \item{RESIDENT_POP_2018}{Residential Population in 2018}
   \item{CENSUS_NIGHT_POP_2018}{Population on night of the Census in 2018}
   \item{PROP_MALE_2018}{Proportion of individuals who are male}

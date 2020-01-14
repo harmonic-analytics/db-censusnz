@@ -17,7 +17,7 @@ Selected variables from the New Zealand 2018 Census by Ward
 \details{
 \describe{
   \item{WARD_2018}{Ward Code}
-  \item{WARD_NAME}{Ward Name}
+  \item{WARD_2018_NAME}{Ward Name}
   \item{RESIDENT_POP_2018}{Residential Population in 2018}
   \item{CENSUS_NIGHT_POP_2018}{Population on night of the Census in 2018}
   \item{PROP_MALE_2018}{Proportion of individuals who are male}

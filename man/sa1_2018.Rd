@@ -4,9 +4,11 @@
 \name{sa1_2018}
 \alias{sa1_2018}
 \title{Census results by Statistical Area 1 2018}
-\format{A data frame with 29889 rows and 30 variables:}
+\format{A data frame with 29889 rows and 42 variables:}
 \source{
 \url{https://www.stats.govt.nz/information-releases/statistical-area-1-dataset-for-2018-census}
+
+\url{https://datafinder.stats.govt.nz/layer/92206-statistical-area-1-higher-geographies-2018-generalised/}
 }
 \usage{
 sa1_2018
@@ -46,6 +48,18 @@ Selected variables from the New Zealand 2018 Census by Statistical Area 1 (SA1)
   \item{PROP_ME_LATIN_AFRICAN_2018}{Proportion of individuals with Middle Eastern or Latin or African ethnicity}
   \item{PROP_NEW_ZEALANDER_2018}{Proportion of individuals with New Zealander ethnicity}
   \item{PROP_OTHER_ETHNICITY_2018}{Proportion of individuals with Other ethnicity}
+  \item{SA2_2018}{Statistical Area 2 Code}
+  \item{SA2_2018_NAME}{Statistical Area 2 Name}
+  \item{UR_INDIC_2018_NAME}{Urban-Rural indicator (see SSGA 2018 \url{http://archive.stats.govt.nz/methods/classifications-and-standards/classification-related-stats-standards/geographic-areas.aspx})}
+  \item{RC_2018}{Regional Council Code}
+  \item{RC_2018_NAME}{Regional Council Name}
+  \item{TA_2018}{Territorial Authority Code}
+  \item{TA_2018_NAME}{Territorial Authority Name}
+  \item{LANDWATER_NAME}{Indicator of Landwater status}
+  \item{LAND_AREA_SQ_KM}{Land area of the SA1 in square km}
+  \item{AREA_SQ_KM}{Area of the SA1 in square km}
+  \item{NZTM2000_EASTING}{Easting coordinate of SA1 centroid}
+  \item{NZTM2000_NORTHING}{Northing coordinate of SA1 centroid}
 }
 }
 \keyword{datasets}

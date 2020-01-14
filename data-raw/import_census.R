@@ -1,8 +1,8 @@
 ## code to prepare `DATASET` dataset goes here
 
-#libraries
-library(dplyr)
-library(stringr)
+# libraries
+# library(dplyr)
+# library(stringr)
 
 # download census files
 #download.file("https://www3.stats.govt.nz/2018census/sa1dataset2018/Statistical%20Area%201%20dataset%20for%20Census%202018%20%E2%80%93%20total%20New%20Zealand%20%E2%80%93%20CSV.zip",
@@ -64,7 +64,7 @@ indiv1 <- indiv1_raw %>%
 # Split data by geographic areas
 
 # SA1 data
-sa1_2018 <- indiv1 %>%
+sa1_2018_temp <- indiv1 %>%
   filter(str_length(Area_Code) == 7) %>%
   rename(SA1_2018 = Area_Code) %>%
   select(-Area_Description)
@@ -72,39 +72,31 @@ sa1_2018 <- indiv1 %>%
 # SA2 data
 sa2_2018 <- indiv1 %>%
   filter(str_length(Area_Code) == 6) %>%
-  rename(SA2_2018 = Area_Code, SA2_NAME = Area_Description)
+  rename(SA2_2018 = Area_Code, SA2_2018_NAME = Area_Description)
 
 # Wards
 ward_2018 <- indiv1 %>%
   filter((str_length(Area_Code) == 5) & str_sub(Area_Description, start = -4) == "Ward") %>%
-  rename(WARDS_2018 = Area_Code, WARD_NAME = Area_Description)
+  rename(WARDS_2018 = Area_Code, WARD_2018_NAME = Area_Description)
 
 # Auckland local boards
 akl_lba_2018 <- indiv1 %>%
   filter((str_length(Area_Code) == 5) & str_sub(Area_Description, start = -4) == "Area") %>%
-  rename(LBA_2018 = Area_Code, AKL_LBA_NAME = Area_Description)
+  rename(LBA_2018 = Area_Code, AKL_LBA_2018_NAME = Area_Description)
 
 # Territorial authorities
 ta_2018 <- indiv1 %>%
   filter((str_length(Area_Code) == 3)) %>%
-  rename(TA_2018 = Area_Code, TA_NAME = Area_Description)
+  rename(TA_2018 = Area_Code, TA_2018_NAME = Area_Description)
 
 # District Health Board Areas
 dhb_2018 <- indiv1 %>%
   filter((str_length(Area_Code) == 2) & !str_sub(Area_Description, start = -6) == "Region") %>%
-  rename(DHB_2018 = Area_Code, DHB_NAME = Area_Description)
+  rename(DHB_2018 = Area_Code, DHB_2018_NAME = Area_Description)
 
 # Regional Council Areas
 rc_2018 <- indiv1 %>%
   filter((str_length(Area_Code) == 2) & str_sub(Area_Description, start = -6) == "Region") %>%
-  rename(RC_2018 = Area_Code, RC_NAME = Area_Description)
+  rename(RC_2018 = Area_Code, RC_2018_NAME = Area_Description)
 
-# Save data for future use
-#usethis::use_data(indiv1, overwrite = TRUE)
-usethis::use_data(sa1_2018, overwrite = TRUE)
-usethis::use_data(sa2_2018, overwrite = TRUE)
-usethis::use_data(ward_2018, overwrite = TRUE)
-usethis::use_data(akl_lba_2018, overwrite = TRUE)
-usethis::use_data(ta_2018, overwrite = TRUE)
-usethis::use_data(dhb_2018, overwrite = TRUE)
-usethis::use_data(rc_2018, overwrite = TRUE)
+

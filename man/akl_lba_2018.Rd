@@ -17,7 +17,7 @@ Selected variables from the New Zealand 2018 Census by Local Board Areas (Auckla
 \details{
 \describe{
   \item{AKL_LBA_2018}{Local Board Areas (Auckland) Code}
-  \item{AKL_LBA_NAME}{Local Board Areas (Auckland) Name}
+  \item{AKL_LBA_2018_NAME}{Local Board Areas (Auckland) Name}
   \item{RESIDENT_POP_2018}{Residential Population in 2018}
   \item{CENSUS_NIGHT_POP_2018}{Population on night of the Census in 2018}
   \item{PROP_MALE_2018}{Proportion of individuals who are male}

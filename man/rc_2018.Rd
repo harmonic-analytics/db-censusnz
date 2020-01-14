@@ -17,7 +17,7 @@ Selected variables from the New Zealand 2018 Census by Regional Council
 \details{
 \describe{
   \item{RC_2018}{Regional Council Code}
-  \item{RC_NAME}{Regional Council Name}
+  \item{RC_2018_NAME}{Regional Council Name}
   \item{RESIDENT_POP_2018}{Residential Population in 2018}
   \item{CENSUS_NIGHT_POP_2018}{Population on night of the Census in 2018}
   \item{PROP_MALE_2018}{Proportion of individuals who are male}

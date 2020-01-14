@@ -17,7 +17,7 @@ Selected variables from the New Zealand 2018 Census by Statistical Area 2 (SA2)
 \details{
 \describe{
   \item{SA2_2018}{Statistical Area 2 Code}
-  \item{SA2_NAME}{Statistical Area 2 Name}
+  \item{SA2_2018_NAME}{Statistical Area 2 Name}
   \item{RESIDENT_POP_2018}{Residential Population in 2018}
   \item{CENSUS_NIGHT_POP_2018}{Population on night of the Census in 2018}
   \item{PROP_MALE_2018}{Proportion of individuals who are male}
