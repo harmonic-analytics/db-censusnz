@@ -6,7 +6,7 @@
 \title{Census results by Statistical Area 1 2018}
 \format{A data frame with 29889 rows and 30 variables:}
 \source{
-\url{https://www.stats.govt.nz/information-releases/statistical-area-1-dataset-for-2018-censu}
+\url{https://www.stats.govt.nz/information-releases/statistical-area-1-dataset-for-2018-census}
 }
 \usage{
 sa1_2018

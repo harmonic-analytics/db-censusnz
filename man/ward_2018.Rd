@@ -6,7 +6,7 @@
 \title{Census results by Ward 2018}
 \format{A data frame with 245 rows and 31 variables:}
 \source{
-\url{https://www.stats.govt.nz/information-releases/statistical-area-1-dataset-for-2018-censu}
+\url{https://www.stats.govt.nz/information-releases/statistical-area-1-dataset-for-2018-census}
 }
 \usage{
 ward_2018

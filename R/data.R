@@ -35,7 +35,7 @@
 #'   \item{PROP_OTHER_ETHNICITY_2018}{Proportion of individuals with Other ethnicity}
 #' }
 #' @format A data frame with 29889 rows and 30 variables:
-#' @source \url{https://www.stats.govt.nz/information-releases/statistical-area-1-dataset-for-2018-censu}
+#' @source \url{https://www.stats.govt.nz/information-releases/statistical-area-1-dataset-for-2018-census}
 "sa1_2018"
 
 #' Census results by Statistical Area 2 2018
@@ -76,7 +76,7 @@
 #'   \item{PROP_OTHER_ETHNICITY_2018}{Proportion of individuals with Other ethnicity}
 #' }
 #' @format A data frame with 2253 rows and 31 variables:
-#' @source \url{https://www.stats.govt.nz/information-releases/statistical-area-1-dataset-for-2018-censu}
+#' @source \url{https://www.stats.govt.nz/information-releases/statistical-area-1-dataset-for-2018-census}
 "sa2_2018"
 
 #' Census results by Ward 2018
@@ -117,7 +117,7 @@
 #'   \item{PROP_OTHER_ETHNICITY_2018}{Proportion of individuals with Other ethnicity}
 #' }
 #' @format A data frame with 245 rows and 31 variables:
-#' @source \url{https://www.stats.govt.nz/information-releases/statistical-area-1-dataset-for-2018-censu}
+#' @source \url{https://www.stats.govt.nz/information-releases/statistical-area-1-dataset-for-2018-census}
 "ward_2018"
 
 #' Census results by Local Board Areas (Auckland) 2018
@@ -158,7 +158,7 @@
 #'   \item{PROP_OTHER_ETHNICITY_2018}{Proportion of individuals with Other ethnicity}
 #' }
 #' @format A data frame with 21 rows and 31 variables:
-#' @source \url{https://www.stats.govt.nz/information-releases/statistical-area-1-dataset-for-2018-censu}
+#' @source \url{https://www.stats.govt.nz/information-releases/statistical-area-1-dataset-for-2018-census}
 "akl_lba_2018"
 
 #' Census results by Territorial Authority 2018
@@ -199,7 +199,7 @@
 #'   \item{PROP_OTHER_ETHNICITY_2018}{Proportion of individuals with Other ethnicity}
 #' }
 #' @format A data frame with 68 rows and 31 variables:
-#' @source \url{https://www.stats.govt.nz/information-releases/statistical-area-1-dataset-for-2018-censu}
+#' @source \url{https://www.stats.govt.nz/information-releases/statistical-area-1-dataset-for-2018-census}
 "ta_2018"
 
 #' Census results by District Health Board 2018
@@ -240,7 +240,7 @@
 #'   \item{PROP_OTHER_ETHNICITY_2018}{Proportion of individuals with Other ethnicity}
 #' }
 #' @format A data frame with 21 rows and 31 variables:
-#' @source \url{https://www.stats.govt.nz/information-releases/statistical-area-1-dataset-for-2018-censu}
+#' @source \url{https://www.stats.govt.nz/information-releases/statistical-area-1-dataset-for-2018-census}
 "dhb_2018"
 
 #' Census results by Regional Council 2018
@@ -281,5 +281,5 @@
 #'   \item{PROP_OTHER_ETHNICITY_2018}{Proportion of individuals with Other ethnicity}
 #' }
 #' @format A data frame with 17 rows and 31 variables:
-#' @source \url{https://www.stats.govt.nz/information-releases/statistical-area-1-dataset-for-2018-censu}
+#' @source \url{https://www.stats.govt.nz/information-releases/statistical-area-1-dataset-for-2018-census}
 "rc_2018"
