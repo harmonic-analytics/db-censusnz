@@ -1,11 +1,12 @@
 Package: censusnz
-Title: What the Package Does (One Line, Title Case)
+Title: 2018 New Zealand Census Dataset
 Version: 0.0.0.9000
 Authors@R: c(
     person("Ari", "Angelo", ,"ari@harmonic.co.nz", c("aut", "cre")),
     person("Matthew", "Lie", ,"matthew@harmonic.co.nz", c("ctb"))
     )
-Description: What the package does (one paragraph).
+Description: This package provides a selection of data made available from the 2018 New Zealand Census 
+    as data frames, organised by geographic size areas.
 License: file LICENSE
 Encoding: UTF-8
 LazyData: true
