@@ -116,3 +116,91 @@
 #' }
 #' @source \url{https://www.stats.govt.nz/information-releases/statistical-area-1-dataset-for-2018-census-updated-march-2020}
 'individual_rc_2018'
+
+#' Hierarchy of geographical areas for 2018 NZ Census
+#'
+#' A dataset containing the hierarchy of geographic areas for SA1s from the 2018 NZ Census.
+#'
+#' @format A data frame with 29889 rows and 8 variables:
+#' \describe{
+#'   \item{SA1_2018_NAME}{Name of SA1}
+#'   \item{SA2_2018_CODE}{Code of SA2}
+#'   \item{SA2_2018_NAME}{Name of SA2}
+#'   \item{TA_2018_CODE}{Code of Territorial Authority}
+#'   \item{TA_2018_NAME}{Name of Territorial Authority}
+#'   \item{RC_2018_CODE}{Code of Regional Council}
+#'   \item{RC_2018_NAME}{Name of Regional Council}
+#'   \item{LANDWATER_NAME}{Landwater category of the SA1}
+#'   ...
+#' }
+#' @source \url{https://datafinder.stats.govt.nz/data/category/annual-boundaries/2018}
+'area_hierarchy'
+
+#' Statistical Area 1 Boundaries for 2018 NZ Census
+#'
+#' A dataset containing the boundaries of Statistical Area 1's from the 2018 NZ Census.
+#'
+#' @format A data frame with 29889 rows and 2 variables:
+#' \describe{
+#'   \item{SA1_2018_NAME}{Name of SA1}
+#'   \item{geom}{sfc_MULTIPOLYGON object representing the geometry of the SA1}
+#'   ...
+#' }
+#' @source \url{https://datafinder.stats.govt.nz/data/category/annual-boundaries/2018}
+'sa1_geoms'
+
+#' Statistical Area 2 Boundaries for 2018 NZ Census
+#'
+#' A dataset containing the boundaries of Statistical Area 2's from the 2018 NZ Census.
+#'
+#' @format A data frame with 2253 rows and 3 variables:
+#' \describe{
+#'   \item{SA2_2018_CODE}{Code of SA2}
+#'   \item{SA2_2018_NAME}{Name of SA2}
+#'   \item{geom}{sfc_MULTIPOLYGON object representing the geometry of the SA2}
+#'   ...
+#' }
+#' @source \url{https://datafinder.stats.govt.nz/data/category/annual-boundaries/2018}
+'sa2_geoms'
+
+#' Ward Boundaries for 2018 NZ Census
+#'
+#' A dataset containing the boundaries of Wards from the 2018 NZ Census.
+#'
+#' @format A data frame with 245 rows and 3 variables:
+#' \describe{
+#'   \item{WARD_2018_CODE}{Code of Ward}
+#'   \item{WARD_2018_NAME}{Name of Ward}
+#'   \item{geom}{sfc_MULTIPOLYGON object representing the geometry of the Ward}
+#'   ...
+#' }
+#' @source \url{https://datafinder.stats.govt.nz/data/category/annual-boundaries/2018}
+'ward_geoms'
+
+#' Territorial Authority Boundaries for 2018 NZ Census
+#'
+#' A dataset containing the boundaries of Territorial Authorities from the 2018 NZ Census.
+#'
+#' @format A data frame with 68 rows and 3 variables:
+#' \describe{
+#'   \item{TA_2018_CODE}{Code of Territorial Authority}
+#'   \item{TA_2018_NAME}{Name of Territorial Authority}
+#'   \item{geom}{sfc_MULTIPOLYGON object representing the geometry of the Territorial Authorities}
+#'   ...
+#' }
+#' @source \url{https://datafinder.stats.govt.nz/data/category/annual-boundaries/2018}
+'ta_geoms'
+
+#' Regional Council Boundaries for 2018 NZ Census
+#'
+#' A dataset containing the boundaries of Regional Councils from the 2018 NZ Census.
+#'
+#' @format A data frame with 17 rows and 3 variables:
+#' \describe{
+#'   \item{RC_2018_CODE}{Code of Regional Council}
+#'   \item{RC_2018_NAME}{Name of Regional Council}
+#'   \item{geom}{sfc_MULTIPOLYGON object representing the geometry of the Regional Councils}
+#'   ...
+#' }
+#' @source \url{https://datafinder.stats.govt.nz/data/category/annual-boundaries/2018}
+'rc_geoms'

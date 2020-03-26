@@ -14,8 +14,8 @@ Suggests:
     testthat (>= 2.1.0)
 Imports: 
     dplyr,
-    RCurl,
-    stringr
+    stringr,
+    sf
 RoxygenNote: 7.1.0
 Depends:
     R (>= 2.10)
