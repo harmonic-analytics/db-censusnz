@@ -13,9 +13,6 @@ LazyData: true
 Suggests: 
     testthat (>= 2.1.0)
 Imports: 
-    dplyr,
-    stringr,
-    sf
 RoxygenNote: 7.1.0
 Depends:
     R (>= 2.10)
