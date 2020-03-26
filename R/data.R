@@ -13,7 +13,7 @@
 #'   ...
 #' }
 #' @source \url{https://www.stats.govt.nz/information-releases/statistical-area-1-dataset-for-2018-census-updated-march-2020}
-'individual_sa1_2018'
+"individual_sa1_2018"
 
 #' Data on Individuals from NZ Census 2018 at Statistical Area 2 Level
 #'
@@ -29,8 +29,8 @@
 #'   \item{count}{Number of people in the particular variable-group}
 #'   ...
 #' }
-#' @source \url{https://www.stats.govt.nz/information-releases/statistical-area-1-dataset-for-2018-census-updated-march-2020}
-'individual_sa2_2018'
+#' @source \url{https://www.stats.govt.nz/information-releases/statistical-area-1-dataset-for-2018-census-updated-march-2020}"
+"individual_sa2_2018"
 
 #' Data on Individuals from NZ Census 2018 at Ward Level
 #'
@@ -47,7 +47,7 @@
 #'   ...
 #' }
 #' @source \url{https://www.stats.govt.nz/information-releases/statistical-area-1-dataset-for-2018-census-updated-march-2020}
-'individual_ward_2018'
+"individual_ward_2018"
 
 #' Data on Individuals from NZ Census 2018 at Local Board Authority Level
 #'

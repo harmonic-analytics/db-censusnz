@@ -109,23 +109,13 @@ entries_count = individual %>%
   tidyr::pivot_wider(id_cols = geog_area, names_from = year, values_from = n)
 
 # Save out data objects
-individual_sa1_2018 = individual %>%
-  dplyr::filter(geog_area == 'SA1', year == 2018) %>%
-  dplyr::select(-c(year, geog_area)) %>%
-  dplyr::rename(SA1_2018_CODE = Area_code, SA1_2018_NAME = Area_description)
-usethis::use_data(individual_sa1_2018, overwrite = TRUE)
-
-individual_sa2_2018 = individual %>%
-  dplyr::filter(geog_area == 'SA2') %>%
-  dplyr::select(-c(year, geog_area)) %>%
-  dplyr::rename(SA2_2018_CODE = Area_code, SA2_2018_NAME = Area_description)
-usethis::use_data(individual_sa2_2018, overwrite = TRUE)
-
 individual_ward_2018 = individual %>%
   dplyr::filter(geog_area == 'Ward') %>%
   dplyr::select(-c(year, geog_area)) %>%
   dplyr::rename(WARD_2018_CODE = Area_code, WARD_2018_NAME = Area_description)
 usethis::use_data(individual_ward_2018, overwrite = TRUE)
+
+# Split and save data -----------------------------------------------------
 
 individual_lba_2018 = individual %>%
   dplyr::filter(geog_area == 'LBA') %>%
@@ -150,3 +140,15 @@ individual_rc_2018 = individual %>%
   dplyr::select(-c(year, geog_area)) %>%
   dplyr::rename(RC_2018_CODE = Area_code, RC_2018_NAME = Area_description)
 usethis::use_data(individual_rc_2018, overwrite = TRUE)
+
+individual_sa1_2018 = individual %>%
+  dplyr::filter(geog_area == 'SA1', year == 2018) %>%
+  dplyr::select(-c(year, geog_area)) %>%
+  dplyr::rename(SA1_2018_CODE = Area_code, SA1_2018_NAME = Area_description)
+usethis::use_data(individual_sa1_2018, overwrite = TRUE)
+
+individual_sa2_2018 = individual %>%
+  dplyr::filter(geog_area == 'SA2') %>%
+  dplyr::select(-c(year, geog_area)) %>%
+  dplyr::rename(SA2_2018_CODE = Area_code, SA2_2018_NAME = Area_description)
+usethis::use_data(individual_sa2_2018, overwrite = TRUE)
