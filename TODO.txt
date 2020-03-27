@@ -1,0 +1,8 @@
+To Dos:
+
+- Create functions to help more easily access the data
+- Tidy variable names and variable group names into things that make sense
+- Look at splitting some of the variable groups further - e.g. subgroups of age 5 year groups by sex
+- Add access to the 2013, 2006 census data objects from cleaning script
+- Tidy up download process in data-raw
+- Improve README

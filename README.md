@@ -9,46 +9,18 @@
 [![coverage-status](https://gitlab.harmonic.co.nz/ari/censusnz/badges/master/coverage.svg?job=coverage)](https://gitlab.harmonic.co.nz/ari/censusnz/pipelines)
 <!-- badges: end -->
 
-The goal of censusnz is to …
+A way to access the 2018 NZ Census Data. This package includes datasets
+of census responses grouped by different geographic areas. It also
+contains spatial dataframes of some of the geographic boundary areas.
+
+In future, functions to help access the data will also exist.
 
 ## Installation
 
-You can install the released version of censusnz from
-[CRAN](https://CRAN.R-project.org) with:
+To install this package from gitlab, you must first generate a Personal
+Access Token; the package can then be installed using via the Remotes
+package:
 
 ``` r
-install.packages("censusnz")
+remotes::install_gitlab('ari/censusnz', <PAT>, host = 'gitlab.harmonic.co.nz/')
 ```
-
-## Example
-
-This is a basic example which shows you how to solve a common problem:
-
-``` r
-library(censusnz)
-## basic example code
-```
-
-What is special about using `README.Rmd` instead of just `README.md`?
-You can include R chunks like so:
-
-``` r
-summary(cars)
-#>      speed           dist       
-#>  Min.   : 4.0   Min.   :  2.00  
-#>  1st Qu.:12.0   1st Qu.: 26.00  
-#>  Median :15.0   Median : 36.00  
-#>  Mean   :15.4   Mean   : 42.98  
-#>  3rd Qu.:19.0   3rd Qu.: 56.00  
-#>  Max.   :25.0   Max.   :120.00
-```
-
-You’ll still need to render `README.Rmd` regularly, to keep `README.md`
-up-to-date.
-
-You can also embed plots, for example:
-
-<img src="man/figures/README-pressure-1.png" width="100%" />
-
-In that case, don’t forget to commit and push the resulting figure
-files, so they display on GitHub\!
