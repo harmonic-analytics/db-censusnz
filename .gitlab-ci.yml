@@ -15,12 +15,7 @@ checking:
   script:
   - mkdir -p $R_LIBS_USER $BUILD_LOGS_DIR $BUILD_DIR
   - Rscript -e 'devtools::install_deps(dependencies = T, lib = Sys.getenv("R_LIBS_USER"))' \
-            -e 'devtools::check(check_dir = Sys.getenv("CHECK_DIR"))' \
-            -e 'if (length(devtools::check_failures(path = Sys.getenv("BUILD_LOGS_DIR"), note = FALSE)) > 0) stop()'
-  - Rscript -e 'devtools::build(path = Sys.getenv("BUILD_DIR"))'
-  artifacts:
-    paths:
-      - $BUILD_DIR
+            -e 'devtools::check(check_dir = Sys.getenv("CHECK_DIR"))' 
   cache:
     paths:
       - $R_LIBS_USER
