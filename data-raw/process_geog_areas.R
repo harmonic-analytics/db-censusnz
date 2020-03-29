@@ -2,11 +2,11 @@
 
 # Read in geopackages -----------------------------------------------------
 
-sa1_geoms = sf::st_read('./data-raw/downloads/statistical-area-1-higher-geographies-2018-generalised.gpkg')
-sa2_geoms = sf::st_read('./data-raw/downloads/statistical-area-2-2018-generalised.gpkg')
-ward_geoms = sf::st_read('./data-raw/downloads/ward-2018-generalised.gpkg')
-ta_geoms = sf::st_read('./data-raw/downloads/territorial-authority-2018-generalised.gpkg')
-rc_geoms = sf::st_read('./data-raw/downloads/regional-council-2018-generalised.gpkg')
+sa1_geoms = sf::st_read('./data-raw/geog-areas-2018/statistical-area-1-higher-geographies-2018-generalised.gpkg')
+sa2_geoms = sf::st_read('./data-raw/geog-areas-2018/statistical-area-2-2018-generalised.gpkg')
+ward_geoms = sf::st_read('./data-raw/geog-areas-2018/ward-2018-generalised.gpkg')
+ta_geoms = sf::st_read('./data-raw/geog-areas-2018/territorial-authority-2018-generalised.gpkg')
+rc_geoms = sf::st_read('./data-raw/geog-areas-2018/regional-council-2018-generalised.gpkg')
 
 
 # Extract Area Hierarchy --------------------------------------------------
