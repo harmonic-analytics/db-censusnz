@@ -5,7 +5,7 @@
 \alias{individual_dhb_2018}
 \title{Data on Individuals from NZ Census 2018 at District Health Board Level}
 \format{
-A data frame with 28688 rows and 5 variables:
+A data frame with 10560 rows and 5 variables:
 \describe{
   \item{DHB_2018_CODE}{District Health Board Code}
   \item{DHB_2018_NAME}{Name of the District Health Board}

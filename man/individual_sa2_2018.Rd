@@ -5,7 +5,7 @@
 \alias{individual_sa2_2018}
 \title{Data on Individuals from NZ Census 2018 at Statistical Area 2 Level}
 \format{
-A data frame with 2939216 rows and 5 variables:
+A data frame with 1081920 rows and 5 variables:
 \describe{
   \item{SA2_2018_CODE}{SA2 Code}
   \item{SA2_2018_NAME}{Name of the SA2}

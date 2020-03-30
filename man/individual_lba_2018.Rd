@@ -5,7 +5,7 @@
 \alias{individual_lba_2018}
 \title{Data on Individuals from NZ Census 2018 at Local Board Authority Level}
 \format{
-A data frame with 28688 rows and 5 variables:
+A data frame with 10560 rows and 5 variables:
 \describe{
   \item{LBA_2018_CODE}{Local Board Authority Code}
   \item{LBA_2018_NAME}{Name of the Local Board Authority}

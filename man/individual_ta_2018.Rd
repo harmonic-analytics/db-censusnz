@@ -3,9 +3,9 @@
 \docType{data}
 \name{individual_ta_2018}
 \alias{individual_ta_2018}
-\title{Data on Individuals from NZ Census 2018 at Territorial AuthorityLevel}
+\title{Data on Individuals from NZ Census 2018 at Territorial Authority Level}
 \format{
-A data frame with 89976 rows and 5 variables:
+A data frame with 33120 rows and 5 variables:
 \describe{
   \item{TA_2018_CODE}{Territorial Authority Code}
   \item{TA_2018_NAME}{Name of the Territorial Authority}

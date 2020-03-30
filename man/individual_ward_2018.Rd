@@ -5,7 +5,7 @@
 \alias{individual_ward_2018}
 \title{Data on Individuals from NZ Census 2018 at Ward Level}
 \format{
-A data frame with 320784 rows and 5 variables:
+A data frame with 118080 rows and 5 variables:
 \describe{
   \item{WARD_2018_CODE}{Ward Code}
   \item{WARD_2018_NAME}{Name of the Ward}

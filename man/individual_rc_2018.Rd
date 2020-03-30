@@ -5,7 +5,7 @@
 \alias{individual_rc_2018}
 \title{Data on Individuals from NZ Census 2018 at Regional Council Level}
 \format{
-A data frame with 23472 rows and 5 variables:
+A data frame with 8640 rows and 5 variables:
 \describe{
   \item{RC_2018_CODE}{Regional Council Code}
   \item{RC_2018_NAME}{Name of the Regional Council}
