@@ -22,5 +22,5 @@ Access Token; the package can then be installed using via the Remotes
 package:
 
 ``` r
-remotes::install_gitlab('ari/censusnz', <PAT>, host = 'gitlab.harmonic.co.nz/')
+remotes::install_gitlab(repo = 'ari/censusnz', auth_token = <PAT>, host = 'gitlab.harmonic.co.nz/')
 ```
