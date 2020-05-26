@@ -2,11 +2,13 @@
 
 # Read in geopackages -----------------------------------------------------
 
-sa1_geoms = sf::st_read('./data-raw/geog-areas-2018/statistical-area-1-higher-geographies-2018-generalised.gpkg')
-sa2_geoms = sf::st_read('./data-raw/geog-areas-2018/statistical-area-2-2018-generalised.gpkg')
-ward_geoms = sf::st_read('./data-raw/geog-areas-2018/ward-2018-generalised.gpkg')
-ta_geoms = sf::st_read('./data-raw/geog-areas-2018/territorial-authority-2018-generalised.gpkg')
-rc_geoms = sf::st_read('./data-raw/geog-areas-2018/regional-council-2018-generalised.gpkg')
+dir = './data-raw/geog-areas-2018'
+
+sa1_geoms = sf::st_read(file.path(dir, 'statistical-area-1-higher-geographies-2018-generalised.gpkg'))
+sa2_geoms = sf::st_read(file.path(dir, 'statistical-area-2-2018-generalised.gpkg'))
+ward_geoms = sf::st_read(file.path(dir, 'ward-2018-generalised.gpkg'))
+ta_geoms = sf::st_read(file.path(dir, 'territorial-authority-2018-generalised.gpkg'))
+rc_geoms = sf::st_read(file.path(dir, 'regional-council-2018-generalised.gpkg'))
 
 
 # Extract Area Hierarchy --------------------------------------------------
@@ -46,13 +48,3 @@ ta_geoms$geom = sf::st_transform(ta_geoms$geom, '+proj=longlat +datum=WGS84')
 rc_geoms = rc_geoms %>%
   dplyr::select(RC_2018_CODE = REGC2018_V1_00, RC_2018_NAME = REGC2018_V1_00_NAME, geom)
 rc_geoms$geom = sf::st_transform(rc_geoms$geom, '+proj=longlat +datum=WGS84')
-
-
-# Export data -------------------------------------------------------------
-
-usethis::use_data(area_hierarchy, overwrite = TRUE)
-usethis::use_data(sa1_geoms, overwrite = TRUE)
-usethis::use_data(sa2_geoms, overwrite = TRUE)
-usethis::use_data(ward_geoms, overwrite = TRUE)
-usethis::use_data(ta_geoms, overwrite = TRUE)
-usethis::use_data(rc_geoms, overwrite = TRUE)

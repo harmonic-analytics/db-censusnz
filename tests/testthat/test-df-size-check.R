@@ -6,4 +6,5 @@ test_that("All data areas present", {
   expect_equal(nrow(individual_ta_2018), 33120)
   expect_equal(nrow(individual_dhb_2018), 10560)
   expect_equal(nrow(individual_rc_2018), 8640)
+  expect_equal(nrow(area_hierarchy), 29889)
 })
