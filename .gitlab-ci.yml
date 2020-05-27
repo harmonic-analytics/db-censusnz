@@ -24,16 +24,14 @@ checking:
   variables:
     GIT_STRATEGY: none
   script:
-    - cd censusnz
     - R -e 'devtools::check()'
 
 coverage:
   stage: testing
   tags:
-      - docker  
+      - docker
   image: $IMAGE_TAG
   variables:
     GIT_STRATEGY: none
   script:
-    - cd censusnz
     - R -e 'covr::package_coverage(type = c("tests", "examples"), quiet = FALSE)'
