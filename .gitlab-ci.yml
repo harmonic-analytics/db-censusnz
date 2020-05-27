@@ -1,6 +1,5 @@
 stages:
   - build
-  - check
   - testing
 
 variables:
@@ -17,7 +16,7 @@ build-docker-container:
     - docker push $IMAGE_TAG
 
 checking:
-  stage: check
+  stage: testing
   tags:
       - docker
   image: $IMAGE_TAG
@@ -37,4 +36,5 @@ coverage:
     GIT_STRATEGY: none
   script:
     - cd /censusnz
+    - R -e 'devtools::test()'
     - R -e 'covr::package_coverage(type = c("tests", "examples"), quiet = FALSE)'
