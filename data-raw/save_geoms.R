@@ -25,6 +25,5 @@ usethis::use_data(
   ward_geoms_clipped,
   ta_geoms_clipped,
   rc_geoms_clipped,
-  overwrite = TRUE,
-  internal = TRUE
+  overwrite = TRUE
 )

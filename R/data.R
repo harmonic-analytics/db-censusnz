@@ -135,3 +135,33 @@
 #' }
 #' @source \url{https://datafinder.stats.govt.nz/data/category/annual-boundaries/2018}
 'area_hierarchy'
+
+#' Area
+'sa1_geoms'
+
+#' Area
+'sa2_geoms'
+
+#' Area
+'ward_geoms'
+
+#' Area
+'ta_geoms'
+
+#' Area
+'rc_geoms'
+
+#' Area
+'sa1_geoms_clipped'
+
+#' Area
+'sa2_geoms_clipped'
+
+#' Area
+'ward_geoms_clipped'
+
+#' Area
+'ta_geoms_clipped'
+
+#' Area
+'rc_geoms_clipped'
