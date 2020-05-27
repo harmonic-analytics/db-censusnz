@@ -1,4 +1,4 @@
-image: rocker/tidyverse:3.6.0
+image: rocker/geospatial:3.6.3
 
 stages:
   - build
@@ -15,7 +15,7 @@ checking:
   script:
   - mkdir -p $R_LIBS_USER $BUILD_LOGS_DIR $BUILD_DIR
   - Rscript -e 'devtools::install_deps(dependencies = T, lib = Sys.getenv("R_LIBS_USER"))' \
-            -e 'devtools::check(check_dir = Sys.getenv("CHECK_DIR"))' 
+            -e 'devtools::check(check_dir = Sys.getenv("CHECK_DIR"))'
   cache:
     paths:
       - $R_LIBS_USER
