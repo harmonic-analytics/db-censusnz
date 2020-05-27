@@ -19,7 +19,7 @@ build-docker-container:
 checking:
   stage: check
   tags:
-      -docker
+      - docker
   image: $IMAGE_TAG
   variables:
     GIT_STRATEGY: none
@@ -29,6 +29,8 @@ checking:
 
 coverage:
   stage: testing
+  tags:
+      - docker  
   image: $IMAGE_TAG
   variables:
     GIT_STRATEGY: none
