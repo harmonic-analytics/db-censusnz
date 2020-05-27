@@ -15,19 +15,7 @@ build-docker-container:
     - docker build --pull -t $IMAGE_TAG .
     - docker push $IMAGE_TAG
 
-checking:
-  stage: testing
-  tags:
-      - docker
-  image: $IMAGE_TAG
-  variables:
-    GIT_STRATEGY: none
-    KUBERNETES_MEMORY_REQUEST: 6Gi
-  script:
-    - cd /censusnz
-    - R -e 'devtools::check()'
-
-coverage:
+tests-and-coverage:
   stage: testing
   tags:
       - docker
@@ -38,3 +26,15 @@ coverage:
     - cd /censusnz
     - R -e 'devtools::test()'
     - R -e 'covr::package_coverage(type = c("tests", "examples"), quiet = FALSE)'
+
+package-check:
+  stage: testing
+  tags:
+      - docker
+  image: $IMAGE_TAG
+  variables:
+    GIT_STRATEGY: none
+    KUBERNETES_MEMORY_REQUEST: 6Gi
+  script:
+    - cd /censusnz
+    - R -e 'devtools::check()'
