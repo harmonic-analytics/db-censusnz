@@ -24,6 +24,7 @@ checking:
   variables:
     GIT_STRATEGY: none
   script:
+    - ls
     - R -e 'devtools::check()'
 
 coverage:
