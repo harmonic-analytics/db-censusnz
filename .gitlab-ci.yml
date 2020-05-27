@@ -23,6 +23,7 @@ checking:
   image: $IMAGE_TAG
   variables:
     GIT_STRATEGY: none
+    KUBERNETES_MEMORY_REQUEST: 6Gi
   script:
     - cd /censusnz
     - R -e 'devtools::check()'
