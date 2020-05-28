@@ -1,3 +1,7 @@
+# censusnz 0.0.2.0000
+
+* All spatial data has been removed from the censusnz package and moved to the new geonz package.
+
 # censusnz 0.0.1.0000
 
 * All individual data from 2018 census available in long table formats, grouped by geographic areas
