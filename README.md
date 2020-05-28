@@ -5,8 +5,8 @@
 
 <!-- badges: start -->
 
-[![pipeline-status](https://gitlab.harmonic.co.nz/ari/censusnz/badges/master/pipeline.svg)](https://gitlab.harmonic.co.nz/ari/censusnz)
-[![coverage-status](https://gitlab.harmonic.co.nz/ari/censusnz/badges/master/coverage.svg?job=coverage)](https://gitlab.harmonic.co.nz/ari/censusnz/pipelines)
+[![pipeline-status](https://gitlab.harmonic.co.nz/harmonic/packages/censusnz/badges/master/pipeline.svg)](https://gitlab.harmonic.co.nz/harmonic/packages/censusnz/)
+[![coverage-status](https://gitlab.harmonic.co.nz/harmonic/packages/censusnz/badges/master/coverage.svg?job=coverage)](https://gitlab.harmonic.co.nz/harmonic/packages/censusnz/pipelines)
 <!-- badges: end -->
 
 A way to access the 2018 NZ Census Data. This package includes datasets
@@ -22,5 +22,11 @@ Access Token; the package can then be installed using via the Remotes
 package:
 
 ``` r
-remotes::install_gitlab(repo = 'ari/censusnz', auth_token = <PAT>, host = 'gitlab.harmonic.co.nz/')
+remotes::install_gitlab(repo = 'harmonic/packages/censusnz', auth_token = <PAT>, host = 'gitlab.harmonic.co.nz/')
+```
+
+Alternatively the `utilic` package can be used:
+
+``` r
+utilic::install_harmonic('harmonic/packages/censusnz')
 ```
