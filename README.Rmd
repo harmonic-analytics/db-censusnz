@@ -19,7 +19,7 @@ knitr::opts_chunk$set(
 [![coverage-status](https://gitlab.harmonic.co.nz/harmonic/packages/censusnz/badges/master/coverage.svg?job=coverage)](https://gitlab.harmonic.co.nz/harmonic/packages/censusnz/pipelines)
 <!-- badges: end -->
 
-A way to access the 2018 NZ Census Data. This package includes datasets of census responses grouped by different geographic areas. It also contains spatial dataframes of some of the geographic boundary areas.
+A way to access the 2018 NZ Census Data. This package includes datasets of census responses grouped by different geographic areas. 
 
 In future, functions to help access the data will also exist.
 

@@ -10,8 +10,7 @@
 <!-- badges: end -->
 
 A way to access the 2018 NZ Census Data. This package includes datasets
-of census responses grouped by different geographic areas. It also
-contains spatial dataframes of some of the geographic boundary areas.
+of census responses grouped by different geographic areas.
 
 In future, functions to help access the data will also exist.
 
