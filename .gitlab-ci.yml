@@ -1,31 +1,42 @@
-image: rocker/tidyverse:3.6.0
-
 stages:
   - build
-  - deploy
+  - checking
+  - testing
 
 variables:
-  R_LIBS_USER: "$CI_PROJECT_DIR/ci/lib"
-  CHECK_DIR: "$CI_PROJECT_DIR/ci/logs"
-  BUILD_DIR: "$CI_PROJECT_DIR/ci/build"
-  BUILD_LOGS_DIR: "$CI_PROJECT_DIR/ci/logs/$CI_PROJECT_NAME.Rcheck"
+  IMAGE_TAG: dreg.harmonic.co.nz:5000/harmonic/censusnz:$CI_PIPELINE_ID
 
-checking:
+build-docker-container:
   stage: build
+  tags:
+      - shell
+      - dockerbuild
+      - wellington
   script:
-  - mkdir -p $R_LIBS_USER $BUILD_LOGS_DIR $BUILD_DIR
-  - Rscript -e 'devtools::install_deps(dependencies = T, lib = Sys.getenv("R_LIBS_USER"))' \
-            -e 'devtools::check(check_dir = Sys.getenv("CHECK_DIR"))' 
-  cache:
-    paths:
-      - $R_LIBS_USER
+    - docker build --pull -t $IMAGE_TAG .
+    - docker push $IMAGE_TAG
 
+package-check:
+  stage: checking
+  tags:
+      - docker
+  image: $IMAGE_TAG
+  variables:
+    GIT_STRATEGY: none
+    KUBERNETES_MEMORY_REQUEST: 6Gi
+  script:
+    - cd /censusnz
+    - R -e 'devtools::check()'
 
 coverage:
-  stage: deploy
-  when: on_success
+  stage: testing
+  tags:
+      - docker
+  image: $IMAGE_TAG
+  variables:
+    GIT_STRATEGY: none
   script:
+    - cd /censusnz
     - R -e 'covr::package_coverage(type = c("tests", "examples"), quiet = FALSE)'
-
 
 

@@ -1,6 +1,6 @@
 Package: censusnz
 Title: 2018 New Zealand Census Dataset
-Version: 0.0.0.9000
+Version: 0.0.2.0000
 Authors@R: c(
     person("Ari", "Angelo", ,"ari@harmonic.co.nz", c("aut", "cre")),
     person("Matthew", "Lie", ,"matthew@harmonic.co.nz", c("ctb"))
@@ -13,7 +13,9 @@ LazyData: true
 Suggests: 
     testthat (>= 2.1.0)
 Imports: 
-    dplyr
+    dplyr,
+    assertthat,
+    sf
 RoxygenNote: 7.1.0
 Depends:
     R (>= 2.10)
