@@ -1,4 +1,4 @@
-Package: censusnz
+Package: db.censusnz
 Title: 2018 New Zealand Census Dataset
 Version: 0.0.2.0000
 Authors@R: c(
