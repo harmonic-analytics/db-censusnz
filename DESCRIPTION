@@ -14,8 +14,7 @@ Suggests:
     testthat (>= 2.1.0)
 Imports: 
     dplyr,
-    assertthat,
-    sf
+    assertthat
 RoxygenNote: 7.1.0
 Depends:
     R (>= 2.10)

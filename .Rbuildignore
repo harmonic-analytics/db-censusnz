@@ -7,3 +7,4 @@
 ^downloads$
 Dockerfile
 .dockerignore
+^db-censusnz\.Rproj$
