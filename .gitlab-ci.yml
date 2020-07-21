@@ -4,7 +4,7 @@ stages:
   - testing
 
 variables:
-  IMAGE_TAG: dreg.harmonic.co.nz:5000/harmonic/censusnz:$CI_PIPELINE_ID
+  IMAGE_TAG: dreg.harmonic.co.nz:5000/harmonic/databases/db-censusnz:$CI_PIPELINE_ID
 
 build-docker-container:
   stage: build
