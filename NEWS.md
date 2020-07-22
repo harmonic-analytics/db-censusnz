@@ -1,3 +1,5 @@
+# db.censusnz 0.1.0
+
 # censusnz 0.0.2.0000
 
 * All spatial data has been removed from the censusnz package and moved to the new geonz package.
