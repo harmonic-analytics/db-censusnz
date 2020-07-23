@@ -1,4 +1,4 @@
-individual_vars = c("usually_resident_population_count",
+individual_variables = c("usually_resident_population_count",
   "census_night_population_count",
   "Unit_record_data_source",
   "Sex",
