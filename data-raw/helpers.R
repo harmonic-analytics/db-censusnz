@@ -1,3 +1,21 @@
+# Functions ---------------------------------------------------------------
+extract_variables <- function(x, var_list) {
+  for (var_name in var_list) {
+    if (substring(x, 1, nchar(var_name)) == var_name) {
+      return (var_name)
+    }
+  }
+  return (NA)
+}
+
+use_data <- function(...){
+  file_name <- match.call(expand.dots = TRUE)[[2]]
+  file_path <- usethis::proj_path("data", file_name, ext = "rda")
+  save <- purrr::partial(base::save, file = file_path, compress = "gzip", compression_level = 1)
+  invisible(save(...))
+}
+
+# Variables ---------------------------------------------------------------
 individual_variables = c("usually_resident_population_count",
   "census_night_population_count",
   "Unit_record_data_source",
