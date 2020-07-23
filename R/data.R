@@ -8,7 +8,7 @@
 #'   \item{SA1_2018_CODE}{SA1 Code}
 #'   \item{SA1_2018_NAME}{Name of the SA1}
 #'   \item{variable}{Variable from Census}
-#'   \item{var_group}{Groups for the variable from Census}
+#'   \item{variable_group}{Groups for the variable from Census}
 #'   \item{count}{Number of people in the particular variable-group}
 #'   ...
 #' }
@@ -25,7 +25,7 @@
 #'   \item{SA2_2018_CODE}{SA2 Code}
 #'   \item{SA2_2018_NAME}{Name of the SA2}
 #'   \item{variable}{Variable from Census}
-#'   \item{var_group}{Groups for the variable from Census}
+#'   \item{variable_group}{Groups for the variable from Census}
 #'   \item{count}{Number of people in the particular variable-group}
 #'   ...
 #' }
@@ -42,7 +42,7 @@
 #'   \item{WARD_2018_CODE}{Ward Code}
 #'   \item{WARD_2018_NAME}{Name of the Ward}
 #'   \item{variable}{Variable from Census}
-#'   \item{var_group}{Groups for the variable from Census}
+#'   \item{variable_group}{Groups for the variable from Census}
 #'   \item{count}{Number of people in the particular variable-group}
 #'   ...
 #' }
@@ -59,7 +59,7 @@
 #'   \item{LBA_2018_CODE}{Local Board Authority Code}
 #'   \item{LBA_2018_NAME}{Name of the Local Board Authority}
 #'   \item{variable}{Variable from Census}
-#'   \item{var_group}{Groups for the variable from Census}
+#'   \item{variable_group}{Groups for the variable from Census}
 #'   \item{count}{Number of people in the particular variable-group}
 #'   ...
 #' }
@@ -76,7 +76,7 @@
 #'   \item{TA_2018_CODE}{Territorial Authority Code}
 #'   \item{TA_2018_NAME}{Name of the Territorial Authority}
 #'   \item{variable}{Variable from Census}
-#'   \item{var_group}{Groups for the variable from Census}
+#'   \item{variable_group}{Groups for the variable from Census}
 #'   \item{count}{Number of people in the particular variable-group}
 #'   ...
 #' }
@@ -93,7 +93,7 @@
 #'   \item{DHB_2018_CODE}{District Health Board Code}
 #'   \item{DHB_2018_NAME}{Name of the District Health Board}
 #'   \item{variable}{Variable from Census}
-#'   \item{var_group}{Groups for the variable from Census}
+#'   \item{variable_group}{Groups for the variable from Census}
 #'   \item{count}{Number of people in the particular variable-group}
 #'   ...
 #' }
@@ -110,7 +110,7 @@
 #'   \item{RC_2018_CODE}{Regional Council Code}
 #'   \item{RC_2018_NAME}{Name of the Regional Council}
 #'   \item{variable}{Variable from Census}
-#'   \item{var_group}{Groups for the variable from Census}
+#'   \item{variable_group}{Groups for the variable from Census}
 #'   \item{count}{Number of people in the particular variable-group}
 #'   ...
 #' }
