@@ -135,3 +135,7 @@
 #' }
 #' @source \url{https://datafinder.stats.govt.nz/data/category/annual-boundaries/2018}
 'area_hierarchy'
+
+#' A dictionary of available variables
+#' @references \href{https://www.stats.govt.nz/information-releases/statistical-area-1-dataset-for-2018-census-updated-march-2020}{Available Variables}
+"available_variables"

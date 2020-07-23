@@ -1,6 +1,6 @@
 Package: db.censusnz
 Title: 2018 New Zealand Census Dataset
-Version: 0.1.0
+Version: 0.2.0
 Authors@R: c(
     person("Ari", "Angelo", ,"ari@harmonic.co.nz", c("aut", "cre")),
     person("Matthew", "Lie", ,"matthew@harmonic.co.nz", c("ctb"))
