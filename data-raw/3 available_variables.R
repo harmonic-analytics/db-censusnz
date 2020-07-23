@@ -1,7 +1,11 @@
 ## code to prepare `available_variables` dataset goes here
-devtools::load_all()
-usethis <- purrr::partial(usethis::use_data, overwrite = TRUE)
 
+# Setup -------------------------------------------------------------------
+source('./data-raw/helpers.R')
+library(magrittr)
+try(tictoc::tic("load data time:")); devtools::load_all(); try(tictoc::toc())
+
+# Save --------------------------------------------------------------------
 path <- system.file("available_variables.csv", package = "db.censusnz")
 (
   available_variables <- read.csv(path)
