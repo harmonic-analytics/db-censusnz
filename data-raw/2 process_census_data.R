@@ -3,6 +3,7 @@
 ### Last Updated: 19 Mar 2020
 
 # Helpers -----------------------------------------------------------------
+usethis <- purrr::partial(usethis::use_data, overwrite = TRUE)
 source('./data-raw/helpers.R')
 extract_variables <- function(x, var_list) {
   for (var_name in var_list) {
@@ -118,41 +119,41 @@ individual_ward_2018 = individual_2018 %>%
   dplyr::filter(geog_area == 'Ward') %>%
   dplyr::select(-c(year, geog_area)) %>%
   dplyr::rename(WARD_2018_CODE = area_code, WARD_2018_NAME = area_description)
-usethis::use_data(individual_ward_2018, overwrite = TRUE)
+usethis(individual_ward_2018)
 
 individual_lba_2018 = individual_2018 %>%
   dplyr::filter(geog_area == 'LBA') %>%
   dplyr::select(-c(year, geog_area)) %>%
   dplyr::rename(LBA_2018_CODE = area_code, LBA_2018_NAME = area_description)
-usethis::use_data(individual_lba_2018, overwrite = TRUE)
+usethis(individual_lba_2018)
 
 individual_ta_2018 = individual_2018 %>%
   dplyr::filter(geog_area == 'TA') %>%
   dplyr::select(-c(year, geog_area)) %>%
   dplyr::rename(TA_2018_CODE = area_code, TA_2018_NAME = area_description)
-usethis::use_data(individual_ta_2018, overwrite = TRUE)
+usethis(individual_ta_2018)
 
 individual_dhb_2018 = individual_2018 %>%
   dplyr::filter(geog_area == 'DHB') %>%
   dplyr::select(-c(year, geog_area)) %>%
   dplyr::rename(DHB_2018_CODE = area_code, DHB_2018_NAME = area_description)
-usethis::use_data(individual_dhb_2018, overwrite = TRUE)
+usethis(individual_dhb_2018)
 
 individual_rc_2018 = individual_2018 %>%
   dplyr::filter(geog_area == 'RC') %>%
   dplyr::select(-c(year, geog_area)) %>%
   dplyr::rename(RC_2018_CODE = area_code, RC_2018_NAME = area_description)
-usethis::use_data(individual_rc_2018, overwrite = TRUE)
+usethis(individual_rc_2018)
 
 individual_sa1_2018 = individual_2018 %>%
   dplyr::filter(geog_area == 'SA1') %>%
   dplyr::select(-c(year, geog_area)) %>%
   dplyr::rename(SA1_2018_CODE = area_code, SA1_2018_NAME = area_description)
-usethis::use_data(individual_sa1_2018, overwrite = TRUE)
+usethis(individual_sa1_2018)
 
 individual_sa2_2018 = individual_2018 %>%
   dplyr::filter(geog_area == 'SA2') %>%
   dplyr::select(-c(year, geog_area)) %>%
   dplyr::rename(SA2_2018_CODE = area_code, SA2_2018_NAME = area_description)
-usethis::use_data(individual_sa2_2018, overwrite = TRUE)
+usethis(individual_sa2_2018)
 
