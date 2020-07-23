@@ -156,7 +156,3 @@ individual_sa2_2018 = individual_2018 %>%
   dplyr::rename(SA2_2018_CODE = area_code, SA2_2018_NAME = area_description)
 usethis::use_data(individual_sa2_2018, overwrite = TRUE)
 
-
-# Post processing ---------------------------------------------------------
-## Standardise column names
-
