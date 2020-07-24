@@ -15,4 +15,3 @@ Depends:
 Suggests: 
     testthat (>= 2.1.0)
 RoxygenNote: 7.1.0
-
