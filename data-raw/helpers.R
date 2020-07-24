@@ -11,7 +11,8 @@ extract_variables <- function(x, var_list) {
 use_data <- function(...){
   file_name <- match.call(expand.dots = TRUE)[[2]]
   file_path <- usethis::proj_path("data", file_name, ext = "rda")
-  save <- purrr::partial(base::save, file = file_path, compress = "gzip", compression_level = 1)
+  dir.create(dirname(file_path), showWarnings = FALSE, recursive = TRUE)
+  save <- purrr::partial(base::save, file = file_path, compress = "bzip2", compression_level = 1, version = 3)
   invisible(save(...))
 }
 

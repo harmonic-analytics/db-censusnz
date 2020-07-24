@@ -5,11 +5,21 @@ source('./data-raw/helpers.R')
 library(magrittr)
 try(tictoc::tic("load data time:")); devtools::load_all(); try(tictoc::toc())
 
+# Prepare -----------------------------------------------------------------
+path <- system.file("dictionary.csv", package = "db.censusnz")
+dictionary <- read.csv(path) %>% tibble::as_tibble() %>% dplyr::mutate_if(is.character, stringi::stri_enc_toascii)
+
+available_variables <- tibble::tribble(~table, ~variable)
+table_names <- c("DHB", "LBA", "RC", "SA1", "SA2", "TA", "WARD")
+for(table_name in table_names){
+  data <- eval(parse(text = paste0("db.censusnz::",table_name)))
+  available_variables <- dplyr::bind_rows(
+    available_variables,
+    data %>% dplyr::distinct(variable) %>% tibble::add_column(table = table_name, .before = 0)
+  )
+}
+
+available_variables <- dplyr::left_join(available_variables, dictionary)
+
 # Save --------------------------------------------------------------------
-path <- system.file("available_variables.csv", package = "db.censusnz")
-(
-  available_variables <- read.csv(path)
-  %>% tibble::as_tibble()
-  %>% dplyr::mutate_if(is.character, stringi::stri_enc_toascii)
-)
 use_data(available_variables)
