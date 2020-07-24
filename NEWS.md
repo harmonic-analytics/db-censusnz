@@ -1,3 +1,5 @@
+# db.censusnz 0.3.0
+
 # db.censusnz 0.2.3
 
 # db.censusnz 0.2.2
