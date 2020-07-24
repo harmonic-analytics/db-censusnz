@@ -13,7 +13,7 @@
 #'   ...
 #' }
 #' @source \url{https://www.stats.govt.nz/information-releases/statistical-area-1-dataset-for-2018-census-updated-march-2020}
-"individual_sa1_2018"
+"SA1"
 
 #' Data on Individuals from NZ Census 2018 at Statistical Area 2 Level
 #'
@@ -30,7 +30,7 @@
 #'   ...
 #' }
 #' @source \url{https://www.stats.govt.nz/information-releases/statistical-area-1-dataset-for-2018-census-updated-march-2020}"
-"individual_sa2_2018"
+"SA2"
 
 #' Data on Individuals from NZ Census 2018 at Ward Level
 #'
@@ -47,7 +47,7 @@
 #'   ...
 #' }
 #' @source \url{https://www.stats.govt.nz/information-releases/statistical-area-1-dataset-for-2018-census-updated-march-2020}
-"individual_ward_2018"
+"WARD"
 
 #' Data on Individuals from NZ Census 2018 at Local Board Authority Level
 #'
@@ -64,7 +64,7 @@
 #'   ...
 #' }
 #' @source \url{https://www.stats.govt.nz/information-releases/statistical-area-1-dataset-for-2018-census-updated-march-2020}
-'individual_lba_2018'
+'LBA'
 
 #' Data on Individuals from NZ Census 2018 at Territorial Authority Level
 #'
@@ -81,7 +81,7 @@
 #'   ...
 #' }
 #' @source \url{https://www.stats.govt.nz/information-releases/statistical-area-1-dataset-for-2018-census-updated-march-2020}
-'individual_ta_2018'
+'TA'
 
 #' Data on Individuals from NZ Census 2018 at District Health Board Level
 #'
@@ -98,7 +98,7 @@
 #'   ...
 #' }
 #' @source \url{https://www.stats.govt.nz/information-releases/statistical-area-1-dataset-for-2018-census-updated-march-2020}
-'individual_dhb_2018'
+'DHB'
 
 #' Data on Individuals from NZ Census 2018 at Regional Council Level
 #'
@@ -115,7 +115,7 @@
 #'   ...
 #' }
 #' @source \url{https://www.stats.govt.nz/information-releases/statistical-area-1-dataset-for-2018-census-updated-march-2020}
-'individual_rc_2018'
+'RC'
 
 #' Hierarchy of geographical areas for 2018 NZ Census
 #'
@@ -136,6 +136,6 @@
 #' @source \url{https://datafinder.stats.govt.nz/data/category/annual-boundaries/2018}
 'area_hierarchy'
 
-#' A dictionary of available variables
+#' A dictionary of the available variables
 #' @references \href{https://www.stats.govt.nz/information-releases/statistical-area-1-dataset-for-2018-census-updated-march-2020}{Available Variables}
-"available_variables"
+"DICTIONARY"
