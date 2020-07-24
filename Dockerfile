@@ -1,4 +1,4 @@
-FROM rocker/geospatial:3.6.3
+FROM rocker/tidyverse:3.6.3
 
 WORKDIR /censusnz
 
