@@ -14,7 +14,6 @@ build-docker-container:
     - wellington
   before_script:
     - touch .Renviron
-    - echo 'GITLAB_PAT='$GITLAB_PAT >> .Renviron
   script:
     - docker build --build-arg GITLAB_PAT=$GITLAB_PAT --pull -t $IMAGE_TAG .
     - docker push $IMAGE_TAG
