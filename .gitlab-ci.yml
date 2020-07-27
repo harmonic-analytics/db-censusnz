@@ -5,6 +5,7 @@ stages:
 
 variables:
   IMAGE_TAG: dreg.harmonic.co.nz:5000/harmonic/databases/db-censusnz:$CI_PIPELINE_ID
+  GITLAB_PAT: ${GITLAB_PAT}
 
 build-docker-container:
   stage: build
