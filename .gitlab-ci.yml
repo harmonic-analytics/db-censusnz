@@ -5,7 +5,6 @@ stages:
 
 variables:
   IMAGE_TAG: dreg.harmonic.co.nz:5000/harmonic/databases/db-censusnz:$CI_PIPELINE_ID
-  GITLAB_PAT: ${GITLAB_PAT}
 
 build-docker-container:
   stage: build
@@ -14,7 +13,7 @@ build-docker-container:
       - dockerbuild
       - wellington
   script:
-    - docker build --pull -t $IMAGE_TAG .
+    - docker build --build-arg GITLAB_PAT=$GITLAB_PAT --pull -t $IMAGE_TAG .
     - docker push $IMAGE_TAG
 
 package-check:
