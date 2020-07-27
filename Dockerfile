@@ -10,7 +10,7 @@ RUN R -q -e "remotes::install_gitlab('harmonic/packages/censusnz', host = 'gitla
 WORKDIR /censusnz
 COPY DESCRIPTION /censusnz/
 
-#RUN R -e "desc::description\$new()\$del_remotes('census')\$del_dep('census')\$write()"
+RUN R -e "desc::description\$new()\$del_remotes('census')\$del_dep('census')\$write()"
 RUN R -e "remotes::install_deps(dependencies = TRUE)"
 
 COPY . /censusnz/
