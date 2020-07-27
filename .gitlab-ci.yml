@@ -36,7 +36,7 @@ coverage:
   variables:
     GIT_STRATEGY: none
   script:
-    - cd /db-censusnz
+    - cd /db.censusnz
     - R -e 'covr::package_coverage(type = c("tests", "examples"), quiet = FALSE)'
 
 
