@@ -19,8 +19,10 @@ Suggests:
     withr,
     rmarkdown
 Imports: 
-    censusnz,
-    dplyr,
-    R6
+    R6,
+    dm,
+    dplyr
+    censusnz
+
 Remotes:
     git@gitlab.harmonic.co.nz:harmonic/packages/censusnz.git
