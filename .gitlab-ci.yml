@@ -28,7 +28,7 @@ package-check:
     KUBERNETES_MEMORY_REQUEST: 6Gi
   script:
     - cd /censusnz
-    - R -e 'devtools::check()'
+    - R -q -e 'devtools::check(error_on = "error")'
 
 coverage:
   stage: testing
