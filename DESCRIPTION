@@ -16,7 +16,8 @@ Depends:
     R (>= 3.5)
 Suggests: 
     testthat (>= 2.1.0),
-    withr
+    withr,
+    rmarkdown
 Imports: 
     censusnz,
     dplyr

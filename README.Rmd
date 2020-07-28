@@ -2,17 +2,21 @@
 output: github_document
 ---
 
-<!-- README.md is generated from README.Rmd. Please edit that file -->
-
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
+  cache = TRUE,
   comment = "#>",
-  fig.path = "man/figures/README-",
-  out.width = "100%"
+  message = FALSE, 
+  warning = FALSE, 
+  out.width = "100%",
+  fig.align = "center",
+  fig.width = 8,
+  fig.path = "man/figures/README-"
 )
 ```
-# censusnz
+
+# __db.censusnz__ (censusnz database plugin)
 
 <!-- badges: start -->
 [![pipeline-status](https://gitlab.harmonic.co.nz/harmonic/databases/db-censusnz/badges/master/pipeline.svg)](https://gitlab.harmonic.co.nz/harmonic/databases/db-censusnz/)
@@ -28,13 +32,21 @@ In future, functions to help access the data will also exist.
 To install this package from gitlab, you must first generate a Personal Access Token; the package can then be installed using via the Remotes package:
 
 ```r
+remotes::install_gitlab(repo = 'harmonic/packages/censusnz', auth_token = <PAT>, host = 'gitlab.harmonic.co.nz/')
 remotes::install_gitlab(repo = 'harmonic/databases/db-censusnz', auth_token = <PAT>, host = 'gitlab.harmonic.co.nz/')
 ```
 
 Alternatively the `utilic` package can be used:
 
 ```r
+utilic::install_harmonic('harmonic/packages/censusnz')
 utilic::install_harmonic('harmonic/databases/db-censusnz')
 ```
 
+---
+
+# Basic Usage of `db.censusnz`
+
+```{r child = 'vignettes/basic-usage.Rmd'}
+```
 

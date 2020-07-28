@@ -3,3 +3,4 @@
 .RData
 data-raw/downloads
 man/
+/*_cache/

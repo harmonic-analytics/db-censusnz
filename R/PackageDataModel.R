@@ -56,9 +56,16 @@ PackageDataModel$funs$establish_connection <- function(self, private){
     dm_add_fk <- purrr::partial(dm::dm_add_fk, check = FALSE)
 
     # Generate Data Model -----------------------------------------------------
-    private$census_2018 <- dplyr::src_df(pkg = 'db.censusnz') %>% dm::dm_from_src()
-    private$census_2018 <- private$census_2018 %>% dm::dm_zoom_to(area_hierarchy) %>% dm::mutate(HIERARCY_2018_CODE = as.character(seq_len(nrow(.)))) %>% dm::dm_update_zoomed()
-    private$census_2018 <- private$census_2018 %>%
+    private$census_2018 <-
+        dplyr::src_df(pkg = 'db.censusnz') %>%
+        dm::dm_from_src()
+    private$census_2018 <-
+        private$census_2018 %>%
+        dm::dm_zoom_to(area_hierarchy) %>%
+        dm::mutate(HIERARCY_2018_CODE = as.character(seq_len(nrow(.)))) %>%
+        dm::dm_update_zoomed()
+    private$census_2018 <-
+        private$census_2018 %>%
         dm_add_pk(SA1, SA1_2018_CODE) %>%
         dm_add_pk(SA2, SA2_2018_CODE) %>%
         dm_add_pk(area_hierarchy, HIERARCY_2018_CODE) %>%
