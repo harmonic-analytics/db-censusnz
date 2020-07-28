@@ -39,7 +39,8 @@ There are two major functions implemented in __censusnz__:
 
 ## Geography in __censusnz__ {#geography}
 
-To get Census data, __censusnz__ users supply an argument to the required `geography` parameter:
+To get Census data, __censusnz__ users supply an argument to the required
+`geography` parameter:
 
 * **SA1**: Statistical Area 1
 * **SA2**: Statistical Area 2
@@ -132,11 +133,18 @@ habit; and
 all regions.
 
 For the first point, we need to filter, i.e. include, the totals. We do that by
-using `filter_at("variable_group", ~ grepl("^total_stated_", .))`.
+using 
+
+```{r, eval = FALSE}
+filter_at("variable_group", ~ grepl("^total_stated_", .))
+```
 
 For the second point, we need to filter out, i.e. discard, the total smokers in
-all regions combined. We do that by using `filter_at("name", ~ !grepl("^Total
-NZ", .))`.
+all regions combined. We do that by using
+
+```{r, eval = FALSE}
+filter_at("name", ~ !grepl("^Total NZ", .))
+```
 
 ```{r visualisation-data}
 (

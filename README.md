@@ -171,12 +171,18 @@ occasionally, or used to smoke. This means:
     all regions.
 
 For the first point, we need to filter, i.e. include, the totals. We do
-that by using `filter_at("variable_group", ~ grepl("^total_stated_",
-.))`.
+that by using
+
+``` r
+filter_at("variable_group", ~ grepl("^total_stated_", .))
+```
 
 For the second point, we need to filter out, i.e. discard, the total
-smokers in all regions combined. We do that by using `filter_at("name",
-~ !grepl("^Total NZ", .))`.
+smokers in all regions combined. We do that by using
+
+``` r
+filter_at("name", ~ !grepl("^Total NZ", .))
+```
 
 ``` r
 (
