@@ -9,3 +9,5 @@ Dockerfile
 .dockerignore
 ^db-censusnz\.Rproj$
 ^vignettes/articles$
+^README_cache$
+^vignettes$

@@ -1,5 +1,5 @@
 FROM rocker/tidyverse:3.6.3
-ARG R_REPOS='https://cran.rstudio.com'
+ARG R_REPOS="'https://cran.rstudio.com'"
 
 # Install {censusnz}
 ARG GITLAB_PAT
