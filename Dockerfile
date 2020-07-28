@@ -1,5 +1,6 @@
 FROM rocker/tidyverse:3.6.3
 ARG R_REPOS=\'https://mran.microsoft.com/snapshot/2020-04-24/\'
+RUN R -q -e "remotes::update_packages(upgrade = TRUE, repos = ${R_REPOS})"
 
 # Install {censusnz}
 ARG GITLAB_PAT
