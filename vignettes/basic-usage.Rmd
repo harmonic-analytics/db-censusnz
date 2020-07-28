@@ -1,0 +1,166 @@
+---
+title: "Basic Usage of `db.censusnz`"
+bibliography: [references.bib]
+biblio-style: apalike
+link-citations: yes
+output: 
+  html_document: 
+    toc: yes
+    highlight: tango
+    theme: journal
+    df_print: kable
+---
+
+```{r, include = FALSE}
+pkgload::load_all(export_all = FALSE, helpers = FALSE)
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  cache = TRUE,
+  comment = "#>",
+  message = FALSE, 
+  warning = FALSE, 
+  out.width = "100%",
+  fig.align = "center",
+  fig.width = 8
+)
+```
+
+To get started working with __censusnz__, instantiate a `DataModel` object:
+
+```{r, eval = TRUE}
+Census <- PackageDataModel$new()
+```
+
+There are two major functions implemented in __censusnz__:
+
+1. `Census$get_variables()` returns a table with the available *geographies* and
+*variables* you can query; and
+2. `Census$get_data()` fetches a table with selected variables.
+
+## Geography in __censusnz__ {#geography}
+
+To get Census data, __censusnz__ users supply an argument to the required `geography` parameter:
+
+* **SA1**: Statistical Area 1
+* **SA2**: Statistical Area 2
+* **WARD**: Ward
+* **DHB**: District Health Board
+* **LBA**: Local Board Area (Auckland region only)
+* **TA**: Territorial Authority
+* **RC**: Regional Council
+
+See more information about the geographies by calling `?censusnz::DataModel`.
+For comprehensive information check [StatNZ report][StatsNZ2018a], pages 8-21.
+
+## Searching for Variables {#variables}
+
+Getting variables from the Census requires knowing the variable name - and there
+are hundreds of these variables across the different Census files. To rapidly
+search for variables, use the *get_variables()* function. The function takes no
+arguments and outputs metadata of the available geographies and variables.
+
+```{r get_variables-table, eval = TRUE}
+head(Census$get_variables())
+```
+
+For ideal functionality, we recommend:
+
+(1) Using the *View* function in RStudio to interactively browse for variables;
+(2) Clicking on *filters*; and 
+(3) Typing a variable of interest.
+
+```{r get_variables-view, eval = FALSE}
+View(Census$get_variables())
+```
+
+```{r, echo = FALSE, out.width = "100%"}
+knitr::include_graphics("https://i.imgur.com/KxvAalA.png")
+```
+
+For comprehensive variable description check [StatNZ Census
+user-guide][StatsNZ2018b], pages 12-14.
+
+## Working with Census 
+
+Querying the Census data requires you to set three parameres:
+
+1. [`geography`](#geography);
+2. [`variables`](#variables); and
+3. `year` (currently only 2018 is available).
+
+Once you've figure out what you need, you can query the Census data with
+get_data(). The result is a long table with five columns:
+
+1. `geoid`;
+2. `name`;
+3. `variable`;
+4. `variable_group`; and
+5. `count`.
+
+In the following example we query two variables, *maori_descent* and
+*smoking_status*, from a regional council geography level.
+
+```{r get_data-example, eval = TRUE}
+query <- Census$get_data(
+  geography = "RC", 
+  variables = c("maori_descent", "smoking_status")
+)
+
+head(query, 10)
+```
+
+Not all geographies are available for all surveys, all years, and all variables.
+Most Census geographies are supported in __censusnz__ at the moment; if you
+require a geography that is missing from the table below, please file an issue
+at `r tryCatch(read.dcf("../DESCRIPTION", "BugReports"), error = function(e) return(read.dcf("./DESCRIPTION", "BugReports")))`
+
+## Visualising Census Data
+
+The Census contains totals and their components. The totals are a convenient
+way to:
+
+* Transform absolute numbers into percentage; and
+* Use an aggregate level of *variable_group*.
+
+In this example we plot the total number of smokers in each region within NZ.
+Our definition of a smoker is anyone who smokes, regularly or occasionally, or
+used to smoke. This means:
+
+* We need the total number of smokers, regardless of their current smoking
+habit; and 
+* We need the number of smokers per region, rather than the total of
+all regions.
+
+For the first point, we need to filter, i.e. include, the totals. We do that by
+using `filter_at("variable_group", ~ grepl("^total_stated_", .))`.
+
+For the second point, we need to filter out, i.e. discard, the total smokers in
+all regions combined. We do that by using `filter_at("name", ~ !grepl("^Total
+NZ", .))`.
+
+```{r visualisation-data}
+(
+    ggdata <- query 
+    %>% dplyr::filter(variable %in% "smoking_status")
+    %>% dplyr::filter_at("name", ~ !grepl("^Total NZ", .))
+    %>% dplyr::filter_at("variable_group", ~ grepl("^total_stated_", .))  
+)
+```
+
+Plotting the filtered data we get
+
+```{r visualisation-plot}
+library(ggplot2)
+(
+    ggdata %>% ggplot(aes(x=name, y=count)) 
+    + geom_col()
+    + xlab("region")
+    + coord_flip()
+    + theme_bw()
+)
+```
+
+<!-- # References -->
+
+[StatsNZ2018a]: http://archive.stats.govt.nz/{~}/media/Statistics/surveys-and-methods/methods/class-stnd/geographic-hierarchy/statistical-standard-for-geographic-areas-2018.pdf
+[StatsNZ2018b]: https://www.stats.govt.nz/assets/Uploads/Methods/2018-Census-data-user-guide/2018-census-data-user-guide.pdf

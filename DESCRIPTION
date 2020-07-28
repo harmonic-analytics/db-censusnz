@@ -1,17 +1,27 @@
 Package: db.censusnz
 Title: 2018 New Zealand Census Dataset
-Version: 0.3.2
+Version: 1.0.0
 Authors@R: c(
     person("Ari", "Angelo", ,"ari@harmonic.co.nz", c("aut", "cre")),
-    person("Matthew", "Lie", ,"matthew@harmonic.co.nz", c("ctb"))
+    person("Matthew", "Lie", ,"matthew@harmonic.co.nz", c("ctb")),
+    person("Harel", "Lustiger", ,"harel@harmonic.co.nz", c("ctb"))
     )
 Description: This package provides a selection of data made available from the 2018 New Zealand Census 
     as data frames, organised by geographic size areas.
 License: file LICENSE
 Encoding: UTF-8
 LazyData: true
+RoxygenNote: 7.1.0
 Depends:
     R (>= 3.5)
 Suggests: 
-    testthat (>= 2.1.0)
-RoxygenNote: 7.1.0
+    testthat (>= 2.1.0),
+    withr,
+    rmarkdown
+Imports: 
+    R6,
+    dm,
+    dplyr,
+    censusnz
+Remotes:
+    git@gitlab.harmonic.co.nz:harmonic/packages/censusnz.git
