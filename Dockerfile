@@ -1,5 +1,5 @@
 FROM rocker/tidyverse:3.6.3
-ARG R_REPOS=\'https://mran.microsoft.com/snapshot/2020-03-12\'
+ARG R_REPOS=\'https://mran.microsoft.com/snapshot/2020-04-24\'
 
 # Install {censusnz}
 ARG GITLAB_PAT
