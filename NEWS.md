@@ -1,3 +1,5 @@
+# db.censusnz 1.0.0
+
 # db.censusnz 0.3.2
 
 # db.censusnz 0.3.1
