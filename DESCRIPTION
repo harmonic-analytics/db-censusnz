@@ -20,6 +20,7 @@ Suggests:
     rmarkdown
 Imports: 
     censusnz,
-    dplyr
+    dplyr,
+    R6
 Remotes:
     git@gitlab.harmonic.co.nz:harmonic/packages/censusnz.git

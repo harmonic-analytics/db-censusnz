@@ -1,6 +1,7 @@
 #' @title DataModel Plug-in for Accessing Census Data
 #' @description This plug-in uses the \code{db.census} package on Harmonic
 #'   Gitlab server.
+#' @seealso \link[censusnz]{DataModel}
 #' @export
 PackageDataModel <- R6::R6Class(
     classname = "PackageDataModel",
