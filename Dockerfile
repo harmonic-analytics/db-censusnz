@@ -1,6 +1,5 @@
 FROM rocker/tidyverse:3.6.3
 ARG R_REPOS=\'https://mran.microsoft.com/snapshot/2020-04-24/\'
-RUN R -q -e "remotes::update_packages(upgrade = TRUE, repos = ${R_REPOS})"
 
 # Install {censusnz}
 ARG GITLAB_PAT
@@ -13,6 +12,6 @@ WORKDIR /censusnz
 COPY DESCRIPTION /censusnz/
 
 RUN R -q -e "desc::description\$new()\$del_remotes('census')\$del_dep('census')\$write()"
-RUN R -q -e "remotes::install_deps(dependencies = TRUE, repos = ${R_REPOS})"
+RUN R -q -e "remotes::install_deps(dependencies = TRUE, upgrade = 'always', repos = ${R_REPOS})"
 
 COPY . /censusnz/
