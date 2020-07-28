@@ -19,8 +19,9 @@ Access Token; the package can then be installed using via the Remotes
 package:
 
 ``` r
-remotes::install_gitlab(repo = 'harmonic/packages/censusnz', auth_token = <PAT>, host = 'gitlab.harmonic.co.nz/')
-remotes::install_gitlab(repo = 'harmonic/databases/db-censusnz', auth_token = <PAT>, host = 'gitlab.harmonic.co.nz/')
+Sys.setenv(GITLAB_PAT = "xxxxxxxxxxxxxxxxxxxx")
+remotes::install_gitlab(repo = 'harmonic/packages/censusnz', host = 'gitlab.harmonic.co.nz/')
+remotes::install_gitlab(repo = 'harmonic/databases/db-censusnz', host = 'gitlab.harmonic.co.nz/')
 ```
 
 Alternatively the `utilic` package can be used:
@@ -32,20 +33,12 @@ utilic::install_harmonic('harmonic/databases/db-censusnz')
 
 -----
 
-# Basic Usage of `censusnz`
+# Basic Usage of `db.censusnz`
 
-To get started working with **censusnz**, users should:
-
-1.  Set their GitLab Personal Access Token key. A key can be obtained by
-    following the instruction at
-    <https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html>.
-
-2.  Instantiate a `DataModel`.
-
-<!-- end list -->
+To get started working with **censusnz**, instantiate a `DataModel`
+object:
 
 ``` r
-Sys.setenv(GITLAB_PAT = "xxxxxxxxxxxxxxxxxxxx")
 Census <- PackageDataModel$new()
 ```
 
@@ -227,6 +220,6 @@ library(ggplot2)
 )
 ```
 
-<img src="man/figures/README-visualisation-plot-1.png" width="100%" style="display: block; margin: auto;" />
+<img src="inst/figures/visualisation-plot-1.png" width="100%" style="display: block; margin: auto;" />
 
 <!-- # References -->

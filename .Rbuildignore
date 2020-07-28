@@ -11,3 +11,4 @@ Dockerfile
 ^vignettes/articles$
 ^README_cache$
 ^vignettes$
+^figures$

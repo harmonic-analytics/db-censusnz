@@ -25,20 +25,9 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r, cache=TRUE, echo=FALSE, results='hide'}
-Census <- PackageDataModel$new()
-```
+To get started working with __censusnz__, instantiate a `DataModel` object:
 
-To get started working with __censusnz__, users should:
-
-1. Set their GitLab Personal Access Token key. A key can be obtained by
-following the instruction at
-<https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html>.
-
-2. Instantiate a `DataModel`. 
-
-```{r, eval = FALSE}
-Sys.setenv(GITLAB_PAT = "xxxxxxxxxxxxxxxxxxxx")
+```{r, eval = TRUE}
 Census <- PackageDataModel$new()
 ```
 
