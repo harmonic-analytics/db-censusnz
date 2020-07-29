@@ -72,26 +72,14 @@ PackageDataModel$funs$establish_connection <- function(self, private){
     assertthat::assert_that(nchar(Sys.getenv("GITLAB_PAT")) > 0, msg = PackageDataModel$msg$GITLAB_PAT)
 
     # Helpers -----------------------------------------------------------------
-    dm <- purrr::partial(dm::dm, .name_repair = "universal")
-    dm_add_pk <- purrr::partial(dm::dm_add_pk, check = FALSE, force = TRUE)
-    dm_add_fk <- purrr::partial(dm::dm_add_fk, check = FALSE)
+    suppressEverything <- function(expr) suppressWarnings(suppressMessages(expr))
 
     # Generate Data Model -----------------------------------------------------
-    private$census_2018 <-
-        dplyr::src_df(pkg = 'db.censusnz') %>%
-        dm::dm_from_src()
-    private$census_2018 <-
-        private$census_2018 %>%
-        dm::dm_zoom_to(area_hierarchy) %>%
-        dm::mutate(HIERARCY_2018_CODE = as.character(seq_len(nrow(.)))) %>%
-        dm::dm_update_zoomed()
-    private$census_2018 <-
-        private$census_2018 %>%
-        dm_add_pk(SA1, SA1_2018_CODE) %>%
-        dm_add_pk(SA2, SA2_2018_CODE) %>%
-        dm_add_pk(area_hierarchy, HIERARCY_2018_CODE) %>%
-        dm_add_fk(SA1, SA1_2018_CODE, area_hierarchy) %>%
-        dm_add_fk(SA2, SA2_2018_CODE, area_hierarchy)
+    suppressEverything(private$census_2018 <- dplyr::src_df(pkg = 'db.censusnz')$env)
+
+    private$census_2018$area_hierarchy <-
+        private$census_2018$area_hierarchy %>%
+        dplyr::mutate(HIERARCY_2018_CODE = as.character(seq_len(nrow(.))))
 
     # Return ------------------------------------------------------------------
     private$geographies <- unique(db.censusnz::available_variables$geography)

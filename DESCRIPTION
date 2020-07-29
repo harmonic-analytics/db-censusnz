@@ -22,7 +22,6 @@ Suggests:
     rmarkdown
 Imports: 
     R6,
-    dm,
     dplyr,
     censusnz
 Remotes:
