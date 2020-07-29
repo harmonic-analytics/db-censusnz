@@ -36,13 +36,33 @@ PackageDataModel$funs$get_data <- function(self, private, geography, variables, 
     result <- tibble::tribble(~geoid, ~name, ~variable, ~variable_group, ~count)
 
     # Filter Data
+    relevant_hierarchies <- c(
+        "LANDWATER_NAME",
+        colnames(private$census_2018[[geography]] %>% dplyr::select(dplyr::ends_with("_CODE") | dplyr::ends_with("_NAME")))
+    )
+
     invisible(
-        result <- private$census_2018
-        %>% dm::dm_filter(!!geography, variable %in% variables)
-        %>% dm::dm_apply_filters_to_tbl(!!geography)
+        land_type <- private$census_2018[["area_hierarchy"]]
+        %>% dplyr::select(tidyselect::any_of(relevant_hierarchies))
+        %>% dplyr::rename(land_type = LANDWATER_NAME)
+        %>% dplyr::mutate_if(is.factor, as.character)
+        %>% dplyr::distinct()
+        %>% dplyr::arrange_at(relevant_hierarchies[-1])
+        %>% dplyr::group_by_at(relevant_hierarchies[-1])
+        %>% dplyr::summarise(land_type = land_type[1], n_landtype = dplyr::n())
+        %>% dplyr::mutate(land_type = dplyr::if_else(n_landtype > 1, "Mixture", land_type))
+        %>% dplyr::select(-n_landtype)
+        %>% dplyr::ungroup()
+    )
+
+    suppressMessages((
+        result <- private$census_2018[[geography]]
+        %>% dplyr::filter(variable %in% variables)
+        %>% dplyr::left_join(land_type)
         %>% dplyr::rename(geoid = dplyr::ends_with("_CODE"))
         %>% dplyr::rename(name = dplyr::ends_with("_NAME"))
-    )
+        %>% dplyr::select(geoid, land_type, dplyr::everything())
+    ))
 
     return(result)
 }
@@ -52,26 +72,14 @@ PackageDataModel$funs$establish_connection <- function(self, private){
     assertthat::assert_that(nchar(Sys.getenv("GITLAB_PAT")) > 0, msg = PackageDataModel$msg$GITLAB_PAT)
 
     # Helpers -----------------------------------------------------------------
-    dm <- purrr::partial(dm::dm, .name_repair = "universal")
-    dm_add_pk <- purrr::partial(dm::dm_add_pk, check = FALSE, force = TRUE)
-    dm_add_fk <- purrr::partial(dm::dm_add_fk, check = FALSE)
+    suppressEverything <- function(expr) suppressWarnings(suppressMessages(expr))
 
     # Generate Data Model -----------------------------------------------------
-    private$census_2018 <-
-        dplyr::src_df(pkg = 'db.censusnz') %>%
-        dm::dm_from_src()
-    private$census_2018 <-
-        private$census_2018 %>%
-        dm::dm_zoom_to(area_hierarchy) %>%
-        dm::mutate(HIERARCY_2018_CODE = as.character(seq_len(nrow(.)))) %>%
-        dm::dm_update_zoomed()
-    private$census_2018 <-
-        private$census_2018 %>%
-        dm_add_pk(SA1, SA1_2018_CODE) %>%
-        dm_add_pk(SA2, SA2_2018_CODE) %>%
-        dm_add_pk(area_hierarchy, HIERARCY_2018_CODE) %>%
-        dm_add_fk(SA1, SA1_2018_CODE, area_hierarchy) %>%
-        dm_add_fk(SA2, SA2_2018_CODE, area_hierarchy)
+    suppressEverything(private$census_2018 <- dplyr::src_df(pkg = 'db.censusnz')$env)
+
+    private$census_2018$area_hierarchy <-
+        private$census_2018$area_hierarchy %>%
+        dplyr::mutate(HIERARCY_2018_CODE = as.character(seq_len(nrow(.))))
 
     # Return ------------------------------------------------------------------
     private$geographies <- unique(db.censusnz::available_variables$geography)
@@ -90,5 +98,3 @@ PackageDataModel$msg$GITLAB_PAT <- c(
     "There is no environment variable named GITLAB_PAT",
     "You can set it by calling Sys.setenv(GITLAB_PAT='xxxxxxxxxxxxxxxxxxx')"
 )
-
-

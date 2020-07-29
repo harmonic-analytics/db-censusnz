@@ -15,7 +15,7 @@ output:
 pkgload::load_all(export_all = FALSE, helpers = FALSE)
 knitr::opts_chunk$set(
   collapse = TRUE,
-  cache = TRUE,
+  cache = !TRUE,
   comment = "#>",
   message = FALSE, 
   warning = FALSE, 
@@ -56,7 +56,7 @@ For comprehensive information check [StatNZ report][StatsNZ2018a], pages 8-21.
 
 Getting variables from the Census requires knowing the variable name - and there
 are hundreds of these variables across the different Census files. To rapidly
-search for variables, use the *get_variables()* function. The function takes no
+search for variables, use the `get_variables()` function. The function takes no
 arguments and outputs metadata of the available geographies and variables.
 
 ```{r get_variables-table, eval = TRUE}
@@ -86,16 +86,17 @@ Querying the Census data requires you to set three parameres:
 
 1. [`geography`](#geography);
 2. [`variables`](#variables); and
-3. `year` (currently only 2018 is available).
+3. `year` (currently, only 2018 is available).
 
 Once you've figure out what you need, you can query the Census data with
-get_data(). The result is a long table with five columns:
+`get_data()`. The result is a long table with six columns:
 
 1. `geoid`;
-2. `name`;
-3. `variable`;
-4. `variable_group`; and
-5. `count`.
+2. `land_type`;
+3. `name`;
+4. `variable`;
+5. `variable_group`; and
+6. `count`.
 
 In the following example we query two variables, *maori_descent* and
 *smoking_status*, from a regional council geography level.
@@ -111,7 +112,7 @@ head(query, 10)
 
 Not all geographies are available for all surveys, all years, and all variables.
 Most Census geographies are supported in __censusnz__ at the moment; if you
-require a geography that is missing from the table below, please file an issue
+require a geography that is missing from the table above, please file an issue
 at `r tryCatch(read.dcf("../DESCRIPTION", "BugReports"), error = function(e) return(read.dcf("./DESCRIPTION", "BugReports")))`
 
 ## Visualising Census Data
@@ -132,11 +133,18 @@ habit; and
 all regions.
 
 For the first point, we need to filter, i.e. include, the totals. We do that by
-using `filter_at("variable_group", ~ grepl("^total_stated_", .))`.
+using 
+
+```{r, eval = FALSE}
+filter_at("variable_group", ~ grepl("^total_stated_", .))
+```
 
 For the second point, we need to filter out, i.e. discard, the total smokers in
-all regions combined. We do that by using `filter_at("name", ~ !grepl("^Total
-NZ", .))`.
+all regions combined. We do that by using
+
+```{r, eval = FALSE}
+filter_at("name", ~ !grepl("^Total NZ", .))
+```
 
 ```{r visualisation-data}
 (
