@@ -36,13 +36,33 @@ PackageDataModel$funs$get_data <- function(self, private, geography, variables, 
     result <- tibble::tribble(~geoid, ~name, ~variable, ~variable_group, ~count)
 
     # Filter Data
+    relevant_hierarchies <- c(
+        "LANDWATER_NAME",
+        colnames(private$census_2018[[geography]] %>% dplyr::select(dplyr::ends_with("_CODE") | dplyr::ends_with("_NAME")))
+    )
+
     invisible(
-        result <- private$census_2018
-        %>% dm::dm_filter(!!geography, variable %in% variables)
-        %>% dm::dm_apply_filters_to_tbl(!!geography)
+        land_type <- private$census_2018[["area_hierarchy"]]
+        %>% dplyr::select(tidyselect::any_of(relevant_hierarchies))
+        %>% dplyr::rename(land_type = LANDWATER_NAME)
+        %>% dplyr::mutate_if(is.factor, as.character)
+        %>% dplyr::distinct()
+        %>% dplyr::arrange_at(relevant_hierarchies[-1])
+        %>% dplyr::group_by_at(relevant_hierarchies[-1])
+        %>% dplyr::summarise(land_type = land_type[1], n_landtype = dplyr::n())
+        %>% dplyr::mutate(land_type = dplyr::if_else(n_landtype > 1, "Mixture", land_type))
+        %>% dplyr::select(-n_landtype)
+        %>% dplyr::ungroup()
+    )
+
+    suppressMessages((
+        result <- private$census_2018[[geography]]
+        %>% dplyr::filter(variable %in% variables)
+        %>% dplyr::left_join(land_type)
         %>% dplyr::rename(geoid = dplyr::ends_with("_CODE"))
         %>% dplyr::rename(name = dplyr::ends_with("_NAME"))
-    )
+        %>% dplyr::select(geoid, land_type, dplyr::everything())
+    ))
 
     return(result)
 }
@@ -90,5 +110,3 @@ PackageDataModel$msg$GITLAB_PAT <- c(
     "There is no environment variable named GITLAB_PAT",
     "You can set it by calling Sys.setenv(GITLAB_PAT='xxxxxxxxxxxxxxxxxxx')"
 )
-
-

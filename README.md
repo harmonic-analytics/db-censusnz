@@ -70,7 +70,7 @@ pages 8-21.
 
 Getting variables from the Census requires knowing the variable name -
 and there are hundreds of these variables across the different Census
-files. To rapidly search for variables, use the *get\_variables()*
+files. To rapidly search for variables, use the `get_variables()`
 function. The function takes no arguments and outputs metadata of the
 available geographies and variables.
 
@@ -112,16 +112,17 @@ Querying the Census data requires you to set three parameres:
 
 1.  [`geography`](#geography);
 2.  [`variables`](#variables); and
-3.  `year` (currently only 2018 is available).
+3.  `year` (currently, only 2018 is available).
 
 Once you’ve figure out what you need, you can query the Census data with
-get\_data(). The result is a long table with five columns:
+`get_data()`. The result is a long table with six columns:
 
 1.  `geoid`;
-2.  `name`;
-3.  `variable`;
-4.  `variable_group`; and
-5.  `count`.
+2.  `land_type`;
+3.  `name`;
+4.  `variable`;
+5.  `variable_group`; and
+6.  `count`.
 
 In the following example we query two variables, *maori\_descent* and
 *smoking\_status*, from a regional council geography level.
@@ -133,25 +134,26 @@ query <- Census$get_data(
 )
 
 head(query, 10)
-#> # A tibble: 10 x 5
-#>    geoid name          variable     variable_group                         count
-#>    <chr> <chr>         <chr>        <chr>                                  <dbl>
-#>  1 01    Northland Re~ maori_desce~ 01_maori_descent_curp                  69225
-#>  2 01    Northland Re~ maori_desce~ 02_no_maori_descent_curp              104586
-#>  3 01    Northland Re~ maori_desce~ 04_dont_know_curp                       5268
-#>  4 01    Northland Re~ maori_desce~ total_stated_curp                     179076
-#>  5 01    Northland Re~ maori_desce~ 99_not_elsewhere_included_curp             0
-#>  6 01    Northland Re~ maori_desce~ total_curp                            179076
-#>  7 01    Northland Re~ smoking_sta~ 01_regular_smoker_curp_15years_and_o~  25800
-#>  8 01    Northland Re~ smoking_sta~ 02_ex_smoker_curp_15years_and_over     39639
-#>  9 01    Northland Re~ smoking_sta~ 03_never_smoked_regularly_curp_15yea~  76011
-#> 10 01    Northland Re~ smoking_sta~ total_stated_curp_15years_and_over    141453
+#> # A tibble: 10 x 6
+#>    geoid land_type name        variable    variable_group                  count
+#>    <chr> <chr>     <chr>       <chr>       <chr>                           <dbl>
+#>  1 01    Mixture   Northland ~ maori_desc~ 01_maori_descent_curp           69225
+#>  2 01    Mixture   Northland ~ maori_desc~ 02_no_maori_descent_curp       104586
+#>  3 01    Mixture   Northland ~ maori_desc~ 04_dont_know_curp                5268
+#>  4 01    Mixture   Northland ~ maori_desc~ total_stated_curp              179076
+#>  5 01    Mixture   Northland ~ maori_desc~ 99_not_elsewhere_included_curp      0
+#>  6 01    Mixture   Northland ~ maori_desc~ total_curp                     179076
+#>  7 01    Mixture   Northland ~ smoking_st~ 01_regular_smoker_curp_15year~  25800
+#>  8 01    Mixture   Northland ~ smoking_st~ 02_ex_smoker_curp_15years_and~  39639
+#>  9 01    Mixture   Northland ~ smoking_st~ 03_never_smoked_regularly_cur~  76011
+#> 10 01    Mixture   Northland ~ smoking_st~ total_stated_curp_15years_and~ 141453
 ```
 
 Not all geographies are available for all surveys, all years, and all
 variables. Most Census geographies are supported in **censusnz** at the
-moment; if you require a geography that is missing from the table below,
-please file an issue at NA
+moment; if you require a geography that is missing from the table above,
+please file an issue at
+<https://gitlab.harmonic.co.nz/harmonic/databases/db-censusnz/issues>
 
 ## Visualising Census Data
 
@@ -191,26 +193,26 @@ filter_at("name", ~ !grepl("^Total NZ", .))
     %>% dplyr::filter_at("name", ~ !grepl("^Total NZ", .))
     %>% dplyr::filter_at("variable_group", ~ grepl("^total_stated_", .))  
 )
-#> # A tibble: 17 x 5
-#>    geoid name                 variable      variable_group                 count
-#>    <chr> <chr>                <chr>         <chr>                          <dbl>
-#>  1 01    Northland Region     smoking_stat~ total_stated_curp_15years_an~ 1.41e5
-#>  2 02    Auckland Region      smoking_stat~ total_stated_curp_15years_an~ 1.26e6
-#>  3 03    Waikato Region       smoking_stat~ total_stated_curp_15years_an~ 3.61e5
-#>  4 04    Bay of Plenty Region smoking_stat~ total_stated_curp_15years_an~ 2.44e5
-#>  5 05    Gisborne Region      smoking_stat~ total_stated_curp_15years_an~ 3.62e4
-#>  6 06    Hawke's Bay Region   smoking_stat~ total_stated_curp_15years_an~ 1.31e5
-#>  7 07    Taranaki Region      smoking_stat~ total_stated_curp_15years_an~ 9.29e4
-#>  8 08    Manawatu-Wanganui R~ smoking_stat~ total_stated_curp_15years_an~ 1.91e5
-#>  9 09    Wellington Region    smoking_stat~ total_stated_curp_15years_an~ 4.13e5
-#> 10 12    West Coast Region    smoking_stat~ total_stated_curp_15years_an~ 2.60e4
-#> 11 13    Canterbury Region    smoking_stat~ total_stated_curp_15years_an~ 4.91e5
-#> 12 14    Otago Region         smoking_stat~ total_stated_curp_15years_an~ 1.88e5
-#> 13 15    Southland Region     smoking_stat~ total_stated_curp_15years_an~ 7.80e4
-#> 14 16    Tasman Region        smoking_stat~ total_stated_curp_15years_an~ 4.29e4
-#> 15 17    Nelson Region        smoking_stat~ total_stated_curp_15years_an~ 4.19e4
-#> 16 18    Marlborough Region   smoking_stat~ total_stated_curp_15years_an~ 3.91e4
-#> 17 99    Area Outside Region  smoking_stat~ total_stated_curp_15years_an~ 5.55e2
+#> # A tibble: 17 x 6
+#>    geoid land_type name             variable     variable_group            count
+#>    <chr> <chr>     <chr>            <chr>        <chr>                     <dbl>
+#>  1 01    Mixture   Northland Region smoking_sta~ total_stated_curp_15yea~ 1.41e5
+#>  2 02    Mixture   Auckland Region  smoking_sta~ total_stated_curp_15yea~ 1.26e6
+#>  3 03    Mixture   Waikato Region   smoking_sta~ total_stated_curp_15yea~ 3.61e5
+#>  4 04    Mixture   Bay of Plenty R~ smoking_sta~ total_stated_curp_15yea~ 2.44e5
+#>  5 05    Mixture   Gisborne Region  smoking_sta~ total_stated_curp_15yea~ 3.62e4
+#>  6 06    Mixture   Hawke's Bay Reg~ smoking_sta~ total_stated_curp_15yea~ 1.31e5
+#>  7 07    Mixture   Taranaki Region  smoking_sta~ total_stated_curp_15yea~ 9.29e4
+#>  8 08    Mixture   Manawatu-Wangan~ smoking_sta~ total_stated_curp_15yea~ 1.91e5
+#>  9 09    Mixture   Wellington Regi~ smoking_sta~ total_stated_curp_15yea~ 4.13e5
+#> 10 12    Mixture   West Coast Regi~ smoking_sta~ total_stated_curp_15yea~ 2.60e4
+#> 11 13    Mixture   Canterbury Regi~ smoking_sta~ total_stated_curp_15yea~ 4.91e5
+#> 12 14    Mixture   Otago Region     smoking_sta~ total_stated_curp_15yea~ 1.88e5
+#> 13 15    Mixture   Southland Region smoking_sta~ total_stated_curp_15yea~ 7.80e4
+#> 14 16    Mixture   Tasman Region    smoking_sta~ total_stated_curp_15yea~ 4.29e4
+#> 15 17    Mixture   Nelson Region    smoking_sta~ total_stated_curp_15yea~ 4.19e4
+#> 16 18    Mixture   Marlborough Reg~ smoking_sta~ total_stated_curp_15yea~ 3.91e4
+#> 17 99    Mixture   Area Outside Re~ smoking_sta~ total_stated_curp_15yea~ 5.55e2
 ```
 
 Plotting the filtered data we get

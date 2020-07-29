@@ -1,6 +1,8 @@
 Package: db.censusnz
 Title: 2018 New Zealand Census Dataset
 Version: 1.0.0
+URL: https://gitlab.harmonic.co.nz/harmonic/databases/db-censusnz
+BugReports: https://gitlab.harmonic.co.nz/harmonic/databases/db-censusnz/issues
 Authors@R: c(
     person("Ari", "Angelo", ,"ari@harmonic.co.nz", c("aut", "cre")),
     person("Matthew", "Lie", ,"matthew@harmonic.co.nz", c("ctb")),

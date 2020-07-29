@@ -34,9 +34,10 @@ test_that("PackageDataModel$get_variables works", {
 
 # Get Census data ---------------------------------------------------------
 test_that("PackageDataModel$get_data works", {
-    expect_silent(result <- test_env$census$get_data(geography = "SA1", variables = c("maori_descent", "smoking_status")))
+    expect_silent(result <- test_env$census$get_data(geography = "RC", variables = c("maori_descent", "smoking_status")))
     expect_true("data.frame" %in% class(result))
-    expect_true(all(c("geoid", "name", "variable", "variable_group", "count") %in% colnames(result)))
+    expect_true(all(c("geoid", "land_type", "name", "variable", "variable_group", "count") %in% colnames(result)))
+    expect_false(any(duplicated(result %>% dplyr::select(-land_type))))
 })
 
 test_that("PackageDataModel$get_data doesn't work", {
