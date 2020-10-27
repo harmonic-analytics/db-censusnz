@@ -1,7 +1,6 @@
 stages:
   - build
   - checking
-  - testing
 
 variables:
   IMAGE_TAG: dreg.harmonic.co.nz:5000/harmonic/databases/db-censusnz:$CI_PIPELINE_ID
@@ -27,16 +26,4 @@ package-check:
   script:
     - cd /censusnz
     - R -e 'devtools::check(error_on = "error")'
-
-coverage:
-  stage: testing
-  tags:
-      - docker
-  image: $IMAGE_TAG
-  variables:
-    GIT_STRATEGY: none
-  script:
-    - cd /censusnz
-    - R -e 'covr::package_coverage(type = c("tests", "examples"), quiet = FALSE)'
-
 
