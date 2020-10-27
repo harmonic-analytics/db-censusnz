@@ -12,10 +12,8 @@ build-docker-container:
     - shell
     - dockerbuild
     - wellington
-  before_script:
-    - touch .Renviron
   script:
-    - docker build --build-arg GITLAB_PAT=$GITLAB_PAT --pull -t $IMAGE_TAG .
+    - docker build --pull -t $IMAGE_TAG .
     - docker push $IMAGE_TAG
 
 package-check:
@@ -28,7 +26,7 @@ package-check:
     KUBERNETES_MEMORY_REQUEST: 6Gi
   script:
     - cd /censusnz
-    - R -q -e 'devtools::check(error_on = "error")'
+    - R -e 'devtools::check(error_on = "error")'
 
 coverage:
   stage: testing
