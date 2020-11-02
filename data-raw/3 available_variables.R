@@ -6,8 +6,11 @@ library(magrittr)
 try(tictoc::tic("load data time:")); devtools::load_all(); try(tictoc::toc())
 
 # Prepare -----------------------------------------------------------------
-path <- system.file("dictionary.csv", package = "db.censusnz")
-dictionary <- read.csv(path) %>% tibble::as_tibble() %>% dplyr::mutate_if(is.character, stringi::stri_enc_toascii)
+# path <- system.file("dictionary.csv", package = "db.censusnz")
+path <- "./data-raw/dictionary.csv"
+dictionary <- read.csv(path) %>%
+  tibble::as_tibble() %>%
+  dplyr::mutate_if(is.character, stringi::stri_enc_toascii)
 
 available_variables <- tibble::tribble(~geography, ~variable)
 geographies <- c("DHB", "LBA", "RC", "SA1", "SA2", "TA", "WARD")

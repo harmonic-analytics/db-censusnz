@@ -1,28 +1,34 @@
 Package: db.censusnz
 Title: 2018 New Zealand Census Dataset
 Version: 1.1.0
-URL: https://gitlab.harmonic.co.nz/harmonic/databases/db-censusnz
-BugReports: https://gitlab.harmonic.co.nz/harmonic/databases/db-censusnz/issues
-Authors@R: c(
-    person("Ari", "Angelo", ,"ari@harmonic.co.nz", c("aut", "cre")),
-    person("Matthew", "Lie", ,"matthew@harmonic.co.nz", c("ctb")),
-    person("Harel", "Lustiger", ,"harel@harmonic.co.nz", c("ctb"))
-    )
-Description: This package provides a selection of data made available from the 2018 New Zealand Census 
-    as data frames, organised by geographic size areas.
+Authors@R: 
+    c(person(given = "Ari",
+             family = "Angelo",
+             role = c("aut", "cre"),
+             email = "ari@harmonic.co.nz"),
+      person(given = "Matthew",
+             family = "Lie",
+             role = "ctb",
+             email = "matthew@harmonic.co.nz"),
+      person(given = "Harel",
+             family = "Lustiger",
+             role = "ctb",
+             email = "harel@harmonic.co.nz"))
+Description: This package provides a selection of data made
+    available from the 2018 New Zealand Census as data frames, organised
+    by geographic size areas.
 License: file LICENSE
-Encoding: UTF-8
-LazyData: true
-RoxygenNote: 7.1.0
+URL: 
+    https://gitlab.harmonic.co.nz/harmonic/databases/db-censusnz
+BugReports: 
+    https://gitlab.harmonic.co.nz/harmonic/databases/db-censusnz/issues
 Depends:
     R (>= 3.5)
 Suggests: 
-    testthat (>= 2.1.0),
-    withr,
-    rmarkdown
-Imports: 
-    R6,
     dplyr,
-    censusnz
-Remotes:
-    git@gitlab.harmonic.co.nz:harmonic/packages/censusnz.git
+    rmarkdown,
+    testthat (>= 2.1.0),
+    withr
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.1.0
