@@ -2,6 +2,4 @@
 .Rhistory
 .RData
 data-raw/downloads
-.readme/
-man/
-/*_cache/
+\
