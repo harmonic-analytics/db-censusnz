@@ -1,6 +1,6 @@
 ### Script to prepare census data
-### Matt Lie
-### Last Updated: 19 Mar 2020
+### Matt Lie / Michael Soffe
+### Last Updated: 8 Mar 2021
 #' compression_level = 1 | load time -> 25 sec
 #' compression_level = 6 | load time -> 99 sec
 
@@ -21,7 +21,7 @@ for (i in 1:length(census_files))
     guess_max = 100000,
     na = c('C', '..', '*')
   ) %>%
-  dplyr::distinct(database)
+  dplyr::distinct()
 
 # Clean and Join Individual Data ------------------------------------------
 invisible(
@@ -104,47 +104,18 @@ invisible(
 )
 
 # Save --------------------------------------------------------------------
+
+# 2006, 2013 and 2018 data
+individual_2006 <- dplyr::filter(individual, year == 2006)
+individual_2013 <- dplyr::filter(individual, year == 2013)
 individual_2018 <- dplyr::filter(individual, year == 2018)
 
-WARD = individual_2018 %>%
-  dplyr::filter(geog_area == 'Ward') %>%
-  dplyr::select(-c(year, geog_area)) %>%
-  dplyr::rename(WARD_2018_CODE = area_code, WARD_2018_NAME = area_description)
-use_data(WARD)
+geogs = c("Ward", "LBA", "TA", "DHB", "RC", "SA1", "SA2")
 
-LBA = individual_2018 %>%
-  dplyr::filter(geog_area == 'LBA') %>%
-  dplyr::select(-c(year, geog_area)) %>%
-  dplyr::rename(LBA_2018_CODE = area_code, LBA_2018_NAME = area_description)
-use_data(LBA)
+for (geo in geogs){
+  save_geog_year(geo, 2006, individual_2006)
+  save_geog_year(geo, 2013, individual_2013)
+  save_geog_year(geo, 2018, individual_2018)
+}
 
-TA = individual_2018 %>%
-  dplyr::filter(geog_area == 'TA') %>%
-  dplyr::select(-c(year, geog_area)) %>%
-  dplyr::rename(TA_2018_CODE = area_code, TA_2018_NAME = area_description)
-use_data(TA)
-
-DHB = individual_2018 %>%
-  dplyr::filter(geog_area == 'DHB') %>%
-  dplyr::select(-c(year, geog_area)) %>%
-  dplyr::rename(DHB_2018_CODE = area_code, DHB_2018_NAME = area_description)
-use_data(DHB)
-
-RC = individual_2018 %>%
-  dplyr::filter(geog_area == 'RC') %>%
-  dplyr::select(-c(year, geog_area)) %>%
-  dplyr::rename(RC_2018_CODE = area_code, RC_2018_NAME = area_description)
-use_data(RC)
-
-SA1 = individual_2018 %>%
-  dplyr::filter(geog_area == 'SA1') %>%
-  dplyr::select(-c(year, geog_area)) %>%
-  dplyr::rename(SA1_2018_CODE = area_code, SA1_2018_NAME = area_description)
-use_data(SA1)
-
-SA2 = individual_2018 %>%
-  dplyr::filter(geog_area == 'SA2') %>%
-  dplyr::select(-c(year, geog_area)) %>%
-  dplyr::rename(SA2_2018_CODE = area_code, SA2_2018_NAME = area_description)
-use_data(SA2)
 
