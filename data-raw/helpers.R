@@ -1,11 +1,21 @@
 # Functions ---------------------------------------------------------------
 
-use_data_as_string = function(data, file_name, ...){
+.use_data_as_string = function(data, file_name, ...) {
   file_path <- usethis::proj_path("data", file_name, ext = "rda")
   dir.create(dirname(file_path), showWarnings = FALSE, recursive = TRUE)
   save <- purrr::partial(base::save, file = file_path, compress = "bzip2", compression_level = 1, version = 3, ...)
-  invisible(save(data))
+  assign(file_name, data)
+  invisible(save(list = c(file_name)))
 }
+
+use_data_as_string = function(data, file_name, ...) {
+  file_path <- usethis::proj_path("data", file_name, ext = "rda")
+  dir.create(dirname(file_path), showWarnings = FALSE, recursive = TRUE)
+  save <- purrr::partial(base::save, file = file_path, compress = "bzip2", compression_level = 1, version = 3, ...)
+  assign(file_name, data)
+  invisible(save(list = c(file_name)))
+}
+
 
 extract_variables <- function(x, var_list) {
   for (var_name in var_list) {

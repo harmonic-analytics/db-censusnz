@@ -1,6 +1,6 @@
 ### Script to prepare census data
 ### Matt Lie / Michael Soffe
-### Last Updated: 8 Mar 2021
+### Last Updated: 15 Mar 2021
 #' compression_level = 1 | load time -> 25 sec
 #' compression_level = 6 | load time -> 99 sec
 

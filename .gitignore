@@ -5,3 +5,4 @@ data-raw/downloads
 .readme/
 man/
 /*_cache/
+data-raw/data/*
