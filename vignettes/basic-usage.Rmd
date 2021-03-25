@@ -85,8 +85,8 @@ user-guide][StatsNZ2018b], pages 12-14.
 Querying the Census data requires you to set three parameters:
 
 1. [`geography`](#geography);
-2. [`variables`](#variables); and
-3. `year` (choose from 2006, 2013 or 2018).
+2. [`variables`](#variables);
+3. [`year`](#year);
 
 Once you've figure out what you need, you can query the Census data with
 `get_data()`. The result is a long table with six columns:
@@ -104,7 +104,8 @@ In the following example we query two variables, *maori_descent* and
 ```{r get_data-example, eval = TRUE}
 query <- Census$get_data(
   geography = "RC", 
-  variables = c("maori_descent", "smoking_status")
+  variables = c("maori_descent", "smoking_status"),
+  year = 2018
 )
 
 head(query, 10)
