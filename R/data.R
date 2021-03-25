@@ -343,3 +343,23 @@
 #' A dictionary of the available variables
 #' @references \href{https://www.stats.govt.nz/information-releases/statistical-area-1-dataset-for-2018-census-updated-march-2020}{Available Variables}
 "available_variables"
+
+#' Boundaries for Statistical Area 1 2018
+#'
+#' A dataset that classifies statistical areas 1s into larger geographic areas,
+#' such as statistical area 2s, territorial authorities, and regional councils.
+#'
+#' @format A data frame with 29889 rows and 8 variables:
+#' \describe{
+#'   \item{SA1_2018_NAME}{Name of the SA1}
+#'   \item{SA2_2018_CODE}{Code of the SA2}
+#'   \item{SA2_2018_NAME}{Name of the SA2}
+#'   \item{TA_2018_CODE}{Code of the TA}
+#'   \item{TA_2018_NAME}{Name of the TA}
+#'   \item{RC_2018_CODE}{Code of the RC}
+#'   \item{RC_2018_NAME}{Name of the RC}
+#'   \item{LANDWATER_NAME}{Factor variable indicating what land type the SA1 area is}
+#' }
+#'
+#' @source \url{https://datafinder.stats.govt.nz/}
+"area_hierarchy_2018"
