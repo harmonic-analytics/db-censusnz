@@ -82,11 +82,11 @@ user-guide][StatsNZ2018b], pages 12-14.
 
 ## Working with Census 
 
-Querying the Census data requires you to set three parameres:
+Querying the Census data requires you to set three parameters:
 
 1. [`geography`](#geography);
 2. [`variables`](#variables); and
-3. `year` (currently, only 2018 is available).
+3. `year` (choose from 2006, 2013 or 2018).
 
 Once you've figure out what you need, you can query the Census data with
 `get_data()`. The result is a long table with six columns:

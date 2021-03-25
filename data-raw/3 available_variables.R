@@ -5,18 +5,12 @@ source('./data-raw/helpers.R')
 library(magrittr)
 try(tictoc::tic("load data time:")); devtools::load_all(); try(tictoc::toc())
 
-
-
-
-
 # Prepare -----------------------------------------------------------------
 # path <- system.file("dictionary.csv", package = "db.censusnz")
 path <- "./data-raw/dictionary.csv"
 dictionary <- read.csv(path) %>%
   tibble::as_tibble() %>%
   dplyr::mutate_if(is.character, stringi::stri_enc_toascii)
-
-
 
 available_variables <- tibble::tribble(~geography, ~variable)
 geographies <- c("DHB", "LBA", "RC", "SA1", "SA2", "TA", "WARD")
@@ -31,4 +25,9 @@ for(geography in geographies){
 available_variables <- dplyr::left_join(available_variables, dictionary)
 
 # Save --------------------------------------------------------------------
-use_data(available_variables)
+# Available variables
+usethis::use_data(available_variables)
+
+# Area hierarchy
+area_hierarchy_2018 = geonz::get_area_hierarchy()
+usethis::use_data(area_hierarchy_2018)

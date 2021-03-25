@@ -16,7 +16,6 @@ use_data_as_string = function(data, file_name, ...) {
   invisible(save(list = c(file_name)))
 }
 
-
 extract_variables <- function(x, var_list) {
   for (var_name in var_list) {
     if (substring(x, 1, nchar(var_name)) == var_name) {
