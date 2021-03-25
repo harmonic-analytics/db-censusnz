@@ -24,5 +24,5 @@ test_that("All data areas present", {
   expect_equal(nrow(DHB_2006), 8976)
   expect_equal(nrow(RC_2006), 7344)
 
-  expect_equal(nrow(area_hierarchy), 29889)
+  expect_equal(nrow(area_hierarchy_2018), 29889)
 })
