@@ -30,4 +30,4 @@ usethis::use_data(available_variables)
 
 # Area hierarchy
 area_hierarchy_2018 = geonz::get_area_hierarchy()
-usethis::use_data(area_hierarchy_2018)
+usethis::use_data(area_hierarchy_2018, overwrite = TRUE)
