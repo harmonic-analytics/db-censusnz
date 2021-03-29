@@ -6,9 +6,9 @@
 [![pipeline-status](https://gitlab.harmonic.co.nz/harmonic/databases/db-censusnz/badges/master/pipeline.svg)](https://gitlab.harmonic.co.nz/harmonic/databases/db-censusnz/)
 <!-- badges: end -->
 
-This package contains datasets of responses to the 2018 NZ Census
-grouped by different geographic areas. This package is designed to be
-used as a data package for the **censusnz** package, which will provide
+This package contains datasets of responses to the 2006, 2013 and 2018 
+NZ Censuses grouped by different geographic areas. This package is designed 
+to be used as a data package for the **censusnz** package, which will provide
 functions for accessing and interacting with the data.
 
 ## Installation

@@ -1,4 +1,21 @@
 # Functions ---------------------------------------------------------------
+
+.use_data_as_string = function(data, file_name, ...) {
+  file_path <- usethis::proj_path("data", file_name, ext = "rda")
+  dir.create(dirname(file_path), showWarnings = FALSE, recursive = TRUE)
+  save <- purrr::partial(base::save, file = file_path, compress = "bzip2", compression_level = 1, version = 3, ...)
+  assign(file_name, data)
+  invisible(save(list = c(file_name)))
+}
+
+use_data_as_string = function(data, file_name, ...) {
+  file_path <- usethis::proj_path("data", file_name, ext = "rda")
+  dir.create(dirname(file_path), showWarnings = FALSE, recursive = TRUE)
+  save <- purrr::partial(base::save, file = file_path, compress = "bzip2", compression_level = 1, version = 3, ...)
+  assign(file_name, data)
+  invisible(save(list = c(file_name)))
+}
+
 extract_variables <- function(x, var_list) {
   for (var_name in var_list) {
     if (substring(x, 1, nchar(var_name)) == var_name) {
@@ -14,6 +31,19 @@ use_data <- function(...){
   dir.create(dirname(file_path), showWarnings = FALSE, recursive = TRUE)
   save <- purrr::partial(base::save, file = file_path, compress = "bzip2", compression_level = 1, version = 3)
   invisible(save(...))
+}
+
+save_geog_year <- function(geog_region, yr, data) {
+  upper_geog <- toupper(geog_region)
+  data_id <- paste(upper_geog, yr, sep="_")
+  col_code <- paste(data_id, "CODE", sep="_")
+  col_name <- paste(data_id, "NAME", sep="_")
+
+  data %>%
+    dplyr::filter(geog_area == geog_region) %>%
+    dplyr::select(-c(year, geog_area)) %>%
+    dplyr::rename(!!col_code:= area_code, !!col_name:= area_description) %>%
+    use_data_as_string(file_name = data_id)
 }
 
 # Variables ---------------------------------------------------------------

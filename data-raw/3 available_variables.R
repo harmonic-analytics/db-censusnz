@@ -15,7 +15,7 @@ dictionary <- read.csv(path) %>%
 available_variables <- tibble::tribble(~geography, ~variable)
 geographies <- c("DHB", "LBA", "RC", "SA1", "SA2", "TA", "WARD")
 for(geography in geographies){
-  data <- eval(parse(text = paste0("db.censusnz::", geography)))
+  data <- eval(parse(text = paste0("db.censusnz::", geography, "_2018")))
   available_variables <- dplyr::bind_rows(
     available_variables,
     data %>% dplyr::distinct(variable) %>% tibble::add_column(geography = geography, .before = 0)
@@ -25,4 +25,9 @@ for(geography in geographies){
 available_variables <- dplyr::left_join(available_variables, dictionary)
 
 # Save --------------------------------------------------------------------
-use_data(available_variables)
+# Available variables
+usethis::use_data(available_variables)
+
+# Area hierarchy
+area_hierarchy_2018 = geonz::get_area_hierarchy()
+usethis::use_data(area_hierarchy_2018, overwrite = TRUE)
