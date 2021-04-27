@@ -3,14 +3,15 @@
 
 <!-- badges: start -->
 
-[![Travis build
-status](https://travis-ci.org/harmonic-analytics/db-censusnz.svg?branch=master)](https://travis-ci.org/harmonic-analytics/db-censusnz)
+[![R build
+status](https://github.com/harmonic-analytics/db-censusnz/workflows/R-CMD-check/badge.svg)](https://github.com/harmonic-analytics/db-censusnz/actions)
 <!-- badges: end -->
 
-This package contains datasets of responses to the 2006, 2013 and 2018 
-NZ Censuses grouped by different geographic areas. This package is designed 
-to be used as a data package for the **censusnz** package, which will provide
-functions for accessing and interacting with the data.
+This package contains datasets of responses to the 2006, 2013 and 2018
+NZ Censuses grouped by different geographic areas. This package is
+designed to be used as a data package for the **censusnz** package,
+which will provide functions for accessing and interacting with the
+data.
 
 ## Installation
 

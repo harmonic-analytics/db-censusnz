@@ -13,3 +13,4 @@ Dockerfile
 ^vignettes$
 ^figures$
 ^\.travis\.yml$
+^\.github$
