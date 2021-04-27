@@ -12,3 +12,4 @@ Dockerfile
 ^README_cache$
 ^vignettes$
 ^figures$
+^\.travis\.yml$

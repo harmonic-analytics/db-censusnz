@@ -3,7 +3,8 @@
 
 <!-- badges: start -->
 
-[![pipeline-status](https://gitlab.harmonic.co.nz/harmonic/databases/db-censusnz/badges/master/pipeline.svg)](https://gitlab.harmonic.co.nz/harmonic/databases/db-censusnz/)
+[![Travis build
+status](https://travis-ci.org/harmonic-analytics/db-censusnz.svg?branch=master)](https://travis-ci.org/harmonic-analytics/db-censusnz)
 <!-- badges: end -->
 
 This package contains datasets of responses to the 2006, 2013 and 2018 
@@ -13,18 +14,10 @@ functions for accessing and interacting with the data.
 
 ## Installation
 
-To install this package from gitlab, you must first generate a Personal
-Access Token; the package can then be installed using via the Remotes
-package (replacing `GITLAB_PAT` with your Personal Access Token):
+This package can be installed using via the `remotes` package:
 
 ``` r
-remotes::install_gitlab(repo = 'harmonic/databases/db-censusnz', host = 'gitlab.harmonic.co.nz/', auth_token = GITLAB_PAT)
-```
-
-Alternatively the `utilic` package can be used:
-
-``` r
-utilic::install_harmonic('harmonic/databases/db-censusnz')
+remotes::install_github(repo = 'harmonic-analytics/db-censusnz')
 ```
 
 In future, this package will be installed automatically with the
