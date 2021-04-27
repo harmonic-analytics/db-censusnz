@@ -14,9 +14,8 @@ Authors@R:
              family = "Lustiger",
              role = "ctb",
              email = "harel@harmonic.co.nz"))
-Description: This package provides a selection of data made available from the 
-    2018, 2013 and 2006 New Zealand Census as data frames, organised by 
-    geographic size areas.
+Description: Data from the 2018, 2013 and 2006 New Zealand
+    Census as data frames, organised by geographic size areas.
 License: file LICENSE
 URL: 
     https://gitlab.harmonic.co.nz/harmonic/databases/db-censusnz
@@ -31,4 +30,5 @@ Suggests:
     withr
 Encoding: UTF-8
 LazyData: true
+LazyDataCompression: xz
 RoxygenNote: 7.1.1
