@@ -18,9 +18,9 @@ Description: Data from the 2018, 2013 and 2006 New Zealand
     Census as data frames, organised by geographic size areas.
 License: file LICENSE
 URL: 
-    https://gitlab.harmonic.co.nz/harmonic/databases/db-censusnz
+    https://github.com/harmonic-analytics/db-censusnz
 BugReports: 
-    https://gitlab.harmonic.co.nz/harmonic/databases/db-censusnz/issues
+    https://github.com/harmonic-analytics/db-censusnz/issues
 Depends:
     R (>= 3.5)
 Suggests: 
