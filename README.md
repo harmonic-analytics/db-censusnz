@@ -1,54 +1,25 @@
 
-<!-- README.md is generated from README.Rmd. Please edit that file -->
-
-# censusnz
+# **db.censusnz** (censusnz database plugin)
 
 <!-- badges: start -->
 
-[![pipeline-status](https://gitlab.harmonic.co.nz/ari/censusnz/badges/master/pipeline.svg)](https://gitlab.harmonic.co.nz/ari/censusnz)
-[![coverage-status](https://gitlab.harmonic.co.nz/ari/censusnz/badges/master/coverage.svg?job=coverage)](https://gitlab.harmonic.co.nz/ari/censusnz/pipelines)
+[![R build
+status](https://github.com/harmonic-analytics/db-censusnz/workflows/R-CMD-check/badge.svg)](https://github.com/harmonic-analytics/db-censusnz/actions)
 <!-- badges: end -->
 
-The goal of censusnz is to …
+This package contains datasets of responses to the 2006, 2013 and 2018
+NZ Censuses grouped by different geographic areas. This package is
+designed to be used as a data package for the **censusnz** package,
+which will provide functions for accessing and interacting with the
+data.
 
 ## Installation
 
-You can install the released version of censusnz from
-[CRAN](https://CRAN.R-project.org) with:
+This package can be installed using via the `remotes` package:
 
 ``` r
-install.packages("censusnz")
+remotes::install_github(repo = 'harmonic-analytics/db-censusnz')
 ```
 
-## Example
-
-This is a basic example which shows you how to solve a common problem:
-
-``` r
-library(censusnz)
-## basic example code
-```
-
-What is special about using `README.Rmd` instead of just `README.md`?
-You can include R chunks like so:
-
-``` r
-summary(cars)
-#>      speed           dist       
-#>  Min.   : 4.0   Min.   :  2.00  
-#>  1st Qu.:12.0   1st Qu.: 26.00  
-#>  Median :15.0   Median : 36.00  
-#>  Mean   :15.4   Mean   : 42.98  
-#>  3rd Qu.:19.0   3rd Qu.: 56.00  
-#>  Max.   :25.0   Max.   :120.00
-```
-
-You’ll still need to render `README.Rmd` regularly, to keep `README.md`
-up-to-date.
-
-You can also embed plots, for example:
-
-<img src="man/figures/README-pressure-1.png" width="100%" />
-
-In that case, don’t forget to commit and push the resulting figure
-files, so they display on GitHub\!
+In future, this package will be installed automatically with the
+**censusnz** package automatically.

@@ -1,4 +1,4 @@
 library(testthat)
-library(censusnz)
+library(db.censusnz)
 
-test_check("censusnz")
+test_check("db.censusnz")

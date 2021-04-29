@@ -3,3 +3,14 @@
 ^\.gitlab-ci\.yml$
 ^README\.Rmd$
 ^LICENSE\.md$
+^data-raw$
+^downloads$
+Dockerfile
+.dockerignore
+^db-censusnz\.Rproj$
+^vignettes/articles$
+^README_cache$
+^vignettes$
+^figures$
+^\.travis\.yml$
+^\.github$

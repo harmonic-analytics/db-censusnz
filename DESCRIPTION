@@ -1,13 +1,34 @@
-Package: censusnz
-Title: What the Package Does (One Line, Title Case)
-Version: 0.0.0.9000
-Authors@R: c(
-    person("Ari", "Angelo", ,"ari@harmonic.co.nz", c("aut", "cre")),
-    person("Matthew", "Lie", ,"matthew@harmonic.co.nz", c("ctb"))
-    )
-Description: What the package does (one paragraph).
+Package: db.censusnz
+Title: New Zealand Census Datasets (2018, 2013, 2006)
+Version: 1.1.0
+Authors@R: 
+    c(person(given = "Ari",
+             family = "Angelo",
+             role = c("aut", "cre"),
+             email = "ari@harmonic.co.nz"),
+      person(given = "Matthew",
+             family = "Lie",
+             role = "ctb",
+             email = "matthew@harmonic.co.nz"),
+      person(given = "Harel",
+             family = "Lustiger",
+             role = "ctb",
+             email = "harel@harmonic.co.nz"))
+Description: Data from the 2018, 2013 and 2006 New Zealand
+    Census as data frames, organised by geographic size areas.
 License: file LICENSE
+URL: 
+    https://github.com/harmonic-analytics/db-censusnz
+BugReports: 
+    https://github.com/harmonic-analytics/db-censusnz/issues
+Depends:
+    R (>= 3.5)
+Suggests: 
+    dplyr,
+    rmarkdown,
+    testthat (>= 2.1.0),
+    withr
 Encoding: UTF-8
 LazyData: true
-Suggests: 
-    testthat (>= 2.1.0)
+LazyDataCompression: xz
+RoxygenNote: 7.1.1
