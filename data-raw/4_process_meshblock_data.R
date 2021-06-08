@@ -25,7 +25,10 @@ names(df_test) <- gsub(",", "", names(df_test))
 # get rid off the full stop at the end
 names(df_test) <- sub("[.]$", "", names(df_test))
 names(df_test) %>%  unique()
+
 colname <- names(df_test)[2]
+category_name  <- gsub('.*/ ?(\\w+)', '\\1', mb_files[1])
+category_name <- gsub("\\..*", "", category_name)
 col_id <- c(1, grep(colname, names(df_test)))
 df_test2 <- df_test[, col_id]
 df_test2 %>%  head()
@@ -39,6 +42,7 @@ df_test2 <- df_test2 %>%
                   variable = sub("[0-9]+.?([A-Za-z]+.)", "\\2", colname),
                   variable = gsub("\\.", "_", variable),
                   variable_group = tolower(variable_group),
-                  variable_group = gsub(" ", "_", variable_group))
-names(df_test2)[1] <- "meshblock"
+                  variable_group = gsub(" ", "_", variable_group),
+                  category= category_name)
 
+names(df_test2)[1] <- "meshblock"
