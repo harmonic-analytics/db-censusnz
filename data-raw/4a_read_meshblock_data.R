@@ -21,7 +21,7 @@ for (i in 1:length(mb_files))
               sheet = "Meshblock",
               startRow = 9,  # starting row
               fillMergedCells = TRUE,  # if there is any merged cells, unmerge
-              na.strings = c("..", "..C", "*"),  # define what is NA
+              na.strings = c("..", "*"),  # define what is NA
               colNames = TRUE     # if TRUE, the first row becomes the column name
     )
 end <- Sys.time()
