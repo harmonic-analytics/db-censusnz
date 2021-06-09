@@ -46,3 +46,99 @@ df_test2 <- df_test2 %>%
                   category= category_name)
 
 names(df_test2)[1] <- "meshblock"
+
+# as in function
+# read the data
+mb_files
+file_names = gsub('./data-raw/meshblock/', '', mb_files)
+file_names = gsub('.xlsx', '', file_names)
+mb_len <- length(file_names)
+
+data = read.xlsx(xlsxFile = mb_files[i],
+                 sheet = "Meshblock",
+                 startRow = 9,  # starting row
+                 fillMergedCells = TRUE,  # if there is any merged cells, unmerge
+                 na.strings = c("..", "..C"),  # define what is NA
+                 colNames = TRUE     # if TRUE, the first row becomes the column name
+)
+
+# clean the header first
+names(data)
+# remove the brackets
+names(data) <- gsub("\\s*\\([^\\)]+\\)","",names(data))
+# replace ",." to "."
+names(data) <- gsub(",.", ".", names(data))
+# replace ".Census." to "_"
+names(data) <- gsub(".Census.", "_", names(data))
+
+# clean the first row of the data, remove ( )
+data[1,] <- gsub("\\s*\\([^\\)]+\\)","",data[1,])
+# remove '\n'
+data[1,] <- gsub('\n', '', data[1,])
+names(data) <- paste(names(data), data[1,], sep = "_")
+
+data2 <- data
+data2 <- data2[-1,]
+names(data2)[1] <- "meshblock"
+
+clean_data = data2 %>%
+    # janitor::row_to_names(row_number = 1) %>%
+    # janitor::clean_names() %>%
+    tidyr::pivot_longer(cols = 2:ncol(.),
+                        names_to = "variable_group",
+                        values_to = "count")
+df1 <- clean_data %>%
+    dplyr::mutate(x = stringr::str_split(clean_data$variable_group, '_'),
+                  year = sapply(x, '[[',1),
+                  x2 = sapply(x, '[[',2),
+                  x3 = sapply(x, '[[',3))
+df2 <- df1 %>%
+    dplyr::select("meshblock", "year", "x2", "x3", "count") %>%
+    dplyr::mutate(x2 = gsub("\\.", "_", x2),
+                  x3 = tolower(x3),
+                  x3 = gsub(" ", "_", x3))
+
+
+
+#########################
+class(".–.")
+database <- list()
+
+for(i in 1:mb_len){
+    # read the data
+    data = read.xlsx(xlsxFile = mb_files[i],
+                                sheet = "Meshblock",
+                                startRow = 9,  # starting row
+                                fillMergedCells = TRUE,  # if there is any merged cells, unmerge
+                                na.strings = c("..", "..C"),  # define what is NA
+                                colNames = TRUE     # if TRUE, the first row becomes the column name
+    )
+
+    mb_tidy_data = fn_wrangle_mb_data(data)
+
+
+}
+
+
+# make a function to add variables
+fn_wrangle_mb_data <- function(data){
+    data2 = data
+    names(data2) = paste(names(data2), data2[1,], sep = "_")
+    data2 = data2[-1, ]
+    clean_data = data2 %>%
+        # janitor::row_to_names(row_number = 1) %>%
+        # janitor::clean_names() %>%
+        tidyr::pivot_longer(cols = 2:ncol(.),
+                            names_to = "variable_group",
+                            values_to = "count") %>%
+        dplyr::mutate(variable = colname,
+                      year = as.numeric(substr(variable, 1, 4)),
+                      variable = sub("[0-9]+.?([A-Za-z]+.)", "\\2", colname),
+                      variable = gsub("\\.", "_", variable),
+                      variable_group = tolower(variable_group),
+                      vg = gsub("_*\\.", "", variable_group))
+                      variable_group = gsub(" ", "_", variable_group),
+                      category= category_name)
+    names(clean_data)[1] <- "meshblock"
+}
+
