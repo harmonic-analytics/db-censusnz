@@ -5,18 +5,83 @@ library(openxlsx)
 library(janitor)
 
 # Importing Data ----------------------------------------------------------
-# meshblock_dir = './data-raw/meshblock'
-mb_files = list.files(path = './data-raw/meshblock', pattern  = '*.xlsx',
-                      full.names = TRUE)
+meshblock_dir = './data-raw/meshblock'
+mb_files = list.files(path = meshblock_dir, pattern  = '*.xlsx',
+                      full.names = FALSE)
+file_names = gsub('.xlsx', '', mb_files)
 
-# try just one data
-df_test <- read.xlsx(xlsxFile = mb_files[1],
-                     sheet = "Meshblock",
-                     startRow = 9,  # starting row
-                     fillMergedCells = TRUE,  # if there is any merged cells, unmerge
-                     na.strings = c("..", "..C"),  # define what is NA
-                     colNames = TRUE     # if TRUE, the first row becomes the column name
-)
+# read the data in - took a while, about 8 mins
+start <- Sys.time()
+database <- list()
+for (i in 1:length(mb_files))
+    database[[file_names[i]]] <-
+    read.xlsx(xlsxFile = paste(meshblock_dir, mb_files[i], sep="/"),
+              sheet = "Meshblock",
+              startRow = 9,  # starting row
+              fillMergedCells = TRUE,  # if there is any merged cells, unmerge
+              na.strings = c("..", "..C", "*"),  # define what is NA
+              colNames = TRUE     # if TRUE, the first row becomes the column name
+    )
+end <- Sys.time()
+end-start
+
+
+# Clean Dwelling data -----------------------------------------------------
+# clean the header
+header_name <- database$Dwelling %>%  names()
+header_name <- header_name %>%
+    stringi::stri_enc_toascii() %>%
+    # remove all ()
+    gsub("\\s*\\([^\\)]+\\)","", .) %>%
+    gsub(",.", ".", .) %>%
+    gsub("..", ".", ., fixed = TRUE) %>%
+    gsub(".Census", "", ., fixed = TRUE) %>%
+    gsub("[.]$", "", .)
+
+# clean the first row
+database$Dwelling[1,] <- database$Dwelling[1,] %>%
+    stringi::stri_enc_toascii() %>%
+    # remove all ()
+    gsub("\\s*\\([^\\)]+\\)","", .)  %>%
+    gsub('\032', '', .) %>%
+    gsub('\n', '', . ,fixed = TRUE) %>%
+    gsub('size - ', 'size-', ., fixed = TRUE)
+
+names(database$Dwelling) <- paste(header_name, database$Dwelling[1,], sep = "_")
+database$Dwelling <- database$Dwelling[-1,]
+names(database$Dwelling)[1] <- 'meshblock'
+
+# To longer format
+database$Dwelling <- database$Dwelling %>%
+    tidyr::pivot_longer(cols = 2:ncol(.),
+                        names_to = "variable_group",
+                        values_to = "count") %>%
+    dplyr::mutate(x = stringr::str_split(variable_group, '_'),
+                  x1 = sapply(x, '[[',1),
+                  variable = sapply(x, '[[',2),
+                  year = substring(x1, 1,4),
+                  variable_name = stringr::str_split_fixed(x1, "\\.", 2)[,2]) %>%
+    dplyr::select(meshblock, year, variable_name, variable, count)
+
+
+
+
+
+
+
+
+
+# clean the header first
+df_test %>%  names()
+# remove the brackets
+names(data) <- gsub("\\s*\\([^\\)]+\\)","",names(data))
+# replace ",." to "."
+names(data) <- gsub(",.", ".", names(data))
+# replace ".Census." to "_"
+names(data) <- gsub(".Census.", "_", names(data))
+
+
+
 
 # get rid of "." and "," and "(8)(18)" things
 names(df_test) <- gsub("\\([^\\]]*\\)", "", names(df_test), perl=TRUE)
