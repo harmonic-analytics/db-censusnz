@@ -236,7 +236,7 @@ df_house$variable_name <- gsub('.[[:digit:]]+', '', df_house$variable_name)
 
 database_clean$Household <- df_house
 
-# Individual data -------------------------------------------------------------------------
+# Individual part 1 data -------------------------------------------------------------------------
 database$Individual_part1 %>%  View()
 ind1_header <- database$Individual_part1 %>% names()
 
@@ -309,10 +309,25 @@ df_part2_long <- fn_longer_v2(df_part2, 2)
 ncol(df_part1_long) == ncol(df_part2_long)
 df_individual_part1 <- dplyr::bind_rows(df_part1_long, df_part2_long)
 
+# Individual part 2 data -------------------------------------------------------------------------
+database$Individual_part2 %>% View()
+ind2_header <- database$Individual_part2 %>% names()
+ind2_header <- fn_clean_header(ind2_header)
+database$Individual_part2[1,] <- database$Individual_part2[1,] %>%
+    gsub("\\s*\\([^\\)]+\\)","",.) %>%
+    gsub("\n", "", ., fixed = TRUE) %>%
+    gsub(" - ", "-", ., fixed = TRUE) %>%
+    gsub(" / ", "/", ., fixed = TRUE)
+names(database$Individual_part2) <- paste(ind2_header, database$Individual_part2[1,], sep = "_")
+names(database$Individual_part2)[1] <- "meshblock"
+df_individual_part2 <- database$Individual_part2[-1,]
+View(df_individual_part2)
 
+df_individual_part2_longer <- fn_longer_v2(df_individual_part2, 2)
 
 # -------------------------------------------------------------------------
-ind2_header <- database$Individual_part2 %>% names()
+
+
 ind3a_header <- database$`Individual_part3(a)` %>% names()
 ind3bheader <- database$`Individual_part3(b)` %>% names()
 ind4_header <- database$Individual_part4 %>% names()
