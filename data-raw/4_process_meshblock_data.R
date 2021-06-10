@@ -77,6 +77,44 @@ database$Dwelling <- database$Dwelling %>%
                   variable_name = stringr::str_split_fixed(x1, "\\.", 2)[,2]) %>%
     dplyr::select(meshblock, year, variable_name, variable, count)
 
+# # impute confidential data
+# database$Dwelling$variable_name %>%  unique()
+# test2 = database$Dwelling %>%
+#     mutate(c_as_na = ifelse(count == "..C", NA, count),
+#            c_as_na = as.numeric(c_as_na)) %>%
+#     filter(variable_name == "occupied.private.dwelling.type") %>%
+#     dplyr::select(-count)  %>%
+#     tidyr::pivot_wider(names_from = variable,
+#                 values_from = c_as_na)
+#
+# # find the col number
+# start_col = 4
+# end_col = which(names(test2) == "Total") - 1
+# test2 %>%
+#     mutate(row_sum = rowSums(test2[, c(start_col:end_col)], na.rm = TRUE),
+#            diff = Total - row_sum,
+#            n_na = apply(test2[, c(start_col:end_col)], 1, function(x) sum(is.na(x))),
+#            imp = diff/n_na) %>%  View()
+
+# test %>%
+#     group_by(meshblock, year, variable_name) %>%
+#     mutate(total = max(c_as_na, na.rm = TRUE),
+#            a = sum(c_as_na, na.rm = TRUE),
+#            b = a - total,
+#            leftover = total - b,
+#            cell_n = n()-1) %>%
+
+
+
+
+
+# test = database$Dwelling[1:15,]
+# test %>%
+#     mutate(c_as_na = ifelse(count == "..C", NA, count),
+#            c_as_na = as.numeric(c_as_na),
+#            non_total = ifelse(variable == "Total", "Yes", "No")) %>%
+#     group_by(year, variable_name) %>%
+#     mutate(aa = )
 
 database_clean$Dwelling <- database$Dwelling
 
