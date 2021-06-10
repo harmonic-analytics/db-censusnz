@@ -8,7 +8,10 @@ library(janitor)
 # function to clean the header (remove (), dots, etc)
 fn_clean_header <- function(headername){
     cleaned_name = headername %>%
+        # remove () and inside of ()
         gsub("\\s*\\([^\\)]+\\)","", .) %>%
+        # remove ". digit" at the end of the string
+        gsub('.[[:digit:]]+$', '', .) %>%
         gsub(",.", ".", .) %>%
         gsub("..", ".", ., fixed = TRUE) %>%
         gsub(".Census", "", ., fixed = TRUE) %>%
@@ -233,13 +236,82 @@ df_house$variable_name <- gsub('.[[:digit:]]+', '', df_house$variable_name)
 
 database_clean$Household <- df_house
 
+# Individual data -------------------------------------------------------------------------
+database$Individual_part1 %>%  View()
+ind1_header <- database$Individual_part1 %>% names()
+
+# find the first column that have year information
+first_col = which(substring(ind1_header, 1, 4) %in% c("2013", "2006", "2018")) %>%  min()
+first_col = first_col -1
+
+# separate
+df_part1 = database$Individual_part1[, 1:first_col]
+df_part1 %>%  head()
+df_part2 = database$Individual_part1[, -c(2:first_col)]
+df_part2 %>%  head()
+
+# tidy part 1 data
+df_part1 %>%  View()
+# clean the header
+fn_clean_header_short <- function(headername){
+    cleaned_name = headername %>%
+        # remove the brackets and inside of the brackets
+        gsub("\\s*\\([^\\)]+\\)","",.) %>%
+        # if ending with ".digit", remove
+        gsub('.[[:digit:]]+$', '', .) %>%
+        gsub("Census.", "", ., fixed = TRUE)
+}
+names(df_part1) <- fn_clean_header_short(names(df_part1))
+
+df_part1[1,] <- df_part1[1,] %>% substr(., 1, 4)
+names(df_part1) <- paste(df_part1[1,], names(df_part1), sep = "_")
+names(df_part1)[1] <- "meshblock"
+df_part1 <- df_part1[-1,]
+
+# tidy part 2 data
+# df_part2 %>% View()
+names(df_part2) <- fn_clean_header(names(df_part2))
+df_part2[1,] <- df_part2[1,] %>% gsub("\\s*\\([^\\)]+\\)","",.)
+names(df_part2) <- paste(names(df_part2), df_part2[1,], sep = "_")
+names(df_part2)[1] <- "meshblock"
+df_part2 <- df_part2[-1,]
+
+# longer format
+
+fn_longer_v2 <- function(data, datapart){
+    if(datapart ==1){
+        data %>%
+        tidyr::pivot_longer(cols = 2:ncol(.),
+                            names_to = "variable_group",
+                            values_to = "count") %>%
+            dplyr::mutate(year = substring(variable_group, 1,4),
+                          variable_name = substring(variable_group, 6, nchar(.)),
+                          variable = NA) %>%
+            dplyr::select(meshblock, year, variable_name, variable, count)
+    }else{
+        data %>%
+            tidyr::pivot_longer(cols = 2:ncol(data),
+                                names_to = "variable_group",
+                                values_to = "count") %>%
+            dplyr::mutate(x = stringr::str_split(variable_group, '_'),
+                          x1 = sapply(x, '[[',1),
+                          variable = sapply(x, '[[',2),
+                          year = substring(x1, 1,4),
+                          variable_name = stringr::str_split_fixed(x1, "\\.", 2)[,2]) %>%
+            dplyr::select(meshblock, year, variable_name, variable, count)
+    }
+}
+
+df_part1_long <- fn_longer_v2(df_part1, 1)
+df_part2_long <- fn_longer_v2(df_part2, 2)
+
+# join two data
+ncol(df_part1_long) == ncol(df_part2_long)
+df_individual_part1 <- dplyr::bind_rows(df_part1_long, df_part2_long)
+
+
 
 # -------------------------------------------------------------------------
-
-
-
-
-ind1_header <- database$Individual_part1 %>% names()
 ind2_header <- database$Individual_part2 %>% names()
 ind3a_header <- database$`Individual_part3(a)` %>% names()
 ind3bheader <- database$`Individual_part3(b)` %>% names()
