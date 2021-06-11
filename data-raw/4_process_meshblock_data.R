@@ -350,12 +350,18 @@ df_individual_part3b <- database$`Individual_part3(b)`[-1,]
 df_individual_part3b_longer <- fn_longer_v2(df_individual_part3b, 2)
 
 
-
-ind3bheader <- database$`Individual_part3(b)` %>% names()
+# Individual part 4 data --------------------------------------------------
+database$Individual_part4 %>%  View()
 ind4_header <- database$Individual_part4 %>% names()
+ind4_header <- fn_clean_header(ind4_header)
+database$Individual_part4[1,] <- database$Individual_part4[1,] %>%
+    gsub("\\s*\\([^\\)]+\\)","",.) %>%
+    gsub(" - ", "-", ., fixed = TRUE)
+names(database$Individual_part4) <- paste(ind4_header, database$Individual_part4[1,], sep = "_")
+names(database$Individual_part4)[1] <- "meshblock"
+df_individual_part4 <- database$Individual_part4[-1,]
+df_individual_part4_longer <- fn_longer_v2(df_individual_part4, 2)
 
-substring(house_header, 1, 4) %>% unique()
-substring(ind4_header, 1, 4) %>% unique()
 
 
 # clean the header first
