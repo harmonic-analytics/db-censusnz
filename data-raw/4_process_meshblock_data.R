@@ -234,7 +234,7 @@ df_house <- dplyr::bind_rows(df_house_overall_long, df_house_detail_long)
 database_clean$Household <- df_house
 
 # Individual part 1 data -------------------------------------------------------------------------
-database$Individual_part1 %>%  View()
+# database$Individual_part1 %>%  View()
 ind1_header <- database$Individual_part1 %>% names()
 
 # find the first column that have year information
@@ -242,36 +242,37 @@ first_col = which(substring(ind1_header, 1, 4) %in% c("2013", "2006", "2018")) %
 first_col = first_col -1
 
 # separate
-df_part1 = database$Individual_part1[, 1:first_col]
-df_part1 %>%  head()
-df_part2 = database$Individual_part1[, -c(2:first_col)]
-df_part2 %>%  head()
+ind_part1_overall = database$Individual_part1[, 1:first_col]
+ind_part1_overall %>%  head()
+ind_part1_detailed = database$Individual_part1[, -c(2:first_col)]
+ind_part1_detailed %>%  head()
 
 # tidy part 1 data
-df_part1 %>%  View()
-
-names(df_part1) <- fn_clean_header_short(names(df_part1))
-
-df_part1[1,] <- df_part1[1,] %>% substr(., 1, 4)
-names(df_part1) <- paste(df_part1[1,], names(df_part1), sep = "_")
-names(df_part1)[1] <- "meshblock"
-df_part1 <- df_part1[-1,]
+# ind_part1_overall %>%  View()
+names(ind_part1_overall) <- fn_clean_header_short(names(ind_part1_overall))
+ind_part1_overall[1,] <- ind_part1_overall[1,] %>% substr(., 1, 4)
+names(ind_part1_overall) <- paste(ind_part1_overall[1,], names(ind_part1_overall), sep = ".")
+names(ind_part1_overall)[1] <- "meshblock"
+ind_part1_overall <- ind_part1_overall[-1,]
 
 # tidy part 2 data
-# df_part2 %>% View()
-names(df_part2) <- fn_clean_header(names(df_part2))
-df_part2[1,] <- df_part2[1,] %>% gsub("\\s*\\([^\\)]+\\)","",.)
-names(df_part2) <- paste(names(df_part2), df_part2[1,], sep = "_")
-names(df_part2)[1] <- "meshblock"
-df_part2 <- df_part2[-1,]
+# ind_part1_detailed %>% View()
+names(ind_part1_detailed) <- fn_clean_header(names(ind_part1_detailed))
+ind_part1_detailed[1,] <- ind_part1_detailed[1,] %>% gsub("\\s*\\([^\\)]+\\)","",.)
+names(ind_part1_detailed) <- paste(names(ind_part1_detailed), ind_part1_detailed[1,], sep = "_")
+names(ind_part1_detailed)[1] <- "meshblock"
+ind_part1_detailed <- ind_part1_detailed[-1,]
 
 # longer format
-df_part1_long <- fn_longer_v2(df_part1, 1)
-df_part2_long <- fn_longer_v2(df_part2, 2)
+ind_part1_overall_long <- fn_longer_v2(ind_part1_overall, 1)
+ind_part1_detailed_long <- fn_longer_v2(ind_part1_detailed, 2)
 
 # join two data
-ncol(df_part1_long) == ncol(df_part2_long)
-df_individual_part1 <- dplyr::bind_rows(df_part1_long, df_part2_long)
+all(names(ind_part1_overall_long) == names(ind_part1_detailed_long))
+df_individual_part1 <- dplyr::bind_rows(ind_part1_overall_long, ind_part1_detailed_long)
+
+# save
+database_clean$Individual_part1 <- df_individual_part1
 
 # Individual part 2 data -------------------------------------------------------------------------
 database$Individual_part2 %>% View()
