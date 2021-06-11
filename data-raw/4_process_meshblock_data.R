@@ -1,13 +1,17 @@
 # Setup -------------------------------------------------------------------
 source('./data-raw/helpers.R')
+library(dplyr)
+library(tidyr)
+library(stringr)
+library(stringi)
 library(magrittr)
 library(openxlsx)
 library(janitor)
 
-
 # function to clean the header (remove (), dots, etc)
 fn_clean_header <- function(headername){
     cleaned_name = headername %>%
+        stringi::stri_enc_toascii() %>%
         # remove () and inside of ()
         gsub("\\s*\\([^\\)]+\\)","", .) %>%
         # remove ". digit" at the end of the string
@@ -16,6 +20,17 @@ fn_clean_header <- function(headername){
         gsub("..", ".", ., fixed = TRUE) %>%
         gsub(".Census", "", ., fixed = TRUE) %>%
         gsub("[.]$", "", .)
+}
+
+# clean the header, short version
+fn_clean_header_short <- function(headername){
+    cleaned_name = headername %>%
+        stringi::stri_enc_toascii() %>%
+        # remove the brackets and inside of the brackets
+        gsub("\\s*\\([^\\)]+\\)","",.) %>%
+        # if ending with ".digit", remove
+        gsub('.[[:digit:]]+$', '', .) %>%
+        gsub("Census.", "", ., fixed = TRUE)
 }
 
 # function to make longer format
@@ -32,6 +47,29 @@ fn_longer <- function(data){
         dplyr::select(meshblock, year, variable_name, variable, count)
 }
 
+fn_longer_v2 <- function(data, datapart){
+    if(datapart ==1){
+        data %>%
+            tidyr::pivot_longer(cols = 2:ncol(.),
+                                names_to = "variable_group",
+                                values_to = "count") %>%
+            dplyr::mutate(year = substring(variable_group, 1,4),
+                          variable_name = substring(variable_group, 6, nchar(.)),
+                          variable = NA) %>%
+            dplyr::select(meshblock, year, variable_name, variable, count)
+    }else{
+        data %>%
+            tidyr::pivot_longer(cols = 2:ncol(data),
+                                names_to = "variable_group",
+                                values_to = "count") %>%
+            dplyr::mutate(x = stringr::str_split(variable_group, '_'),
+                          x1 = sapply(x, '[[',1),
+                          variable = sapply(x, '[[',2),
+                          year = substring(x1, 1,4),
+                          variable_name = stringr::str_split_fixed(x1, "\\.", 2)[,2]) %>%
+            dplyr::select(meshblock, year, variable_name, variable, count)
+    }
+}
 
 # storage of the cleaned data
 database_clean <- list()
@@ -40,18 +78,9 @@ database_clean <- list()
 meshblock_dir = './data-raw/meshblock'
 database <- readRDS(file = paste0(meshblock_dir, "/all_meshblockdata_list.rds"))
 
-
 # Clean Dwelling data -----------------------------------------------------
-# clean the header
-header_name <- database$Dwelling %>%  names()
-header_name <- header_name %>%
-    stringi::stri_enc_toascii() %>%
-    # remove all ()
-    gsub("\\s*\\([^\\)]+\\)","", .) %>%
-    gsub(",.", ".", .) %>%
-    gsub("..", ".", ., fixed = TRUE) %>%
-    gsub(".Census", "", ., fixed = TRUE) %>%
-    gsub("[.]$", "", .)
+dwell_header <- database$Dwelling %>%  names()
+dwell_header <- fn_clean_header(dwell_header)
 
 # clean the first row
 database$Dwelling[1,] <- database$Dwelling[1,] %>%
@@ -62,23 +91,15 @@ database$Dwelling[1,] <- database$Dwelling[1,] %>%
     gsub('\n', '', . ,fixed = TRUE) %>%
     gsub('size - ', 'size-', ., fixed = TRUE)
 
-names(database$Dwelling) <- paste(header_name, database$Dwelling[1,], sep = "_")
+names(database$Dwelling) <- paste(dwell_header, database$Dwelling[1,], sep = "_")
 database$Dwelling <- database$Dwelling[-1,]
 names(database$Dwelling)[1] <- 'meshblock'
 
-database$Dwelling %>%  View()
-
 # To longer format
-database$Dwelling <- database$Dwelling %>%
-    tidyr::pivot_longer(cols = 2:ncol(.),
-                        names_to = "variable_group",
-                        values_to = "count") %>%
-    dplyr::mutate(x = stringr::str_split(variable_group, '_'),
-                  x1 = sapply(x, '[[',1),
-                  variable = sapply(x, '[[',2),
-                  year = substring(x1, 1,4),
-                  variable_name = stringr::str_split_fixed(x1, "\\.", 2)[,2]) %>%
-    dplyr::select(meshblock, year, variable_name, variable, count)
+df_dwelling_long <- fn_longer_v2(database$Dwelling, 2)
+
+# save it to new list
+database_clean$Dwelling <- df_dwelling_long
 
 # # impute confidential data
 # database$Dwelling$variable_name %>%  unique()
@@ -119,7 +140,6 @@ database$Dwelling <- database$Dwelling %>%
 #     group_by(year, variable_name) %>%
 #     mutate(aa = )
 
-database_clean$Dwelling <- database$Dwelling
 
 # Clean Family data -------------------------------------------------------
 fam_header <- database$Family %>%  names()
@@ -252,15 +272,7 @@ df_part2 %>%  head()
 
 # tidy part 1 data
 df_part1 %>%  View()
-# clean the header
-fn_clean_header_short <- function(headername){
-    cleaned_name = headername %>%
-        # remove the brackets and inside of the brackets
-        gsub("\\s*\\([^\\)]+\\)","",.) %>%
-        # if ending with ".digit", remove
-        gsub('.[[:digit:]]+$', '', .) %>%
-        gsub("Census.", "", ., fixed = TRUE)
-}
+
 names(df_part1) <- fn_clean_header_short(names(df_part1))
 
 df_part1[1,] <- df_part1[1,] %>% substr(., 1, 4)
@@ -277,31 +289,6 @@ names(df_part2)[1] <- "meshblock"
 df_part2 <- df_part2[-1,]
 
 # longer format
-
-fn_longer_v2 <- function(data, datapart){
-    if(datapart ==1){
-        data %>%
-        tidyr::pivot_longer(cols = 2:ncol(.),
-                            names_to = "variable_group",
-                            values_to = "count") %>%
-            dplyr::mutate(year = substring(variable_group, 1,4),
-                          variable_name = substring(variable_group, 6, nchar(.)),
-                          variable = NA) %>%
-            dplyr::select(meshblock, year, variable_name, variable, count)
-    }else{
-        data %>%
-            tidyr::pivot_longer(cols = 2:ncol(data),
-                                names_to = "variable_group",
-                                values_to = "count") %>%
-            dplyr::mutate(x = stringr::str_split(variable_group, '_'),
-                          x1 = sapply(x, '[[',1),
-                          variable = sapply(x, '[[',2),
-                          year = substring(x1, 1,4),
-                          variable_name = stringr::str_split_fixed(x1, "\\.", 2)[,2]) %>%
-            dplyr::select(meshblock, year, variable_name, variable, count)
-    }
-}
-
 df_part1_long <- fn_longer_v2(df_part1, 1)
 df_part2_long <- fn_longer_v2(df_part2, 2)
 
@@ -349,7 +336,6 @@ names(database$`Individual_part3(b)`)[1] <- "meshblock"
 df_individual_part3b <- database$`Individual_part3(b)`[-1,]
 df_individual_part3b_longer <- fn_longer_v2(df_individual_part3b, 2)
 
-
 # Individual part 4 data --------------------------------------------------
 database$Individual_part4 %>%  View()
 ind4_header <- database$Individual_part4 %>% names()
@@ -361,5 +347,3 @@ names(database$Individual_part4) <- paste(ind4_header, database$Individual_part4
 names(database$Individual_part4)[1] <- "meshblock"
 df_individual_part4 <- database$Individual_part4[-1,]
 df_individual_part4_longer <- fn_longer_v2(df_individual_part4, 2)
-
-
