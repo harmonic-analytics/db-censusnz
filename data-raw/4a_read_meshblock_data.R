@@ -7,8 +7,8 @@ library(openxlsx)
 library(janitor)
 
 # Importing Data ----------------------------------------------------------
-meshblock_dir = './data-raw/meshblock'
-mb_files = list.files(path = meshblock_dir, pattern  = '*.xlsx',
+p_meshblock_dir = 'P:/Census/data/meshblock'
+mb_files = list.files(path = p_meshblock_dir, pattern  = '*.xlsx',
                       full.names = FALSE)
 file_names = gsub('.xlsx', '', mb_files)
 
