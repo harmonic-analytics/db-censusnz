@@ -33,3 +33,8 @@ remotes::install_github(repo = 'harmonic-analytics/db-censusnz')
 ```
 
 In future, this package will be installed automatically with the __censusnz__ package automatically.
+
+
+## Meshblock data
+
+Run `4a_read_meshblock_data.R` then run `4_process_meshblockdata.R`
