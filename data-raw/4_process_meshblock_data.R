@@ -34,19 +34,6 @@ fn_clean_header_short <- function(headername){
 }
 
 # function to make longer format
-fn_longer <- function(data){
-    data %>%
-        tidyr::pivot_longer(cols = 2:ncol(data),
-                            names_to = "variable_group",
-                            values_to = "count") %>%
-        dplyr::mutate(x = stringr::str_split(variable_group, '_'),
-                      x1 = sapply(x, '[[',1),
-                      variable = sapply(x, '[[',2),
-                      year = substring(x1, 1,4),
-                      variable_name = stringr::str_split_fixed(x1, "\\.", 2)[,2]) %>%
-        dplyr::select(meshblock, year, variable_name, variable, count)
-}
-
 fn_longer_v2 <- function(data, datapart){
     if(datapart ==1){
         data %>%
