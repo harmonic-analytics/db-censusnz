@@ -46,6 +46,58 @@ save_geog_year <- function(geog_region, yr, data) {
     use_data_as_string(file_name = data_id)
 }
 
+# function to clean the header (remove (), dots, etc)
+fn_clean_header <- function(headername){
+  cleaned_name = headername %>%
+    stringi::stri_enc_toascii() %>%
+    # remove () and inside of ()
+    gsub("\\s*\\([^\\)]+\\)","", .) %>%
+    # remove ". digit" at the end of the string
+    gsub('.[[:digit:]]+$', '', .) %>%
+    gsub(",.", ".", .) %>%
+    gsub("..", ".", ., fixed = TRUE) %>%
+    gsub(".Census", "", ., fixed = TRUE) %>%
+    gsub("[.]$", "", .)
+}
+
+# clean the header, short version
+fn_clean_header_short <- function(headername){
+  cleaned_name = headername %>%
+    stringi::stri_enc_toascii() %>%
+    # remove the brackets and inside of the brackets
+    gsub("\\s*\\([^\\)]+\\)","",.) %>%
+    # if ending with ".digit", remove
+    gsub('.[[:digit:]]+$', '', .) %>%
+    gsub("Census.", "", ., fixed = TRUE)
+}
+
+# function to make longer format
+fn_longer_v2 <- function(data, datapart){
+  if(datapart ==1){
+    data %>%
+      tidyr::pivot_longer(cols = 2:ncol(.),
+                          names_to = "variable_group",
+                          values_to = "count") %>%
+      dplyr::mutate(year = substring(variable_group, 1,4),
+                    variable_name = substring(variable_group, 6, nchar(.)),
+                    variable = NA) %>%
+      dplyr::select(meshblock, year, variable_name, variable, count)
+  }else{
+    data %>%
+      tidyr::pivot_longer(cols = 2:ncol(data),
+                          names_to = "variable_group",
+                          values_to = "count") %>%
+      dplyr::mutate(x = stringr::str_split(variable_group, '_'),
+                    x1 = sapply(x, '[[',1),
+                    variable = sapply(x, '[[',2),
+                    year = substring(x1, 1,4),
+                    variable_name = stringr::str_split_fixed(x1, "\\.", 2)[,2]) %>%
+      dplyr::select(meshblock, year, variable_name, variable, count)
+  }
+}
+
+
+
 # Variables ---------------------------------------------------------------
 individual_variables = c("usually_resident_population_count",
   "census_night_population_count",
