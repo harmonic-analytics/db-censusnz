@@ -324,7 +324,7 @@ df_individual_part3b_longer <- fn_longer_v2(df_individual_part3b, 2)
 database_clean$Individual_part3b <- df_individual_part3b_longer
 
 # Individual part 4 data --------------------------------------------------
-database$Individual_part4 %>%  View()
+# database$Individual_part4 %>%  View()
 ind4_header <- database$Individual_part4 %>% names()
 ind4_header <- fn_clean_header(ind4_header)
 database$Individual_part4[1,] <- database$Individual_part4[1,] %>%
@@ -334,3 +334,11 @@ names(database$Individual_part4) <- paste(ind4_header, database$Individual_part4
 names(database$Individual_part4)[1] <- "meshblock"
 df_individual_part4 <- database$Individual_part4[-1,]
 df_individual_part4_longer <- fn_longer_v2(df_individual_part4, 2)
+
+# save
+database_clean$Individual_part4 <- df_individual_part4_longer
+
+
+#  same clean data --------------------------------------------------------
+saveRDS(database_clean, file = paste0(meshblock_dir, "/meshblockdata_longformat_list.rds"))
+
