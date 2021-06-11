@@ -5,3 +5,6 @@ data-raw/downloads
 .readme/
 /*_cache/
 data-raw/data/*
+*.xlsx
+
+
