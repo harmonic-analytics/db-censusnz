@@ -309,7 +309,7 @@ df_individual_part3a_longer <- fn_longer_v2(df_individual_part3a, 2)
 database_clean$Individual_part3a <- df_individual_part3a_longer
 
 # Individual part 3b data -------------------------------------------------------------------------
-database$`Individual_part3(b)` %>%  View()
+# database$`Individual_part3(b)` %>%  View()
 ind3b_header <- database$`Individual_part3(b)` %>% names()
 ind3b_header <- fn_clean_header(ind3b_header)
 database$`Individual_part3(b)`[1,] <- database$`Individual_part3(b)`[1,] %>%
@@ -319,6 +319,9 @@ names(database$`Individual_part3(b)`) <- paste(ind3b_header, database$`Individua
 names(database$`Individual_part3(b)`)[1] <- "meshblock"
 df_individual_part3b <- database$`Individual_part3(b)`[-1,]
 df_individual_part3b_longer <- fn_longer_v2(df_individual_part3b, 2)
+
+# save
+database_clean$Individual_part3b <- df_individual_part3b_longer
 
 # Individual part 4 data --------------------------------------------------
 database$Individual_part4 %>%  View()
