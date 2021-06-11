@@ -142,6 +142,7 @@ database_clean$Dwelling <- df_dwelling_long
 
 
 # Clean Family data -------------------------------------------------------
+# database$Family %>% View()
 fam_header <- database$Family %>%  names()
 
 # separate the data
@@ -151,14 +152,13 @@ fam_detail <- database$Family[, -(2:4)]
 # clean the detailed data first
 fam_dt_header <- fam_detail %>% names()
 fam_dt_header <- fam_dt_header %>%
-    stringi::stri_enc_toascii() %>%
+    fn_clean_header() %>%
     gsub('(grouped)', 'grouped', ., fixed = TRUE) %>%
-    gsub('(total.responses)', 'total.responses', ., fixed = TRUE) %>%
-    fn_clean_header()
-
+    gsub('(total.responses)', 'total.responses', ., fixed = TRUE)
 fam_detail[1,] <- fam_detail[1,] %>%
     gsub("\\s*\\([^\\)]+\\)","",.) %>%
-    gsub('\n', '', ., fixed = TRUE)
+    gsub('\n', '', ., fixed = TRUE) %>%
+    gsub(" - ", "-", ., fixed = TRUE)
 
 # join the header and the first row
 names(fam_detail) <- paste(fam_dt_header, fam_detail[1,], sep = "_")
@@ -166,7 +166,7 @@ fam_detail <- fam_detail[-1,]
 names(fam_detail)[1] <- 'meshblock'
 
 # make longer format
-fam_detail <- fn_longer(fam_detail)
+df_fam_detailed_long <- fn_longer_v2(fam_detail, 2)
 
 # cleand the overall data
 names(fam_overall)[3:4] <- names(fam_overall)[2]
@@ -174,28 +174,14 @@ fam_overall[1,2:4] <- substring(fam_overall[1,2:4], 1,4)
 names(fam_overall) <- paste(fam_overall[1,], names(fam_overall), sep =".")
 fam_overall <- fam_overall[-1,]
 names(fam_overall)[1] <- 'meshblock'
-fam_overall <- fam_overall %>%
-    tidyr::pivot_longer(cols = 2:ncol(.),
-                        names_to = "variable_group",
-                        values_to = "count") %>%
-    dplyr::mutate(year = substring(variable_group, 1,4),
-                  variable_name = substring(variable_group, 6, nchar(.)),
-                  variable = NA) %>%
-    dplyr::select(meshblock, year, variable_name, variable, count)
-
-
+df_fam_overall_long <- fn_longer_v2(fam_overall, 1)
 
 # join two data
-ncol(fam_overall) == ncol(fam_detail)
-df_family <- dplyr::bind_rows(fam_overall, fam_detail)
-
-# final clean
-# df_family$variable_name %>%  unique()
-# if variable_name finishes with .number, remove the number
-df_family$variable_name <- gsub('.[[:digit:]]+', '', df_family$variable_name)
-
-# # replace the database data
-# database$Family <- df_family
+if(ncol(df_fam_overall_long) == ncol(df_fam_detailed_long)){
+    df_family <- dplyr::bind_rows(df_fam_overall_long, df_fam_detailed_long)
+}else{
+    stop("Cannot bind rows")
+}
 
 database_clean$Family <- df_family
 
