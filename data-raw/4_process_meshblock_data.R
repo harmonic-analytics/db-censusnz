@@ -325,7 +325,7 @@ View(df_individual_part2)
 
 df_individual_part2_longer <- fn_longer_v2(df_individual_part2, 2)
 
-# Individual part 3 data -------------------------------------------------------------------------
+# Individual part 3a data -------------------------------------------------------------------------
 database$`Individual_part3(a)` %>% View()
 ind3a_header <- database$`Individual_part3(a)` %>% names()
 ind3a_header <- fn_clean_header(ind3a_header)
@@ -337,7 +337,18 @@ names(database$`Individual_part3(a)`)[1] <- "meshblock"
 df_individual_part3a <- database$`Individual_part3(a)`[-1,]
 df_individual_part3a_longer <- fn_longer_v2(df_individual_part3a, 2)
 
-# -------------------------------------------------------------------------
+# Individual part 3b data -------------------------------------------------------------------------
+database$`Individual_part3(b)` %>%  View()
+ind3b_header <- database$`Individual_part3(b)` %>% names()
+ind3b_header <- fn_clean_header(ind3b_header)
+database$`Individual_part3(b)`[1,] <- database$`Individual_part3(b)`[1,] %>%
+    gsub("\\s*\\([^\\)]+\\)","",.) %>%
+    gsub(" - ", "-", ., fixed = TRUE)
+names(database$`Individual_part3(b)`) <- paste(ind3b_header, database$`Individual_part3(b)`[1,], sep = "_")
+names(database$`Individual_part3(b)`)[1] <- "meshblock"
+df_individual_part3b <- database$`Individual_part3(b)`[-1,]
+df_individual_part3b_longer <- fn_longer_v2(df_individual_part3b, 2)
+
 
 
 ind3bheader <- database$`Individual_part3(b)` %>% names()
