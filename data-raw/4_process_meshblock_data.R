@@ -192,50 +192,41 @@ house_header <- database$Household %>%  names()
 house_overall <- database$Household[, c(1,2:4)]
 house_detail <- database$Household[, -(2:4)]
 
-
 # clean the detailed data first
 house_dt_header <- house_detail %>% names()
 house_dt_header <- house_dt_header %>%
-    stringi::stri_enc_toascii() %>%
     gsub('(grouped)', 'grouped', ., fixed = TRUE) %>%
-    gsub('(total.responses)', 'total.responses', ., fixed = TRUE) %>%
+    gsub('(total.responces)', 'total.responses', ., fixed = TRUE) %>%
     fn_clean_header()
-
+# clean the first row
 house_detail[1,] <- house_detail[1,] %>%
     gsub("\\s*\\([^\\)]+\\)","",.) %>%
-    gsub('\n', '', ., fixed = TRUE)
+    gsub('\n', '', ., fixed = TRUE) %>%
+    gsub(' - ', '-', . , fixed = TRUE) %>%
+    gsub('$500 -$599', '$500-$599', ., fixed = TRUE) %>%
+    trimws(., "both")
 
 # join the header and the first row
 names(house_detail) <- paste(house_dt_header, house_detail[1,], sep = "_")
-house_detail<- house_detail[-1,]
+house_detail <- house_detail[-1,]
 names(house_detail)[1] <- 'meshblock'
 
 # make longer format
-house_detail <- fn_longer(house_detail)
+df_house_detail_long <- fn_longer_v2(house_detail, 2)
+
 
 # cleand the overall data
 names(house_overall)[3:4] <- names(house_overall)[2]
 house_overall[1,2:4] <- substring(house_overall[1,2:4], 1,4)
-names(house_overall) <- paste(house_overall[1,], names(house_overall), sep =".")
-house_overall <- house_overall[-1,]
+names(house_overall) <- paste(house_overall[1,], names(house_overall), sep =".") %>%
+    gsub(",.", ".", ., fixed = TRUE)
 names(house_overall)[1] <- 'meshblock'
-house_overall <- house_overall%>%
-    tidyr::pivot_longer(cols = 2:ncol(.),
-                        names_to = "variable_group",
-                        values_to = "count") %>%
-    dplyr::mutate(year = substring(variable_group, 1,4),
-                  variable_name = substring(variable_group, 6, nchar(.)),
-                  variable = NA) %>%
-    dplyr::select(meshblock, year, variable_name, variable, count)
+house_overall <- house_overall[-1,]
+df_house_overall_long <- fn_longer_v2(house_overall, 1)
 
 # join two data
-ncol(house_overall) == ncol(house_detail)
-df_house <- dplyr::bind_rows(house_overall, house_detail)
-
-# final clean
-df_house$variable_name %>%  unique()
-# if variable_name finishes with .number, remove the number
-df_house$variable_name <- gsub('.[[:digit:]]+', '', df_house$variable_name)
+# names(df_house_overall_long) == names(df_house_detail_long)
+df_house <- dplyr::bind_rows(df_house_overall_long, df_house_detail_long)
 
 # replace the database data
 # database$Household <- df_house
