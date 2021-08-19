@@ -21,7 +21,9 @@ save_data_dir <- "./data"
 
 # functions ---------------------------------------------------------------
 # function to separate data by year
-split_by_year_fn <- function(data, category_name = "Individual", category_number){
+split_by_year_fn <- function(data,
+                             category_name = "Individual",
+                             category_number){
     data = data %>%
         dplyr::mutate(variable_name = gsub("\\.", "_", variable_name)) %>%
         rename("variable_group" = "variable",
@@ -31,7 +33,7 @@ split_by_year_fn <- function(data, category_name = "Individual", category_number
     data_sep = data %>%
         group_by(year)
     sep_list = dplyr::group_split(data_sep)
-    names(sep_list) = data$year %>% unique
+    names(sep_list) = unlist(sapply(sep_list,'[[',2) ) %>% unique()
     return(sep_list)
 }
 
