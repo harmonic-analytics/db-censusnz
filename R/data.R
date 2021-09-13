@@ -13,7 +13,7 @@
 #'   ...
 #' }
 #' @source \url{https://www.stats.govt.nz/information-releases/statistical-area-1-dataset-for-2018-census-updated-march-2020}
-"SA1_2018"
+"INDIVIDUAL_SA1_2018"
 
 #' Data on Individuals from NZ Census 2018 at Statistical Area 2 Level
 #'
@@ -30,7 +30,7 @@
 #'   ...
 #' }
 #' @source \url{https://www.stats.govt.nz/information-releases/statistical-area-1-dataset-for-2018-census-updated-march-2020}"
-"SA2_2018"
+"INDIVIDUAL_SA2_2018"
 
 #' Data on Individuals from NZ Census 2018 at Ward Level
 #'
@@ -47,7 +47,7 @@
 #'   ...
 #' }
 #' @source \url{https://www.stats.govt.nz/information-releases/statistical-area-1-dataset-for-2018-census-updated-march-2020}
-"WARD_2018"
+"INDIVIDUAL_WARD_2018"
 
 #' Data on Individuals from NZ Census 2018 at Local Board Authority Level
 #'
@@ -64,7 +64,7 @@
 #'   ...
 #' }
 #' @source \url{https://www.stats.govt.nz/information-releases/statistical-area-1-dataset-for-2018-census-updated-march-2020}
-'LBA_2018'
+'INDIVIDUAL_LBA_2018'
 
 #' Data on Individuals from NZ Census 2018 at Territorial Authority Level
 #'
@@ -81,7 +81,7 @@
 #'   ...
 #' }
 #' @source \url{https://www.stats.govt.nz/information-releases/statistical-area-1-dataset-for-2018-census-updated-march-2020}
-'TA_2018'
+'INDIVIDUAL_TA_2018'
 
 #' Data on Individuals from NZ Census 2018 at District Health Board Level
 #'
@@ -98,7 +98,7 @@
 #'   ...
 #' }
 #' @source \url{https://www.stats.govt.nz/information-releases/statistical-area-1-dataset-for-2018-census-updated-march-2020}
-'DHB_2018'
+'INDIVIDUAL_DHB_2018'
 
 #' Data on Individuals from NZ Census 2018 at Regional Council Level
 #'
@@ -115,7 +115,7 @@
 #'   ...
 #' }
 #' @source \url{https://www.stats.govt.nz/information-releases/statistical-area-1-dataset-for-2018-census-updated-march-2020}
-'RC_2018'
+'INDIVIDUAL_RC_2018'
 
 #' Data on Individuals from NZ Census 2013 at Statistical Area 1 Level
 #'
@@ -132,7 +132,7 @@
 #'   ...
 #' }
 #' @source \url{https://www.stats.govt.nz/information-releases/statistical-area-1-dataset-for-2018-census-updated-march-2020}
-"SA1_2013"
+"INDIVIDUAL_SA1_2013"
 
 #' Data on Individuals from NZ Census 2013 at Statistical Area 2 Level
 #'
@@ -149,7 +149,7 @@
 #'   ...
 #' }
 #' @source \url{https://www.stats.govt.nz/information-releases/statistical-area-1-dataset-for-2018-census-updated-march-2020}"
-"SA2_2013"
+"INDIVIDUAL_SA2_2013"
 
 #' Data on Individuals from NZ Census 2013 at Ward Level
 #'
@@ -166,7 +166,7 @@
 #'   ...
 #' }
 #' @source \url{https://www.stats.govt.nz/information-releases/statistical-area-1-dataset-for-2018-census-updated-march-2020}
-"WARD_2013"
+"INDIVIDUAL_WARD_2013"
 
 #' Data on Individuals from NZ Census 2013 at Local Board Authority Level
 #'
@@ -183,7 +183,7 @@
 #'   ...
 #' }
 #' @source \url{https://www.stats.govt.nz/information-releases/statistical-area-1-dataset-for-2018-census-updated-march-2020}
-'LBA_2013'
+'INDIVIDUAL_LBA_2013'
 
 #' Data on Individuals from NZ Census 2013 at Territorial Authority Level
 #'
@@ -200,7 +200,7 @@
 #'   ...
 #' }
 #' @source \url{https://www.stats.govt.nz/information-releases/statistical-area-1-dataset-for-2018-census-updated-march-2020}
-'TA_2013'
+'INDIVIDUAL_TA_2013'
 
 #' Data on Individuals from NZ Census 2013 at District Health Board Level
 #'
@@ -217,7 +217,7 @@
 #'   ...
 #' }
 #' @source \url{https://www.stats.govt.nz/information-releases/statistical-area-1-dataset-for-2018-census-updated-march-2020}
-'DHB_2013'
+'INDIVIDUAL_DHB_2013'
 
 #' Data on Individuals from NZ Census 2013 at Regional Council Level
 #'
@@ -234,7 +234,7 @@
 #'   ...
 #' }
 #' @source \url{https://www.stats.govt.nz/information-releases/statistical-area-1-dataset-for-2018-census-updated-march-2020}
-'RC_2013'
+'INDIVIDUAL_RC_2013'
 
 #' Data on Individuals from NZ Census 2006 at Statistical Area 1 Level
 #'
@@ -251,7 +251,7 @@
 #'   ...
 #' }
 #' @source \url{https://www.stats.govt.nz/information-releases/statistical-area-1-dataset-for-2018-census-updated-march-2020}
-"SA1_2006"
+"INDIVIDUAL_SA1_2006"
 
 #' Data on Individuals from NZ Census 2006 at Statistical Area 2 Level
 #'
@@ -268,7 +268,7 @@
 #'   ...
 #' }
 #' @source \url{https://www.stats.govt.nz/information-releases/statistical-area-1-dataset-for-2018-census-updated-march-2020}"
-"SA2_2006"
+"INDIVIDUAL_SA2_2006"
 
 #' Data on Individuals from NZ Census 2006 at Ward Level
 #'
@@ -285,7 +285,7 @@
 #'   ...
 #' }
 #' @source \url{https://www.stats.govt.nz/information-releases/statistical-area-1-dataset-for-2018-census-updated-march-2020}
-"WARD_2006"
+"INDIVIDUAL_WARD_2006"
 
 #' Data on Individuals from NZ Census 2006 at Local Board Authority Level
 #'
@@ -302,7 +302,7 @@
 #'   ...
 #' }
 #' @source \url{https://www.stats.govt.nz/information-releases/statistical-area-1-dataset-for-2018-census-updated-march-2020}
-'LBA_2006'
+'INDIVIDUAL_LBA_2006'
 
 #' Data on Individuals from NZ Census 2006 at Territorial Authority Level
 #'
@@ -319,7 +319,7 @@
 #'   ...
 #' }
 #' @source \url{https://www.stats.govt.nz/information-releases/statistical-area-1-dataset-for-2018-census-updated-march-2020}
-'TA_2006'
+'INDIVIDUAL_TA_2006'
 
 #' Data on Individuals from NZ Census 2006 at District Health Board Level
 #'
@@ -336,7 +336,7 @@
 #'   ...
 #' }
 #' @source \url{https://www.stats.govt.nz/information-releases/statistical-area-1-dataset-for-2018-census-updated-march-2020}
-'DHB_2006'
+'INDIVIDUAL_DHB_2006'
 
 #' Data on Individuals from NZ Census 2006 at Regional Council Level
 #'
@@ -353,7 +353,365 @@
 #'   ...
 #' }
 #' @source \url{https://www.stats.govt.nz/information-releases/statistical-area-1-dataset-for-2018-census-updated-march-2020}
-'RC_2006'
+'INDIVIDUAL_RC_2006'
+
+
+#' Data on Dwellings from NZ Census 2018 at Statistical Area 1 Level
+#'
+#' A dataset containing the responses on dwellings from the 2018 NZ Census
+#' at the Statistical Area 1 level.
+#'
+#' @format A data frame with ? rows and 5 variables:
+#' \describe{
+#'   \item{SA1_2018_CODE}{SA1 Code}
+#'   \item{SA1_2018_NAME}{Name of the SA1}
+#'   \item{variable}{Variable from Census}
+#'   \item{variable_group}{Groups for the variable from Census}
+#'   \item{count}{Number of people in the particular variable-group}
+#'   ...
+#' }
+#' @source \url{https://www.stats.govt.nz/information-releases/statistical-area-1-dataset-for-2018-census-updated-march-2020}
+"DWELLING_SA1_2018"
+
+#' Data on Dwellings from NZ Census 2018 at Statistical Area 2 Level
+#'
+#' A dataset containing the responses on dwellings from the 2018 NZ Census
+#' at the Statistical Area 2 level.
+#'
+#' @format A data frame with ? rows and 5 variables:
+#' \describe{
+#'   \item{SA2_2018_CODE}{SA2 Code}
+#'   \item{SA2_2018_NAME}{Name of the SA2}
+#'   \item{variable}{Variable from Census}
+#'   \item{variable_group}{Groups for the variable from Census}
+#'   \item{count}{Number of people in the particular variable-group}
+#'   ...
+#' }
+#' @source \url{https://www.stats.govt.nz/information-releases/statistical-area-1-dataset-for-2018-census-updated-march-2020}"
+"DWELLING_SA2_2018"
+
+#' Data on Dwellings from NZ Census 2018 at Ward Level
+#'
+#' A dataset containing the responses on dwellings from the 2018 NZ Census
+#' at the Ward level.
+#'
+#' @format A data frame with ? rows and 5 variables:
+#' \describe{
+#'   \item{WARD_2018_CODE}{Ward Code}
+#'   \item{WARD_2018_NAME}{Name of the Ward}
+#'   \item{variable}{Variable from Census}
+#'   \item{variable_group}{Groups for the variable from Census}
+#'   \item{count}{Number of people in the particular variable-group}
+#'   ...
+#' }
+#' @source \url{https://www.stats.govt.nz/information-releases/statistical-area-1-dataset-for-2018-census-updated-march-2020}
+"DWELLING_WARD_2018"
+
+#' Data on Dwellings from NZ Census 2018 at Local Board Authority Level
+#'
+#' A dataset containing the responses on dwellings from the 2018 NZ Census
+#' at the Local Board Authority level.
+#'
+#' @format A data frame with ? rows and 5 variables:
+#' \describe{
+#'   \item{LBA_2018_CODE}{Local Board Authority Code}
+#'   \item{LBA_2018_NAME}{Name of the Local Board Authority}
+#'   \item{variable}{Variable from Census}
+#'   \item{variable_group}{Groups for the variable from Census}
+#'   \item{count}{Number of people in the particular variable-group}
+#'   ...
+#' }
+#' @source \url{https://www.stats.govt.nz/information-releases/statistical-area-1-dataset-for-2018-census-updated-march-2020}
+'DWELLING_LBA_2018'
+
+#' Data on Dwellings from NZ Census 2018 at Territorial Authority Level
+#'
+#' A dataset containing the responses on dwellings from the 2018 NZ Census
+#' at the Territorial Authority level.
+#'
+#' @format A data frame with ? rows and 5 variables:
+#' \describe{
+#'   \item{TA_2018_CODE}{Territorial Authority Code}
+#'   \item{TA_2018_NAME}{Name of the Territorial Authority}
+#'   \item{variable}{Variable from Census}
+#'   \item{variable_group}{Groups for the variable from Census}
+#'   \item{count}{Number of people in the particular variable-group}
+#'   ...
+#' }
+#' @source \url{https://www.stats.govt.nz/information-releases/statistical-area-1-dataset-for-2018-census-updated-march-2020}
+'DWELLING_TA_2018'
+
+#' Data on Dwellings from NZ Census 2018 at District Health Board Level
+#'
+#' A dataset containing the responses on dwellings from the 2018 NZ Census
+#' at the District Health Board level.
+#'
+#' @format A data frame with ? rows and 5 variables:
+#' \describe{
+#'   \item{DHB_2018_CODE}{District Health Board Code}
+#'   \item{DHB_2018_NAME}{Name of the District Health Board}
+#'   \item{variable}{Variable from Census}
+#'   \item{variable_group}{Groups for the variable from Census}
+#'   \item{count}{Number of people in the particular variable-group}
+#'   ...
+#' }
+#' @source \url{https://www.stats.govt.nz/information-releases/statistical-area-1-dataset-for-2018-census-updated-march-2020}
+'DWELLING_DHB_2018'
+
+#' Data on Dwellings from NZ Census 2018 at Regional Council Level
+#'
+#' A dataset containing the responses on dwellings from the 2018 NZ Census
+#' at the Regional Council level.
+#'
+#' @format A data frame with ? rows and 5 variables:
+#' \describe{
+#'   \item{RC_2018_CODE}{Regional Council Code}
+#'   \item{RC_2018_NAME}{Name of the Regional Council}
+#'   \item{variable}{Variable from Census}
+#'   \item{variable_group}{Groups for the variable from Census}
+#'   \item{count}{Number of people in the particular variable-group}
+#'   ...
+#' }
+#' @source \url{https://www.stats.govt.nz/information-releases/statistical-area-1-dataset-for-2018-census-updated-march-2020}
+'DWELLING_RC_2018'
+
+#' Data on Dwellings from NZ Census 2013 at Statistical Area 1 Level
+#'
+#' A dataset containing the responses on dwellings from the 2013 NZ Census
+#' at the Statistical Area 1 level.
+#'
+#' @format A data frame with ? rows and 5 variables:
+#' \describe{
+#'   \item{SA1_2013_CODE}{SA1 Code}
+#'   \item{SA1_2013_NAME}{Name of the SA1}
+#'   \item{variable}{Variable from Census}
+#'   \item{variable_group}{Groups for the variable from Census}
+#'   \item{count}{Number of people in the particular variable-group}
+#'   ...
+#' }
+#' @source \url{https://www.stats.govt.nz/information-releases/statistical-area-1-dataset-for-2018-census-updated-march-2020}
+"DWELLING_SA1_2013"
+
+#' Data on Dwellings from NZ Census 2013 at Statistical Area 2 Level
+#'
+#' A dataset containing the responses on dwellings from the 2013 NZ Census
+#' at the Statistical Area 2 level.
+#'
+#' @format A data frame with ? rows and 5 variables:
+#' \describe{
+#'   \item{SA2_2013_CODE}{SA2 Code}
+#'   \item{SA2_2013_NAME}{Name of the SA2}
+#'   \item{variable}{Variable from Census}
+#'   \item{variable_group}{Groups for the variable from Census}
+#'   \item{count}{Number of people in the particular variable-group}
+#'   ...
+#' }
+#' @source \url{https://www.stats.govt.nz/information-releases/statistical-area-1-dataset-for-2018-census-updated-march-2020}"
+"DWELLING_SA2_2013"
+
+#' Data on Dwellings from NZ Census 2013 at Ward Level
+#'
+#' A dataset containing the responses on dwellings from the 2013 NZ Census
+#' at the Ward level.
+#'
+#' @format A data frame with ? rows and 5 variables:
+#' \describe{
+#'   \item{WARD_2013_CODE}{Ward Code}
+#'   \item{WARD_2013_NAME}{Name of the Ward}
+#'   \item{variable}{Variable from Census}
+#'   \item{variable_group}{Groups for the variable from Census}
+#'   \item{count}{Number of people in the particular variable-group}
+#'   ...
+#' }
+#' @source \url{https://www.stats.govt.nz/information-releases/statistical-area-1-dataset-for-2018-census-updated-march-2020}
+"DWELLING_WARD_2013"
+
+#' Data on Dwellings from NZ Census 2013 at Local Board Authority Level
+#'
+#' A dataset containing the responses on dwellings from the 2013 NZ Census
+#' at the Local Board Authority level.
+#'
+#' @format A data frame with ? rows and 5 variables:
+#' \describe{
+#'   \item{LBA_2013_CODE}{Local Board Authority Code}
+#'   \item{LBA_2013_NAME}{Name of the Local Board Authority}
+#'   \item{variable}{Variable from Census}
+#'   \item{variable_group}{Groups for the variable from Census}
+#'   \item{count}{Number of people in the particular variable-group}
+#'   ...
+#' }
+#' @source \url{https://www.stats.govt.nz/information-releases/statistical-area-1-dataset-for-2018-census-updated-march-2020}
+'DWELLING_LBA_2013'
+
+#' Data on Dwellings from NZ Census 2013 at Territorial Authority Level
+#'
+#' A dataset containing the responses on dwellings from the 2013 NZ Census
+#' at the Territorial Authority level.
+#'
+#' @format A data frame with ? rows and 5 variables:
+#' \describe{
+#'   \item{TA_2013_CODE}{Territorial Authority Code}
+#'   \item{TA_2013_NAME}{Name of the Territorial Authority}
+#'   \item{variable}{Variable from Census}
+#'   \item{variable_group}{Groups for the variable from Census}
+#'   \item{count}{Number of people in the particular variable-group}
+#'   ...
+#' }
+#' @source \url{https://www.stats.govt.nz/information-releases/statistical-area-1-dataset-for-2018-census-updated-march-2020}
+'DWELLING_TA_2013'
+
+#' Data on Dwellings from NZ Census 2013 at District Health Board Level
+#'
+#' A dataset containing the responses on dwellings from the 2013 NZ Census
+#' at the District Health Board level.
+#'
+#' @format A data frame with ? rows and 5 variables:
+#' \describe{
+#'   \item{DHB_2013_CODE}{District Health Board Code}
+#'   \item{DHB_2013_NAME}{Name of the District Health Board}
+#'   \item{variable}{Variable from Census}
+#'   \item{variable_group}{Groups for the variable from Census}
+#'   \item{count}{Number of people in the particular variable-group}
+#'   ...
+#' }
+#' @source \url{https://www.stats.govt.nz/information-releases/statistical-area-1-dataset-for-2018-census-updated-march-2020}
+'DWELLING_DHB_2013'
+
+#' Data on Dwellings from NZ Census 2013 at Regional Council Level
+#'
+#' A dataset containing the responses on dwellings from the 2013 NZ Census
+#' at the Regional Council level.
+#'
+#' @format A data frame with ? rows and 5 variables:
+#' \describe{
+#'   \item{RC_2013_CODE}{Regional Council Code}
+#'   \item{RC_2013_NAME}{Name of the Regional Council}
+#'   \item{variable}{Variable from Census}
+#'   \item{variable_group}{Groups for the variable from Census}
+#'   \item{count}{Number of people in the particular variable-group}
+#'   ...
+#' }
+#' @source \url{https://www.stats.govt.nz/information-releases/statistical-area-1-dataset-for-2018-census-updated-march-2020}
+'DWELLING_RC_2013'
+
+#' Data on Dwellings from NZ Census 2006 at Statistical Area 1 Level
+#'
+#' A dataset containing the responses on dwellings from the 2006 NZ Census
+#' at the Statistical Area 1 level.
+#'
+#' @format A data frame with ? rows and 5 variables:
+#' \describe{
+#'   \item{SA1_2006_CODE}{SA1 Code}
+#'   \item{SA1_2006_NAME}{Name of the SA1}
+#'   \item{variable}{Variable from Census}
+#'   \item{variable_group}{Groups for the variable from Census}
+#'   \item{count}{Number of people in the particular variable-group}
+#'   ...
+#' }
+#' @source \url{https://www.stats.govt.nz/information-releases/statistical-area-1-dataset-for-2018-census-updated-march-2020}
+"DWELLING_SA1_2006"
+
+#' Data on Dwellings from NZ Census 2006 at Statistical Area 2 Level
+#'
+#' A dataset containing the responses on dwellings from the 2006 NZ Census
+#' at the Statistical Area 2 level.
+#'
+#' @format A data frame with ? rows and 5 variables:
+#' \describe{
+#'   \item{SA2_2006_CODE}{SA2 Code}
+#'   \item{SA2_2006_NAME}{Name of the SA2}
+#'   \item{variable}{Variable from Census}
+#'   \item{variable_group}{Groups for the variable from Census}
+#'   \item{count}{Number of people in the particular variable-group}
+#'   ...
+#' }
+#' @source \url{https://www.stats.govt.nz/information-releases/statistical-area-1-dataset-for-2018-census-updated-march-2020}"
+"DWELLING_SA2_2006"
+
+#' Data on Dwellings from NZ Census 2006 at Ward Level
+#'
+#' A dataset containing the responses on dwellings from the 2006 NZ Census
+#' at the Ward level.
+#'
+#' @format A data frame with ? rows and 5 variables:
+#' \describe{
+#'   \item{WARD_2006_CODE}{Ward Code}
+#'   \item{WARD_2006_NAME}{Name of the Ward}
+#'   \item{variable}{Variable from Census}
+#'   \item{variable_group}{Groups for the variable from Census}
+#'   \item{count}{Number of people in the particular variable-group}
+#'   ...
+#' }
+#' @source \url{https://www.stats.govt.nz/information-releases/statistical-area-1-dataset-for-2018-census-updated-march-2020}
+"DWELLING_WARD_2006"
+
+#' Data on Dwellings from NZ Census 2006 at Local Board Authority Level
+#'
+#' A dataset containing the responses on dwellings from the 2006 NZ Census
+#' at the Local Board Authority level.
+#'
+#' @format A data frame with ? rows and 5 variables:
+#' \describe{
+#'   \item{LBA_2006_CODE}{Local Board Authority Code}
+#'   \item{LBA_2006_NAME}{Name of the Local Board Authority}
+#'   \item{variable}{Variable from Census}
+#'   \item{variable_group}{Groups for the variable from Census}
+#'   \item{count}{Number of people in the particular variable-group}
+#'   ...
+#' }
+#' @source \url{https://www.stats.govt.nz/information-releases/statistical-area-1-dataset-for-2018-census-updated-march-2020}
+'DWELLING_LBA_2006'
+
+#' Data on Dwellings from NZ Census 2006 at Territorial Authority Level
+#'
+#' A dataset containing the responses on dwellings from the 2006 NZ Census
+#' at the Territorial Authority level.
+#'
+#' @format A data frame with ? rows and 5 variables:
+#' \describe{
+#'   \item{TA_2006_CODE}{Territorial Authority Code}
+#'   \item{TA_2006_NAME}{Name of the Territorial Authority}
+#'   \item{variable}{Variable from Census}
+#'   \item{variable_group}{Groups for the variable from Census}
+#'   \item{count}{Number of people in the particular variable-group}
+#'   ...
+#' }
+#' @source \url{https://www.stats.govt.nz/information-releases/statistical-area-1-dataset-for-2018-census-updated-march-2020}
+'DWELLING_TA_2006'
+
+#' Data on Dwellings from NZ Census 2006 at District Health Board Level
+#'
+#' A dataset containing the responses on dwellings from the 2006 NZ Census
+#' at the District Health Board level.
+#'
+#' @format A data frame with ? rows and 5 variables:
+#' \describe{
+#'   \item{DHB_2006_CODE}{District Health Board Code}
+#'   \item{DHB_2006_NAME}{Name of the District Health Board}
+#'   \item{variable}{Variable from Census}
+#'   \item{variable_group}{Groups for the variable from Census}
+#'   \item{count}{Number of people in the particular variable-group}
+#'   ...
+#' }
+#' @source \url{https://www.stats.govt.nz/information-releases/statistical-area-1-dataset-for-2018-census-updated-march-2020}
+'DWELLING_DHB_2006'
+
+#' Data on Dwellings from NZ Census 2006 at Regional Council Level
+#'
+#' A dataset containing the responses on dwellings from the 2006 NZ Census
+#' at the Regional Council level.
+#'
+#' @format A data frame with ? rows and 5 variables:
+#' \describe{
+#'   \item{RC_2006_CODE}{Regional Council Code}
+#'   \item{RC_2006_NAME}{Name of the Regional Council}
+#'   \item{variable}{Variable from Census}
+#'   \item{variable_group}{Groups for the variable from Census}
+#'   \item{count}{Number of people in the particular variable-group}
+#'   ...
+#' }
+#' @source \url{https://www.stats.govt.nz/information-releases/statistical-area-1-dataset-for-2018-census-updated-march-2020}
+'DWELLING_RC_2006'
 
 #' A dictionary of the available variables
 #' @references \href{https://www.stats.govt.nz/information-releases/statistical-area-1-dataset-for-2018-census-updated-march-2020}{Available Variables}
