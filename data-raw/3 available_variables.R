@@ -15,13 +15,16 @@ dictionary <- read.csv(path) %>%
 available_variables <- tibble::tribble(~geography, ~variable)
 geographies <- c("DHB", "LBA", "RC", "SA1", "SA2", "TA", "WARD")
 categories <- c("INDIVIDUAL", "DWELLING")
+years <- c("2006", "2013", "2018")
 for(geography in geographies){
   for(category in categories){
-    data <- eval(parse(text = paste0("db.censusnz::", category, geography, "_2018")))
-    available_variables <- dplyr::bind_rows(
-      available_variables,
-      data %>% dplyr::distinct(variable) %>% tibble::add_column(geography = geography, .before = 0)
-    )
+    for(year in years){
+      data <- eval(parse(text = paste0("db.censusnz::", category, "_", geography, "_", year)))
+      available_variables <- dplyr::bind_rows(
+        available_variables,
+        data %>% dplyr::distinct(variable) %>% tibble::add_column(geography = geography, .before = 0)
+      )
+    }
   }
 }
 

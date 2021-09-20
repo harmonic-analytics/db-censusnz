@@ -113,9 +113,9 @@ individual_2018 <- dplyr::filter(individual, year == 2018)
 geogs = c("Ward", "LBA", "TA", "DHB", "RC", "SA1", "SA2")
 
 for (geo in geogs){
-  save_geog_year(geo, individual, 2006, individual_2006)
-  save_geog_year(geo, individual, 2013, individual_2013)
-  save_geog_year(geo, individual, 2018, individual_2018)
+  save_geog_year(geo, "individual", 2006, individual_2006)
+  save_geog_year(geo, "individual", 2013, individual_2013)
+  save_geog_year(geo, "individual", 2018, individual_2018)
 }
 
 

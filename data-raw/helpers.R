@@ -1,13 +1,5 @@
 # Functions ---------------------------------------------------------------
 
-use_data_as_string = function(data, file_name, ...) {
-  file_path <- usethis::proj_path("data", file_name, ext = "rda")
-  dir.create(dirname(file_path), showWarnings = FALSE, recursive = TRUE)
-  save <- purrr::partial(base::save, file = file_path, compress = "bzip2", compression_level = 1, version = 3, ...)
-  assign(file_name, data)
-  invisible(save(list = c(file_name)))
-}
-
 extract_variables <- function(x, var_list) {
   for (var_name in var_list) {
     if (substring(x, 1, nchar(var_name)) == var_name) {
@@ -17,12 +9,12 @@ extract_variables <- function(x, var_list) {
   return (NA)
 }
 
-use_data <- function(...){
-  file_name <- match.call(expand.dots = TRUE)[[2]]
+use_data_as_string = function(data, file_name, ...) {
   file_path <- usethis::proj_path("data", file_name, ext = "rda")
   dir.create(dirname(file_path), showWarnings = FALSE, recursive = TRUE)
-  save <- purrr::partial(base::save, file = file_path, compress = "bzip2", compression_level = 1, version = 3)
-  invisible(save(...))
+  save <- purrr::partial(base::save, file = file_path, compress = "bzip2", compression_level = 1, version = 3, ...)
+  assign(file_name, data)
+  invisible(save(list = c(file_name)))
 }
 
 save_geog_year <- function(geog_region, category, yr, data) {
