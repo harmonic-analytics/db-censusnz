@@ -41,20 +41,20 @@ invisible(
 )
 
 (
-  variable_names <- individual
+  individual_variable_names <- individual
   %>% dplyr::select(name)
   %>% dplyr::distinct()
 )
 
-variable_names$variable = lapply(X = variable_names$name, FUN = extract_variables, var_list = individual_variables)
+individual_variable_names$variable = lapply(X = individual_variable_names$name, FUN = extract_variables, var_list = individual_variables)
 
 (
-  variable_names <- variable_names
+  individual_variable_names <- individual_variable_names
   %>% dplyr::mutate(variable_group = substring(name, nchar(variable) + 2))
   %>% tidyr::unnest(variable)
 )
 
-individual <- dplyr::left_join(individual, variable_names, by = 'name')
+individual <- dplyr::left_join(individual, individual_variable_names, by = 'name')
 
 # Add sorting capability for different geographic areas
 individual <- individual %>%
@@ -117,5 +117,3 @@ for (geo in geogs){
   save_geog_year(geo, "individual", 2013, individual_2013)
   save_geog_year(geo, "individual", 2018, individual_2018)
 }
-
-

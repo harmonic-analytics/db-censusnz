@@ -92,3 +92,11 @@ dwelling_variables = c(
   "Access_to_basic_amenities",
   "Dwelling_dampness_indicator",
   "Dwelling_mould_indicator")
+
+household_variables = c(
+  "total_households_in_occupied_private_dwellings",
+  "Tenure_of_household",
+  "Sector_of_landlord",
+  "Weekly_rent",
+  "Number_of_motor_vehicles",
+  "Access_to_telecommunications")

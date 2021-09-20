@@ -42,7 +42,7 @@ Individual,3a,"Industry (division), by workplace address* ",industry_by_workplac
 Individual,3b,Total hours worked in employment per week,hours_worked_per_week
 Individual,3b,"Main means of travel to work, by usual residence address",travel_to_work_by_usual_residence_address
 Individual,3b,"Main means of travel to work, by workplace address* ",travel_to_work_by_workplace_address
-Individual,3b,Unpaid activities,
+Individual,3b,Unpaid activities,unpaid_activities_total_responses
 Dwelling,,Occupied private dwelling type,occupied_private_dwelling_type
 Dwelling,,"Dwelling record type, for occupied dwellings",dwelling_record_type
 Dwelling,,Occupied non-private dwelling type,occupied_non_private_dwelling_type
@@ -54,9 +54,9 @@ Dwelling,,Dwelling occupancy status,dwelling_occupancy_status
 Dwelling,,Access to basic amenities,access_to_basic_amenities
 Dwelling,,Dwelling dampness indicator,dwelling_dampness_indicator
 Dwelling,,Dwelling mould indicator,dwelling_mould_indicator
-Household,,Total households,
-Household,,Tenure of household,
-Household,,Sector of landlord,
-Household,,"Weekly rent paid by household, including median weekly rent paid by household",
-Household,,Number of motor vehicles,
-Household,,Access to telecommunication systems (total responses),
+Household,,Total households,total_households_in_occupied_private_dwellings
+Household,,Tenure of household,tenure_of_household
+Household,,Sector of landlord,sector_of_landlord
+Household,,"Weekly rent paid by household, including median weekly rent paid by household",weekly_rent
+Household,,Number of motor vehicles,number_of_motor_vehicles
+Household,,Access to telecommunication systems (total responses),access_to_telecommunications
