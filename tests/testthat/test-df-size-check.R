@@ -78,4 +78,8 @@ test_that("All data areas present", {
     expect_equal(nrow(HOUSEHOLD_RC_2006), 828)
 
   expect_equal(nrow(area_hierarchy_2018), 29889)
+  expect_equal(nrow(available_variables), 1071)
+
+  # are there 4 category types inc NA
+  expect_equal(length(unique(available_variables$category)), 4)
 })
