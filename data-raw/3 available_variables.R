@@ -12,21 +12,28 @@ dictionary <- read.csv(path) %>%
   tibble::as_tibble() %>%
   dplyr::mutate_if(is.character, stringi::stri_enc_toascii)
 
-available_variables <- tibble::tribble(~geography, ~variable)
+available_variables <- tibble::tribble(~geography, ~variable, ~year)
 geographies <- c("DHB", "LBA", "RC", "SA1", "SA2", "TA", "WARD")
+categories <- c("INDIVIDUAL", "DWELLING", "HOUSEHOLD")
+years <- c("2006", "2013", "2018")
 for(geography in geographies){
-  data <- eval(parse(text = paste0("db.censusnz::", geography, "_2018")))
-  available_variables <- dplyr::bind_rows(
-    available_variables,
-    data %>% dplyr::distinct(variable) %>% tibble::add_column(geography = geography, .before = 0)
-  )
+  for(category in categories){
+    for(year in years){
+      data <- eval(parse(text = paste0("db.censusnz::", category, "_", geography, "_", year)))
+      available_variables <- dplyr::bind_rows(
+        available_variables,
+        data %>% dplyr::distinct(variable) %>% tibble::add_column(geography = geography, .before = 0) %>%
+            tibble::add_column(year = year)
+      )
+    }
+  }
 }
 
 available_variables <- dplyr::left_join(available_variables, dictionary)
 
 # Save --------------------------------------------------------------------
 # Available variables
-usethis::use_data(available_variables)
+usethis::use_data(available_variables, overwrite = TRUE)
 
 # Area hierarchy
 area_hierarchy_2018 = geonz::get_area_hierarchy()

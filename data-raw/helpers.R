@@ -1,11 +1,12 @@
 # Functions ---------------------------------------------------------------
 
-.use_data_as_string = function(data, file_name, ...) {
-  file_path <- usethis::proj_path("data", file_name, ext = "rda")
-  dir.create(dirname(file_path), showWarnings = FALSE, recursive = TRUE)
-  save <- purrr::partial(base::save, file = file_path, compress = "bzip2", compression_level = 1, version = 3, ...)
-  assign(file_name, data)
-  invisible(save(list = c(file_name)))
+extract_variables <- function(x, var_list) {
+  for (var_name in var_list) {
+    if (substring(x, 1, nchar(var_name)) == var_name) {
+      return (var_name)
+    }
+  }
+  return (NA)
 }
 
 use_data_as_string = function(data, file_name, ...) {
@@ -16,26 +17,10 @@ use_data_as_string = function(data, file_name, ...) {
   invisible(save(list = c(file_name)))
 }
 
-extract_variables <- function(x, var_list) {
-  for (var_name in var_list) {
-    if (substring(x, 1, nchar(var_name)) == var_name) {
-      return (var_name)
-    }
-  }
-  return (NA)
-}
-
-use_data <- function(...){
-  file_name <- match.call(expand.dots = TRUE)[[2]]
-  file_path <- usethis::proj_path("data", file_name, ext = "rda")
-  dir.create(dirname(file_path), showWarnings = FALSE, recursive = TRUE)
-  save <- purrr::partial(base::save, file = file_path, compress = "bzip2", compression_level = 1, version = 3)
-  invisible(save(...))
-}
-
-save_geog_year <- function(geog_region, yr, data) {
+save_geog_year <- function(geog_region, category, yr, data) {
   upper_geog <- toupper(geog_region)
-  data_id <- paste(upper_geog, yr, sep="_")
+  upper_category <- toupper(category)
+  data_id <- paste(upper_category, upper_geog, yr, sep="_")
   col_code <- paste(data_id, "CODE", sep="_")
   col_name <- paste(data_id, "NAME", sep="_")
 
@@ -47,7 +32,8 @@ save_geog_year <- function(geog_region, yr, data) {
 }
 
 # Variables ---------------------------------------------------------------
-individual_variables = c("usually_resident_population_count",
+individual_variables = c(
+  "usually_resident_population_count",
   "census_night_population_count",
   "Unit_record_data_source",
   "Sex",
@@ -93,3 +79,24 @@ individual_variables = c("usually_resident_population_count",
   "Travel_to_work_by_usual_residence_address",
   "Travel_to_work_by_workplace_address",
   "Unpaid_activities_total_responses")
+
+dwelling_variables = c(
+  "Occupied_private_dwelling_type",
+  "Dwelling_record_type",
+  "Occupied_non_private_dwelling_type",
+  "Number_of_rooms",
+  "Number_of_bedrooms",
+  "Main_types_of_heating_total_responses",
+  "Fuel_types_total_responses",
+  "Dwelling_occupancy_status",
+  "Access_to_basic_amenities",
+  "Dwelling_dampness_indicator",
+  "Dwelling_mould_indicator")
+
+household_variables = c(
+  "total_households_in_occupied_private_dwellings",
+  "Tenure_of_household",
+  "Sector_of_landlord",
+  "Weekly_rent",
+  "Number_of_motor_vehicles",
+  "Access_to_telecommunications")

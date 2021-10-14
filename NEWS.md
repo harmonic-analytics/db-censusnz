@@ -1,3 +1,7 @@
+# db.censusnz 1.2.0
+
+* Added dwelling and household level data from 2018 census.
+
 # db.censusnz 1.1.0
 
 # db.censusnz 1.0.0

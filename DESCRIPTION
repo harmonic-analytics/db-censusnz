@@ -1,6 +1,6 @@
 Package: db.censusnz
 Title: New Zealand Census Datasets (2018, 2013, 2006)
-Version: 1.1.0
+Version: 1.2.0
 Authors@R: 
     c(person(given = "Ari",
              family = "Angelo",

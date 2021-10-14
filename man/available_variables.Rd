@@ -5,7 +5,7 @@
 \alias{available_variables}
 \title{A dictionary of the available variables}
 \format{
-An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 315 rows and 5 columns.
+An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 945 rows and 5 columns.
 }
 \usage{
 available_variables
